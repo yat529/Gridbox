@@ -1,0 +1,242 @@
+// /* =======================================================================
+//  *                   min-width Media Query Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build a (min-width) media query rule
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     $breakPoint: Number.   
+//  * =======================================================================
+//  */
+@mixin minWidthMQ($breakPoint) {
+    @media (min-width: $breakPoint + px) {
+        @content;
+    }
+}
+
+// /* =======================================================================
+//  *                   Container CSS Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build a media query rule for .container 
+//  *                 and .container-fluid classes
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     $breakPoints: List.   
+//  * -----------------------------------------------------------------------
+//  * Dependency:     (1). minWidthMQ()
+//  * =======================================================================
+//  */
+@mixin containerMQWidth($breakPoints) {
+    //Create media query for container
+    @each $breakpoint, $value in $breakPoints {
+        // exclude the 'default' breakpoint
+        @if $breakpoint != 'default' {
+            //run the mediaQuery mixins
+            @include minWidthMQ($value) {
+                // if device is desktop
+                @if $value == 1980 {
+                    .container {
+                        max-width: 1400px;
+                    }
+                }
+                //if other devices
+                @else {
+                    .container {
+                        max-width: $value * 0.9375;
+                    }
+                }          
+            }
+        }
+    }
+}
+
+// /* =======================================================================
+//  *                   Column Css Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build css rule according to the prefix and column 
+//  *                 number. 
+//  *                   (a). create a flexible width column, ex: col-mob
+//  *                   (b). create a given number of fixed width columns
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     (1). $prefix: String. Prefixes: 'col', 'col-mob', ext.
+//  *                 (2). $colNum (optional): Number. Column Number: the 
+//  *                                          number of column to build   
+//  * =======================================================================
+//  */
+@mixin columnBuild($prefix, $colNum: null) {    
+    // fix width, ex: col-mob-1, col-tab-3
+    @if ($colNum) { 
+        // loop through colun number
+        @for $colNum from 1 to ($colNum + 1) {
+            .#{$prefix}-#{$colNum} {
+                flex: 0 0 8.33333% * $colNum;
+            }
+        }
+    } 
+    // flexible width, ex: col-mob, col-tab
+    @else {
+        .#{$prefix} {
+            flex: 1 1 auto;
+        }
+    }
+}
+
+// /* =======================================================================
+//  *                   Column Offset Css Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build css offset rule according to the prefix and column 
+//  *                 number. 
+//  *                   (a). left to right offset, ex: col-mob-offset-1
+//  *                   (b). right to left (reverse) offset, 
+//  *                        ex: col-mob-reverse-offset-1
+//  *                 Default column width: (100%/12) = 8.333%
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     (1). $prefix: String. Prefixes: 'col', 'col-mob', ext.
+//  *                 (2). $colNum: Number. Column Number: the number of 
+//  *                               column to build   
+//  * =======================================================================
+//  */
+@mixin columnOffsetBuild($prefix, $colNum) {
+    @for $colNum from 1 to $colNum {
+
+        // Left to right offset
+        .#{$prefix}-offset-#{$colNum} {
+            margin-left: 8.33333% * $colNum;
+        }
+        // Right to left offset
+        .#{$prefix}-reverse-offset-#{$colNum} {
+            margin-right: 8.33333% * $colNum;
+        }
+    }
+}
+
+// /* =======================================================================
+//  *                       Grid Css Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build media query grid css rule with breakpoints
+//  *                 combine the column css, column offset css builder and
+//  *                 minWidth media query builder
+//  *
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     (1). $deviceList: List. List of prefixs
+//  *                 (2). $colNum: Number. Column Number: the number of 
+//  *                               column to build   
+//  * -----------------------------------------------------------------------
+//  * Dependency:     (1). minWidthMQ()
+//  *                 (2). columnBuild()
+//  *                 (3). columnOffsetBuild()
+//  * =======================================================================
+//  */
+@mixin gridRuleBuild($breakPoints, $deviceList, $colNum:null) {
+    // build media query rule
+    @if ($colNum) {
+        // loop throught the $breakPoints list
+        @each $breakPoint, $value in $breakPoints {
+
+            // Default - no specific media query assigned, produce 'col-1'. etc
+            @if $breakPoint == 'default' {
+                // loop through the $deviceList list
+                @each $device, $prefix in $deviceList {     
+                    // assign prefix only associated with this breakpoint
+                    @if $device == $breakPoint {
+                        // build the grid css rule
+                        @include columnBuild($prefix, $colNum);
+                        //build the grid offset rule
+                        @include columnOffsetBuild($prefix, $colNum);
+                    } 
+                } 
+            }
+
+            // Phone - Portrait Mode
+            @if $breakPoint == 'phonePortrait' {
+                // assign the media query
+                @include minWidthMQ($value) {
+                    // loop through the $deviceList list
+                    @each $device, $prefix in $deviceList {     
+                        // assign prefix only associated with this breakpoint
+                        @if $device == $breakPoint {
+                            // build the grid css rule
+                            @include columnBuild($prefix, $colNum);
+                            //build the grid offset rule
+                            @include columnOffsetBuild($prefix, $colNum);
+                        } 
+                    }
+                }  
+            }
+
+            // Phone - Landscape Mode
+            @if $breakPoint == 'phoneLandscape' {
+                // assign the media query
+                @include minWidthMQ($value) {
+                    // loop through the $deviceList list
+                    @each $device, $prefix in $deviceList {        
+                        // assign prefix only associated with this breakpoint
+                        @if $device == $breakPoint {
+                            // build the grid css rule
+                            @include columnBuild($prefix, $colNum);
+                            //build the grid offset rule
+                            @include columnOffsetBuild($prefix, $colNum);
+                        } 
+                    }
+                }  
+            }
+
+            // Tablet
+            @if $breakPoint == 'tablet' {
+                // assign the media query
+                @include minWidthMQ($value) {
+                    // loop through the $deviceList list
+                    @each $device, $prefix in $deviceList {        
+                        // assign prefix only associated with this breakpoint
+                        @if $device == $breakPoint {
+                            // build the grid css rule
+                            @include columnBuild($prefix, $colNum);
+                            //build the grid offset rule
+                            @include columnOffsetBuild($prefix, $colNum);
+                        } 
+                    }
+                }  
+            }
+
+            // Laptop
+            @if $breakPoint == 'laptop' {
+                // assign the media query
+                @include minWidthMQ($value) {
+                    // loop through the $deviceList list
+                    @each $device, $prefix in $deviceList {        
+                        // assign prefix only associated with this breakpoint
+                        @if $device == $breakPoint {
+                            // build the grid css rule
+                            @include columnBuild($prefix, $colNum);
+                            //build the grid offset rule
+                            @include columnOffsetBuild($prefix, $colNum);
+                        }
+                    }
+                }  
+            }
+
+            // Desktop
+            @if $breakPoint == 'desktop' {
+                // assign the media query
+                @include minWidthMQ($value) {
+                    // loop through the $deviceList list
+                    @each $device, $prefix in $deviceList {        
+                        // assign prefix only associated with this breakpoint
+                        @if $device == $breakPoint {
+                            // build the grid css rule
+                            @include columnBuild($prefix, $colNum);
+                            //build the grid offset rule
+                            @include columnOffsetBuild($prefix, $colNum);
+                        }
+                    }
+                }  
+            }
+            
+        } 
+    } 
+    // no media query rule
+    @else {
+        // loop through the $deviceList list
+        @each $device, $prefix in $deviceList {        
+            // build the grid css rule
+            @include columnBuild($prefix);
+        }
+    }
+}

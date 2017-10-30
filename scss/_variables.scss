@@ -1,0 +1,36 @@
+//Container Styling
+//Description: used to style .container or .container-fluid class
+
+//Colors
+$containerBGColor: #e0e0e0;
+
+//Spacing
+$containerWidth: 93.75%;
+$containerBottomMargin: 15px;
+
+//Column Number
+$colNum: 12;
+
+//Breaking Points
+//Description: show device name and its associtated breakpoint pixel
+//usage: used as the argument for the 'minWidthMQ' MIXIN
+$breakPoints: (
+    'default':           0,
+    'phonePortrait':     576,
+    'phoneLandscape':    768,
+    'tablet':            992,
+    'laptop':            1200,
+    'desktop':           1980
+);
+
+//Device List - 
+//Description: shows device and its associated prefix
+//usage: used as the argument for the 'gridRuleBuild' MIXIN
+$deviceList: (
+    'default':          'col',
+    'phonePortrait':    'col-mob',
+    'phoneLandscape':   'col-mob-l',
+    'tablet':           'col-tab',
+    'laptop':           'col-lap',
+    'desktop':          'col-desk'
+);
