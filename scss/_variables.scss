@@ -1,3 +1,69 @@
+// /* =======================================================================
+//  *                       Global Styling
+//  *========================================================================
+//  */
+
+//Font
+$fontColor: #212529;
+$fontSize: 16px;
+$fontLineHeight: 1.5;
+$fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+//Body Colors
+$docBodyBGColor: #fff;
+
+
+// Colors - Information
+$information: #1e88e5;
+$informationDarker: #1565c0;
+
+// Colors - Success
+$success: #8bc34a;
+$successDarker: #558b2f;
+
+// Colors - Warning
+$warning: #ffc107;
+$warningDarker: #ffa000;
+
+// Colors - Danger
+$danger: #f4511e;
+$dangerDarker: #d84315;
+
+// Colors - Disable
+$disabled: #868e96;
+$disabledDarker: #5b6166;
+
+// Color - Boxshadow
+$boxShadow: rgba(0, 0, 0, 0.05);
+
+// Color - Inset Boxshadow
+$insetBoxShadow: rgba(0, 0, 0, 0.5);
+
+// Color - Border
+$border: rgba(0, 0, 0, 0.15);
+
+// /* =======================================================================
+//  *                          Form Settings
+//  *========================================================================
+//  */
+
+// Font
+$inputFontSize: 1rem;
+$inputLineHeight: 1.5rem;
+
+// single <select> element
+$caretColor: #495057;
+
+// Button element
+$btnDefaultBoxShadow: 2px 2px 4px $boxShadow;
+$btnInsetBoxShadow: inset 1px 1px 3px $insetBoxShadow;
+
+
+// /* =======================================================================
+//  *                          Girds Settings
+//  *========================================================================
+//  */
+
 //Container Styling
 //Description: used to style .container or .container-fluid class
 
@@ -9,7 +75,7 @@ $containerWidth: 93.75%;
 $containerBottomMargin: 15px;
 
 //Column Number
-$colNum: 12;
+$colNums: 16;
 
 //Breaking Points
 //Description: show device name and its associtated breakpoint pixel

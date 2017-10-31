@@ -24,6 +24,7 @@ form {
   padding: 15px;
   margin-bottom: 15px;
   background: #fff;
+  color: #212529;
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-bottom: none; }
   form:last-child {
@@ -60,7 +61,7 @@ form {
   position: relative;
   width: 100%;
   padding: 0.5rem 0.75rem;
-  color: #495057;
+  color: #212529;
   font-size: 1rem;
   line-height: 1.5rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -70,26 +71,24 @@ form {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.25s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.25s, -webkit-box-shadow ease-in-out 0.25s; }
   .form-input:focus {
-    border-color: #80bdff;
+    border-color: #1e88e5;
     -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
     outline: none; }
   .form-input::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, 0.35); }
+    color: #868e96; }
   .form-input:-ms-input-placeholder {
-    color: rgba(0, 0, 0, 0.35); }
+    color: #868e96; }
   .form-input::placeholder {
-    color: rgba(0, 0, 0, 0.35); }
+    color: #868e96; }
+
+.form-check {
+  margin-right: 0.25rem; }
 
 textarea {
   overflow: auto;
   resize: vertical; }
 
-/* Select Box */
-/* Note: Select element sits inside a .selectWrapper class, there is also a span element act as the caret;
-   the .selectWrapper element and the .caret have a z-index of 1, the select element has z-index of 2;
-   the select has a transparent background, so it won't cover the care beneath it
-*/
 /* =======================================================================
  *                          Select Element, <select>
  * -----------------------------------------------------------------------
@@ -114,8 +113,7 @@ select {
   appearance: none;
   border-radius: 0;
   background: transparent !important;
-  z-index: 2;
-  /* make it top layer */ }
+  z-index: 2; }
   select:hover {
     cursor: pointer; }
 
@@ -141,16 +139,29 @@ select {
   max-height: 8rem; }
   .multiSelectWrapper .multi-select option {
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
     .multiSelectWrapper .multi-select option:first-child {
       margin-top: -0.5rem; }
     .multiSelectWrapper .multi-select option:last-child {
       margin-bottom: -0.5rem;
       border-bottom: none; }
 
-/* Label & Legend */
-.label-col,
-.label-inline {
+/* =======================================================================
+ *                  Labeling Class, <label> and <legend>
+ * -----------------------------------------------------------------------
+ * Description:    two classes associated with the <label> element, 
+ *                  (a) .label-col
+ *                  (b) .label-inline
+ *                 they are indentical, just make the name more self
+ *                 descriptive. The two classes will normalize the size
+ *                 of <label> with element has .form-input class for a
+ *                 proper aligning result
+ * -----------------------------------------------------------------------
+ * Ussage:         (a) .label-col: applied to <label> with a grid class
+ *                 (b) .label-inline: applied to block level <label>
+ *========================================================================
+ */
+.label-col, .label-inline {
   display: inline-block;
   padding-top: calc(0.5rem + 1px);
   padding-right: 0.75rem;
@@ -159,255 +170,228 @@ select {
   font-size: 1rem;
   line-height: 1.5rem; }
 
-legend {
-  padding: 0.5rem 1.5rem 0.5rem 0;
-  /* margin-bottom: 15px; */ }
+.label-inline {
+  margin-bottom: 0.35rem; }
 
-/* Disabled Input */
 .disabled {
   color: #868e96;
   cursor: not-allowed; }
 
-/* Buttons */
+legend {
+  padding: 0.5rem 1.5rem 0.5rem 0; }
+
+/* =======================================================================
+ *                          Button Styling
+ * -----------------------------------------------------------------------
+ * Description:    Remove the browser default styling, and apply gridbox
+ *                 button styling. Also provide button color options
+ *                  (a) .btn-primary
+ *                  (b) .btn-secondary
+ *                  (c) .btn-success
+ *                  (d) .btn-warning
+ *                  (e) .btn-danger
+ *                  (f) .btn-info
+ * -----------------------------------------------------------------------
+ * Ussage:         Can be applied to the belowing elements
+ *                 (a) <button class="btn btn-parimary">
+ *                 (b) <a class="btn btn-parimary">
+ *========================================================================
+ */
 button {
   -webkit-appearance: none;
   -moz-appearance: none; }
+  button.btn, a.btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    -webkit-transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+    -o-transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+    transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s; }
+    button.btn:hover, a.btn:hover, button.btn:focus, a.btn:focus, button.btn:active, a.btn:active {
+      outline: none;
+      cursor: pointer; }
+    button.btn:active, a.btn:active {
+      -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+      -webkit-transform: translate(1px, 1px);
+      -ms-transform: translate(1px, 1px);
+      transform: translate(1px, 1px); }
 
-button, .btn {
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-  background-color: #fff;
-  border: none;
-  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  -webkit-transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
-  -o-transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s;
-  transition: background-color ease-in-out 0.15s, border-color ease-in-out 0.15s; }
-
-button:hover,
-button:focus,
-button:active {
-  outline: none;
-  cursor: pointer; }
-
-button:active {
-  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
-  -webkit-transform: translate(1px, 1px);
-  -ms-transform: translate(1px, 1px);
-  transform: translate(1px, 1px); }
+a {
+  display: inline-block; }
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border: 1px solid #007bff; }
+  background-color: #1e88e5;
+  border: 1px solid #1e88e5; }
+  .btn-primary:hover, .btn-primary:active {
+    background-color: #1565c0;
+    border-color: #1565c0; }
 
-.btn-primary:hover,
-.btn-primary:active {
-  background-color: #0069d9;
-  border-color: #0062cc; }
+.btn-secondary {
+  color: #1e88e5;
+  background-color: #fff;
+  border: 1px solid #1e88e5; }
+  .btn-secondary:hover, .btn-secondary:active {
+    color: #fff;
+    background-color: #1565c0;
+    border-color: #1565c0; }
 
-/* Form Checkbox */
-.form-check {
-  margin-right: 0.25rem; }
+.btn-success {
+  color: #fff;
+  background-color: #8bc34a;
+  border: 1px solid #8bc34a; }
+  .btn-success:hover, .btn-success:active {
+    color: #fff;
+    background-color: #558b2f;
+    border-color: #558b2f; }
 
-/* Custom Form Checkbox - FontAwsome - Style 1 */
-.custom-form-check,
-.custom-form-check-icon,
-.custom-form-check-icon i,
-.custom-form-check-content,
-.custom-form-check-icon-checked,
-.custom-form-check-icon-unchecked {
+.btn-warning {
+  color: #fff;
+  background-color: #ffc107;
+  border: 1px solid #ffc107; }
+  .btn-warning:hover, .btn-warning:active {
+    color: #fff;
+    background-color: #ffa000;
+    border-color: #ffa000; }
+
+.btn-danger {
+  color: #fff;
+  background-color: #f4511e;
+  border: 1px solid #f4511e; }
+  .btn-danger:hover, .btn-danger:active {
+    color: #fff;
+    background-color: #d84315;
+    border-color: #d84315; }
+
+/* =======================================================================
+ *                        Custom Form Checkbox
+ * -----------------------------------------------------------------------
+ * Description:    Fake the checkbox by using fontawesome icons,
+ *                 hidden the defualt the checkbox. It has two states:
+ *                  (a) :checked
+ *                  (b) :focus
+ *                 This is a general css rule, feel free to use differnt
+ *                 icons provided by fontawesome. We provided two examples
+ *                  (1) checkbox type
+ *                  (2) radio type
+ * -----------------------------------------------------------------------
+ * Ussage:         Must use the HTML template, or using the same nesting
+ *                 rule
+ *========================================================================
+ */
+.custom-form-check {
   display: inline-block;
   position: relative;
-  line-height: 1.5rem;
+  min-height: 1.5rem;
+  line-height: 1.5;
   vertical-align: middle; }
-
-.custom-form-check:hover {
-  cursor: pointer; }
-
-.custom-form-check-icon {
-  margin-right: 0.25rem; }
-
-.hidden-default-check {
-  position: absolute;
-  left: 0.75rem;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  opacity: 0;
-  z-index: -1; }
-
-.custom-form-check-icon-unchecked {
-  top: -1px; }
-
-.custom-form-check-icon-checked {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0; }
-
-.hidden-default-check:checked + span .custom-form-check-icon-unchecked {
-  opacity: 0; }
-
-.hidden-default-check:checked + span .custom-form-check-icon-checked {
-  opacity: 1; }
-
-.hidden-default-check:focus + span .custom-form-check-icon-unchecked {
-  color: #007bff; }
-
-.hidden-default-check:focus:checked + span .custom-form-check-icon-checked {
-  color: #007bff; }
-
-/* alternative style 1 */
-.custom-form-check-alt {
-  display: inline-block;
-  position: relative;
-  min-height: 1.5rem;
-  line-height: 1.5rem; }
-
-.custom-form-check-alt:hover {
-  cursor: pointer; }
-
-.custom-form-check-alt.disabled:hover {
-  cursor: not-allowed; }
-
-.custom-for-check-icon-alt {
-  display: block;
-  position: absolute;
-  width: 1.1rem;
-  height: 1.1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background: transparent;
-  border-radius: 4px;
-  border: 2px solid #000000; }
-
-.custom-form-check-content-alt {
-  display: inline-block;
-  position: relative;
-  min-height: 1.5rem;
-  line-height: 1.5rem;
-  margin-left: 1.5rem; }
-
-.custom-for-check-icon-alt i {
-  position: absolute;
-  font-size: 0.6rem;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  -webkit-transition: opacity ease-in 0.2s;
-  -o-transition: opacity ease-in 0.2s;
-  transition: opacity ease-in 0.2s; }
-
-.custom-for-check-icon-alt::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 1.3rem;
-  height: 1.3rem;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  -webkit-transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
-  -ms-transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
-  transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
-  border-radius: 4px;
-  border: 2px solid #007bff;
-  -webkit-box-shadow: 0 0 5px #007bff;
-  box-shadow: 0 0 5px #007bff;
-  -webkit-transition: opacity ease-in 0.2s, -webkit-box-shadow ease-in 0.2s;
-  transition: opacity ease-in 0.2s, -webkit-box-shadow ease-in 0.2s;
-  -o-transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s;
-  transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s;
-  transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s, -webkit-box-shadow ease-in 0.2s; }
-
-/* Background Border Highlight */
-/* when focus */
-.hidden-default-check:focus + .custom-for-check-icon-alt::before {
-  opacity: 1; }
-
-/* when focus and checked */
-.hidden-default-check:focus:checked + .custom-for-check-icon-alt::before {
-  opacity: 1; }
-
-/* Toggle Checkmark */
-/* when checked */
-.hidden-default-check:checked + .custom-for-check-icon-alt i {
-  opacity: 1; }
-
-/* alternative style 2 */
-.custom-form-check-alt-2 {
-  display: inline-block;
-  position: relative;
-  min-height: 1.5rem;
-  line-height: 1.5rem; }
-
-.custom-form-check-alt-2:hover {
-  cursor: pointer; }
-
-.custom-form-check-alt-2.disabled:hover {
-  cursor: not-allowed; }
-
-.custom-for-check-icon-alt-2 {
-  display: block;
-  position: absolute;
-  width: 1.1rem;
-  height: 1.1rem;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background: transparent;
-  border-radius: 4px;
-  border: 2px solid #000000;
-  -webkit-transition: background-color ease-in 0.2s;
-  -o-transition: background-color ease-in 0.2s;
-  transition: background-color ease-in 0.2s; }
-
-.custom-form-check-content-alt-2 {
-  display: inline-block;
-  position: relative;
-  min-height: 1.5rem;
-  line-height: 1.5rem;
-  margin-left: 1.5rem; }
-
-.custom-for-check-icon-alt-2 i {
-  position: absolute;
-  font-size: 0.6rem;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  -webkit-transition: opacity ease-in 0.2s;
-  -o-transition: opacity ease-in 0.2s;
-  transition: opacity ease-in 0.2s; }
-
-/* Background Border Highlight */
-/* when focus */
-.hidden-default-check:focus + .custom-for-check-icon-alt-2 {
-  background: #000000; }
-
-/* when focus and checked */
-.hidden-default-check:focus:checked + .custom-for-check-icon-alt-2 i {
-  color: #fff; }
-
-/* when focus and checked */
-.hidden-default-check:focus:active + .custom-for-check-icon-alt-2 i {
-  background: #000000; }
-
-/* Toggle Checkmark */
-/* when checked */
-.hidden-default-check:checked + .custom-for-check-icon-alt-2 i {
-  opacity: 1; }
-
-
+  .custom-form-check:hover {
+    cursor: pointer; }
+  .custom-form-check.disabled {
+    color: #868e96;
+    cursor: not-allowed; }
+    .custom-form-check.disabled .custom-for-check-icon-alt {
+      border-color: #868e96; }
+  .custom-form-check .custom-form-check-icon {
+    display: inline-block;
+    position: relative;
+    margin-right: 0.25rem; }
+    .custom-form-check .custom-form-check-icon .custom-form-check-icon-unchecked {
+      display: inline-block;
+      position: relative;
+      line-height: 1.5; }
+      .custom-form-check .custom-form-check-icon .custom-form-check-icon-unchecked i {
+        line-height: 1.5; }
+    .custom-form-check .custom-form-check-icon .custom-form-check-icon-checked {
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: 1.5;
+      opacity: 0; }
+      .custom-form-check .custom-form-check-icon .custom-form-check-icon-checked i {
+        line-height: 1.5; }
+  .custom-form-check .custom-for-check-icon-alt {
+    display: block;
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: transparent;
+    border-radius: 4px;
+    border: 2px solid #000; }
+    .custom-form-check .custom-for-check-icon-alt + span.custom-form-check-content {
+      margin-left: 1.5rem; }
+    .custom-form-check .custom-for-check-icon-alt.outter-glow::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 1.3rem;
+      height: 1.3rem;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      -webkit-transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
+      -ms-transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
+      transform: translate(calc(-0.1rem - 2px), calc(-0.1rem - 2px));
+      border-radius: 4px;
+      border: 2px solid #1e88e5;
+      -webkit-box-shadow: 0 0 5px #1e88e5;
+      box-shadow: 0 0 5px #1e88e5;
+      -webkit-transition: opacity ease-in 0.2s, -webkit-box-shadow ease-in 0.2s;
+      transition: opacity ease-in 0.2s, -webkit-box-shadow ease-in 0.2s;
+      -o-transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s;
+      transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s;
+      transition: opacity ease-in 0.2s, box-shadow ease-in 0.2s, -webkit-box-shadow ease-in 0.2s; }
+    .custom-form-check .custom-for-check-icon-alt i {
+      position: absolute;
+      font-size: 0.6rem;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      -webkit-transition: opacity ease-in 0.2s;
+      -o-transition: opacity ease-in 0.2s;
+      transition: opacity ease-in 0.2s; }
+  .custom-form-check .custom-form-check-content {
+    display: inline-block;
+    position: relative;
+    line-height: 1.5; }
+  .custom-form-check .hidden-default-check {
+    position: absolute;
+    left: 0.75rem;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0;
+    z-index: -1;
+    /* when focus */
+    /* when focus and checked */ }
+    .custom-form-check .hidden-default-check:checked + span .custom-form-check-icon-unchecked {
+      opacity: 0; }
+    .custom-form-check .hidden-default-check:checked + span .custom-form-check-icon-checked {
+      opacity: 1; }
+    .custom-form-check .hidden-default-check:focus + span .custom-form-check-icon-unchecked {
+      color: #1e88e5; }
+    .custom-form-check .hidden-default-check:focus:checked + span .custom-form-check-icon-checked {
+      color: #1e88e5; }
+    .custom-form-check .hidden-default-check:checked + .custom-for-check-icon-alt i {
+      opacity: 1; }
+    .custom-form-check .hidden-default-check:focus + .outter-glow::before {
+      opacity: 1; }
+    .custom-form-check .hidden-default-check:focus:checked + .outter-glow::before {
+      opacity: 1; }
+    .custom-form-check .hidden-default-check:focus + .inner-fill,
+    .custom-form-check .hidden-default-check:focus:active + .inner-fill {
+      background: #000; }
+    .custom-form-check .hidden-default-check:focus:checked + .inner-fill i {
+      color: #fff;
+      background: #000; }

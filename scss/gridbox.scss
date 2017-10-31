@@ -1,14 +1,6 @@
-/* Variables */
+@import '_variables.scss';
 
-//Font
-$fontSize: 16px;
-$fontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-//Colors
-$docBodyBGColor: #fff;
-
-
-/* Global Settings */
+// Global Settings
 * {
     margin: 0;
     padding: 0;
@@ -25,8 +17,8 @@ html {
         size: $fontSize;
         weight: normal;   
     }
-    color: #212529;
-    line-height: 1.5;
+    color: $fontColor;
+    line-height: $fontLineHeight;
 
     body {    
         background-color: $docBodyBGColor;

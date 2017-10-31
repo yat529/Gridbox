@@ -56,17 +56,17 @@
 //  *                   (b). create a given number of fixed width columns
 //  * -----------------------------------------------------------------------
 //  * Paramaters:     (1). $prefix: String. Prefixes: 'col', 'col-mob', ext.
-//  *                 (2). $colNum (optional): Number. Column Number: the 
+//  *                 (2). $colNums (optional): Number. Column Number: the 
 //  *                                          number of column to build   
 //  * =======================================================================
 //  */
-@mixin columnBuild($prefix, $colNum: null) {    
+@mixin columnBuild($prefix, $colNums: null) {    
     // fix width, ex: col-mob-1, col-tab-3
-    @if ($colNum) { 
+    @if ($colNums) { 
         // loop through colun number
-        @for $colNum from 1 to ($colNum + 1) {
+        @for $colNum from 1 to ($colNums + 1) {
             .#{$prefix}-#{$colNum} {
-                flex: 0 0 8.33333% * $colNum;
+                flex: 0 0 (100%/$colNums) * $colNum;
             }
         }
     } 
@@ -86,23 +86,23 @@
 //  *                   (a). left to right offset, ex: col-mob-offset-1
 //  *                   (b). right to left (reverse) offset, 
 //  *                        ex: col-mob-reverse-offset-1
-//  *                 Default column width: (100%/12) = 8.333%
+//  *                 Default column width: (100%/colNums)
 //  * -----------------------------------------------------------------------
 //  * Paramaters:     (1). $prefix: String. Prefixes: 'col', 'col-mob', ext.
-//  *                 (2). $colNum: Number. Column Number: the number of 
+//  *                 (2). $colNums: Number. Column Number: the number of 
 //  *                               column to build   
 //  * =======================================================================
 //  */
-@mixin columnOffsetBuild($prefix, $colNum) {
-    @for $colNum from 1 to $colNum {
+@mixin columnOffsetBuild($prefix, $colNums) {
+    @for $colNum from 1 to $colNums {
 
         // Left to right offset
         .#{$prefix}-offset-#{$colNum} {
-            margin-left: 8.33333% * $colNum;
+            margin-left: (100%/$colNums) * $colNum;
         }
         // Right to left offset
         .#{$prefix}-reverse-offset-#{$colNum} {
-            margin-right: 8.33333% * $colNum;
+            margin-right: (100%/$colNums) * $colNum;
         }
     }
 }
@@ -116,7 +116,7 @@
 //  *
 //  * -----------------------------------------------------------------------
 //  * Paramaters:     (1). $deviceList: List. List of prefixs
-//  *                 (2). $colNum: Number. Column Number: the number of 
+//  *                 (2). $colNums: Number. Column Number: the number of 
 //  *                               column to build   
 //  * -----------------------------------------------------------------------
 //  * Dependency:     (1). minWidthMQ()
@@ -124,9 +124,9 @@
 //  *                 (3). columnOffsetBuild()
 //  * =======================================================================
 //  */
-@mixin gridRuleBuild($breakPoints, $deviceList, $colNum:null) {
+@mixin gridRuleBuild($breakPoints, $deviceList, $colNums:null) {
     // build media query rule
-    @if ($colNum) {
+    @if ($colNums) {
         // loop throught the $breakPoints list
         @each $breakPoint, $value in $breakPoints {
 
@@ -137,9 +137,9 @@
                     // assign prefix only associated with this breakpoint
                     @if $device == $breakPoint {
                         // build the grid css rule
-                        @include columnBuild($prefix, $colNum);
+                        @include columnBuild($prefix, $colNums);
                         //build the grid offset rule
-                        @include columnOffsetBuild($prefix, $colNum);
+                        @include columnOffsetBuild($prefix, $colNums);
                     } 
                 } 
             }
@@ -153,9 +153,9 @@
                         // assign prefix only associated with this breakpoint
                         @if $device == $breakPoint {
                             // build the grid css rule
-                            @include columnBuild($prefix, $colNum);
+                            @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
-                            @include columnOffsetBuild($prefix, $colNum);
+                            @include columnOffsetBuild($prefix, $colNums);
                         } 
                     }
                 }  
@@ -170,9 +170,9 @@
                         // assign prefix only associated with this breakpoint
                         @if $device == $breakPoint {
                             // build the grid css rule
-                            @include columnBuild($prefix, $colNum);
+                            @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
-                            @include columnOffsetBuild($prefix, $colNum);
+                            @include columnOffsetBuild($prefix, $colNums);
                         } 
                     }
                 }  
@@ -187,9 +187,9 @@
                         // assign prefix only associated with this breakpoint
                         @if $device == $breakPoint {
                             // build the grid css rule
-                            @include columnBuild($prefix, $colNum);
+                            @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
-                            @include columnOffsetBuild($prefix, $colNum);
+                            @include columnOffsetBuild($prefix, $colNums);
                         } 
                     }
                 }  
@@ -204,9 +204,9 @@
                         // assign prefix only associated with this breakpoint
                         @if $device == $breakPoint {
                             // build the grid css rule
-                            @include columnBuild($prefix, $colNum);
+                            @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
-                            @include columnOffsetBuild($prefix, $colNum);
+                            @include columnOffsetBuild($prefix, $colNums);
                         }
                     }
                 }  
@@ -221,9 +221,9 @@
                         // assign prefix only associated with this breakpoint
                         @if $device == $breakPoint {
                             // build the grid css rule
-                            @include columnBuild($prefix, $colNum);
+                            @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
-                            @include columnOffsetBuild($prefix, $colNum);
+                            @include columnOffsetBuild($prefix, $colNums);
                         }
                     }
                 }  
