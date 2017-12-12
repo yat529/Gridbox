@@ -2,15 +2,15 @@
 @import "_mixins.scss";
 @import "_variables.scss";
 
-/* =======================================================================
- *                          Container Element 
- * -----------------------------------------------------------------------
- * Function:    define the container dimension of the element, 
- *              assign bottom margin
- * -----------------------------------------------------------------------
- * Ussage:      applied to the wrapping element, ex: <div>, <section>
- *========================================================================
- */
+// /* =======================================================================
+//  *                          Container Element 
+//  * -----------------------------------------------------------------------
+//  * Function:    define the container dimension of the element, 
+//  *              assign bottom margin
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to the wrapping element, ex: <div>, <section>
+//  * ========================================================================
+//  */
 
  // Container Class - Not Full Screent
 .container {
@@ -35,14 +35,14 @@
 // assign media query rules to container class
 @include containerMQWidth($breakPoints);
 
-/* =======================================================================
- *                   Grid Row - Flexbox Parent Element 
- * -----------------------------------------------------------------------
- * Description:    set the flex display, control the children grids
- * -----------------------------------------------------------------------
- * Ussage:      applied to the wrapping element, ex: <div>, <section>
- *========================================================================
- */
+// /* =======================================================================
+//  *                   Grid Row - Flexbox Parent Element 
+//  * -----------------------------------------------------------------------
+//  * Description:    set the flex display, control the children grids
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to the wrapping element, ex: <div>, <section>
+//  * ========================================================================
+//  */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -66,20 +66,20 @@
     flex-direction: column-reverse;
 }
 
-/* =======================================================================
- *                   Grids - Flexbox Child Element 
- * -----------------------------------------------------------------------
- * Description:    use .col for horizontal layout, 
- *                      parent class: .row or .row-reverse
- *                 use .layer for verticle layout, 
- *                      parent class: .stack or .stach-reverse
- * -----------------------------------------------------------------------
- * Usage:          use .col for horizontal layout, 
- *                      parent class: .row or .row-reverse
- *                 use .layer for verticle layout, 
- *                      parent class: .stack or .stach-reverse
- *========================================================================
- */
+// /* =======================================================================
+//  *                   Grids - Flexbox Child Element 
+//  * -----------------------------------------------------------------------
+//  * Description:    use .col for horizontal layout, 
+//  *                      parent class: .row or .row-reverse
+//  *                 use .layer for verticle layout, 
+//  *                      parent class: .stack or .stach-reverse
+//  * -----------------------------------------------------------------------
+//  * Usage:          use .col for horizontal layout, 
+//  *                      parent class: .row or .row-reverse
+//  *                 use .layer for verticle layout, 
+//  *                      parent class: .stack or .stach-reverse
+//  * ========================================================================
+//  */
 
 // layer element, used when .stack or .stack-reverse parent class is used
 .layer {
@@ -93,14 +93,14 @@
 //build grid css rule - fixed width
 @include gridRuleBuild($breakPoints, $deviceList, $colNums);
 
-/* =======================================================================
- *                          Grids Alignment
- * -----------------------------------------------------------------------
- * Description:    grids alignment classes
- * -----------------------------------------------------------------------
- * Usage:          used on parent classes .row or .row-reverse
- *========================================================================
- */
+// /* =======================================================================
+//  *                          Grids Alignment
+//  * -----------------------------------------------------------------------
+//  * Description:    grids alignment classes
+//  * -----------------------------------------------------------------------
+//  * Usage:          used on parent classes .row or .row-reverse
+//  * ========================================================================
+//  */
 
 // Horizontal Alignment
 .horizontal-align-center {
@@ -169,14 +169,14 @@
     text-align: center;
 }
 
-/* =======================================================================
- *                      Individual Grid Alignment
- * -----------------------------------------------------------------------
- * Description:    single grid alignment classes
- * -----------------------------------------------------------------------
- * Usage:          used on child classes .col or .col-1. etc
- *========================================================================
- */
+// /* =======================================================================
+//  *                      Individual Grid Alignment
+//  * -----------------------------------------------------------------------
+//  * Description:    single grid alignment classes
+//  * -----------------------------------------------------------------------
+//  * Usage:          used on child classes .col or .col-1. etc
+//  * ========================================================================
+//  */
 
 // Self Align only work in single line
 .verticle-self-align-top {

@@ -14,15 +14,41 @@
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
-      flex: 1 1 auto; }
+      flex: 1 1 auto;
+      height: 100%; }
+      .nav .brand .logo img {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%); }
     .nav .brand .brandname {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
       flex: 1 1 auto;
-      vertical-align: middle;
-      font-size: 1.3rem;
-      font-weight: bold; }
+      height: 100%; }
+      .nav .brand .brandname p {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-align: center; }
+  .nav .navmenuwrap {
+    position: relative; }
+    .nav .navmenuwrap .menutoggle {
+      display: none;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      padding: 10px 15px;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      background: #fff; }
   .nav .navmenu {
     display: -webkit-box;
     display: -webkit-flex;
@@ -34,6 +60,14 @@
     margin: 0;
     padding: 0;
     list-style-type: none; }
+    .nav .navmenu.verticle {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .nav .navmenu.verticle .navmenu-sub.repos {
+        position: relative !important; }
     .nav .navmenu .menuitem {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 auto;
@@ -43,4 +77,23 @@
         display: block;
         padding: 10px 15px;
         text-align: center;
-        text-decoration: none; }
+        text-decoration: none;
+        color: #000; }
+        .nav .navmenu .menuitem a:hover {
+          background: #000;
+          color: #fff; }
+        .nav .navmenu .menuitem a.active {
+          background: #000;
+          color: #fff; }
+      .nav .navmenu .menuitem.dropdown .navmenu-sub {
+        display: none;
+        position: absolute; }
+        .nav .navmenu .menuitem.dropdown .navmenu-sub.show {
+          display: block;
+          position: absolute;
+          width: 100%;
+          left: 0;
+          list-style: none;
+          background: #eee; }
+        .nav .navmenu .menuitem.dropdown .navmenu-sub .submenuitem a {
+          padding: 15px 20px; }

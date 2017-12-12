@@ -16,14 +16,14 @@ textarea {
 }
 
 
-/* =======================================================================
- *                       Form input Containers Classes
- * -----------------------------------------------------------------------
- * Description:    used to wrap the form input elements
- * -----------------------------------------------------------------------
- * Ussage:         see below
- *========================================================================
- */
+// /* =======================================================================
+//  *                       Form input Containers Classes
+//  * -----------------------------------------------------------------------
+//  * Description:    used to wrap the form input elements
+//  * -----------------------------------------------------------------------
+//  * Ussage:         see below
+//  * ========================================================================
+//  */
 
 // <form> element
 // Main Usage:
@@ -73,22 +73,22 @@ form {
     border-left: none;
 }
 
-/* =======================================================================
- *                           Form input Control
- * -----------------------------------------------------------------------
- * Description:    used to control the style of form input element,
- *                 normalize the font size, line-height, and assigne
- *                 a custom border color, also applied a transition
- *                 effect when focused
- *                  (a). can be used as a block level element, 100% width.
- *                  (b). can be used with a grid class, ex: col-1 to act
- *                       like a flex grid. (need to wrap by .row or similar
- *                       classes.
- * -----------------------------------------------------------------------
- * Ussage:      applied to Form input such as <input>, <textarea>, 
- *              <option>, <checkbox>, etc
- *========================================================================
- */
+// /* =======================================================================
+//  *                           Form input Control
+//  * -----------------------------------------------------------------------
+//  * Description:    used to control the style of form input element,
+//  *                 normalize the font size, line-height, and assigne
+//  *                 a custom border color, also applied a transition
+//  *                 effect when focused
+//  *                  (a). can be used as a block level element, 100% width.
+//  *                  (b). can be used with a grid class, ex: col-1 to act
+//  *                       like a flex grid. (need to wrap by .row or similar
+//  *                       classes.
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to Form input such as <input>, <textarea>, 
+//  *              <option>, <checkbox>, etc
+//  * ========================================================================
+//  */
 
 .form-input {
     display: block;
@@ -127,23 +127,23 @@ textarea {
     resize: vertical;
 }
 
-/* =======================================================================
- *                          Select Element, <select>
- * -----------------------------------------------------------------------
- * Description:    the <select> element is displayed differently with
- *                 different browsers, so we try to normalize it by remove
- *                 the appearance property (to remove the browser default 
- *                 carret), and use a customized carret. So we create a
- *                 wrapper (.singleSelectoWrapper or .multiSelectWrapper)
- *                 to contain the <select> and .caret element.
- *
- *                 Since <select> has single or multiple options, so we 
- *                 create .singleSelectoWrapper and .multiSelectWrapper
- *                 respectively
- * -----------------------------------------------------------------------
- * Ussage:         see below
- *========================================================================
- */
+// /* =======================================================================
+//  *                          Select Element, <select>
+//  * -----------------------------------------------------------------------
+//  * Description:    the <select> element is displayed differently with
+//  *                 different browsers, so we try to normalize it by remove
+//  *                 the appearance property (to remove the browser default 
+//  *                 carret), and use a customized carret. So we create a
+//  *                 wrapper (.singleSelectoWrapper or .multiSelectWrapper)
+//  *                 to contain the <select> and .caret element.
+//  *
+//  *                 Since <select> has single or multiple options, so we 
+//  *                 create .singleSelectoWrapper and .multiSelectWrapper
+//  *                 respectively
+//  * -----------------------------------------------------------------------
+//  * Ussage:         see below
+//  * ========================================================================
+//  */
 
 // overwrite the default <select> styling
 select {
@@ -212,21 +212,21 @@ select {
     }
 }
 
-/* =======================================================================
- *                  Labeling Class, <label> and <legend>
- * -----------------------------------------------------------------------
- * Description:    two classes associated with the <label> element, 
- *                  (a) .label-col
- *                  (b) .label-inline
- *                 they are indentical, just make the name more self
- *                 descriptive. The two classes will normalize the size
- *                 of <label> with element has .form-input class for a
- *                 proper aligning result
- * -----------------------------------------------------------------------
- * Ussage:         (a) .label-col: applied to <label> with a grid class
- *                 (b) .label-inline: applied to block level <label>
- *========================================================================
- */
+// /* =======================================================================
+//  *                  Labeling Class, <label> and <legend>
+//  * -----------------------------------------------------------------------
+//  * Description:    two classes associated with the <label> element, 
+//  *                  (a) .label-col
+//  *                  (b) .label-inline
+//  *                 they are indentical, just make the name more self
+//  *                 descriptive. The two classes will normalize the size
+//  *                 of <label> with element has .form-input class for a
+//  *                 proper aligning result
+//  * -----------------------------------------------------------------------
+//  * Ussage:         (a) .label-col: applied to <label> with a grid class
+//  *                 (b) .label-inline: applied to block level <label>
+//  * ========================================================================
+//  */
 
 .label-col {
     display: inline-block;
@@ -257,23 +257,23 @@ legend {
     // margin-bottom: 15px;
 }
 
-/* =======================================================================
- *                          Button Styling
- * -----------------------------------------------------------------------
- * Description:    Remove the browser default styling, and apply gridbox
- *                 button styling. Also provide button color options
- *                  (a) .btn-primary
- *                  (b) .btn-secondary
- *                  (c) .btn-success
- *                  (d) .btn-warning
- *                  (e) .btn-danger
- *                  (f) .btn-info
- * -----------------------------------------------------------------------
- * Ussage:         Can be applied to the belowing elements
- *                 (a) <button class="btn btn-parimary">
- *                 (b) <a class="btn btn-parimary">
- *========================================================================
- */
+// /* =======================================================================
+//  *                          Button Styling
+//  * -----------------------------------------------------------------------
+//  * Description:    Remove the browser default styling, and apply gridbox
+//  *                 button styling. Also provide button color options
+//  *                  (a) .btn-primary
+//  *                  (b) .btn-secondary
+//  *                  (c) .btn-success
+//  *                  (d) .btn-warning
+//  *                  (e) .btn-danger
+//  *                  (f) .btn-info
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to the belowing elements
+//  *                 (a) <button class="btn btn-parimary">
+//  *                 (b) <a class="btn btn-parimary">
+//  * ========================================================================
+//  */
 
 // Global button setting
 button {
@@ -380,22 +380,22 @@ a {
     }
 }
 
-/* =======================================================================
- *                        Custom Form Checkbox
- * -----------------------------------------------------------------------
- * Description:    Fake the checkbox by using fontawesome icons,
- *                 hidden the defualt the checkbox. It has two states:
- *                  (a) :checked
- *                  (b) :focus
- *                 This is a general css rule, feel free to use differnt
- *                 icons provided by fontawesome. We provided two examples
- *                  (1) checkbox type
- *                  (2) radio type
- * -----------------------------------------------------------------------
- * Ussage:         Must use the HTML template, or using the same nesting
- *                 rule
- *========================================================================
- */
+// /* =======================================================================
+//  *                        Custom Form Checkbox
+//  * -----------------------------------------------------------------------
+//  * Description:    Fake the checkbox by using fontawesome icons,
+//  *                 hidden the defualt the checkbox. It has two states:
+//  *                  (a) :checked
+//  *                  (b) :focus
+//  *                 This is a general css rule, feel free to use differnt
+//  *                 icons provided by fontawesome. We provided two examples
+//  *                  (1) checkbox type
+//  *                  (2) radio type
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Must use the HTML template, or using the same nesting
+//  *                 rule
+//  * ========================================================================
+//  */
 
 .custom-form-check {
     display: inline-block;
