@@ -15,16 +15,16 @@
         <nav class="nav nav-default nav-top row">
             <!-- Brand Name -->
             <div class="brand col-16 col-lap-4 row">
-                <div class="logo col-3 col-lap-10">
-                    <img src="img/Avator.jpg" alt="">
+                <div class="logo col-1 col-lap-3 col-lap-offset-1">
+                    <img src="img/gridbox_logo.png" alt="">
                 </div>
-                <div class="brandname col-3 cal-lap-6">
+                <div class="brandname col-2 cal-lap-13">
                     <!-- Brand name -->
-                    <p>Logo</p>
+                    <a href="#">Grixbox</a>
                 </div>
                 <!-- Menu Toggle on Mobile Devices -->
-                <div class="menutoggle col-3 col-offset-7 col-lap-hide" id="menutoggle" data-target="nav">
-                    <p>Menu</p>
+                <div class="menutoggle col-1 col-offset-12 col-lap-hide">
+                    <span id="menutoggle"></span>
                 </div>
             </div>
 
@@ -32,27 +32,27 @@
             <div class="navmenuwrap col-16 col-lap-12">    
                 <ul class="navmenu row" id="nav"><!-- JS Target -->
                     <!-- Simple Menu Link -->
-                    <li class="menuitem col-16 col-lap link"><a class="active" href="#">Home</a></li><!-- JS Target: add .active class -->
+                    <li class="menuitem col-lap link"><a class="active" href="#">Home</a></li><!-- JS Target: add .active class -->
                     <!-- Dropdown Menu -->
-                    <li class="menuitem col-16 col-lap link dropdown">
-                        <a href="#" data-target="subnav1">Product</a>
+                    <li class="menuitem col-lap link dropdown">
+                        <a href="#">Product</a>
                         <ul class="navmenu-sub" id="subnav1"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
-                            <li class="submenuitem link"><a href="#">Item 1</a></li>
-                            <li class="submenuitem link"><a href="#">Item 2</a></li>
-                            <li class="submenuitem link"><a href="#">Item 3</a></li>
+                            <li class="link"><a href="#">Item 1</a></li>
+                            <li class="link"><a href="#">Item 2</a></li>
+                            <li class="link"><a href="#">Item 3</a></li>
                         </ul>
                     </li>
-                    <li class="menuitem col-16 col-lap link dropdown">
-                        <a href="#" data-target="subnav2">About</a>
+                    <li class="menuitem col-lap link dropdown">
+                        <a href="#">About</a>
                         <ul class="navmenu-sub" id="subnav2"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
-                            <li class="submenuitem link"><a href="#">Another Item 1</a></li>
-                            <li class="submenuitem link"><a href="#">Another Item 2</a></li>
-                            <li class="submenuitem link"><a href="#">Another Item 3</a></li>
+                            <li class="link"><a href="#">Another Item 1</a></li>
+                            <li class="link"><a href="#">Another Item 2</a></li>
+                            <li class="link"><a href="#">Another Item 3</a></li>
                         </ul>
                     </li>
-                    <li class="menuitem col-16 col-lap link"><a href="#">Contact</a></li>
+                    <li class="menuitem col-lap link"><a href="#">Contact</a></li>
                     <!-- Search Icon -->
-                    <li class="menuitem col-16 col-lap link"><a id="search-icon" href="#">Search</a></li>
+                    <li class="menuitem col-lap link"><a id="search-icon" href="#">Search</a></li>
                 </ul>
             </div>           
         </nav>
@@ -68,43 +68,24 @@
         //add click event on each of menu list item
         this.click(function(e){
             e.preventDefault();
-
-            var target = this.data("target");
-
             // reset the classes
             a.each(function(){
                 this.removeClass("active");
             });
-            // dropdown.each(function(i){
-            //     i.removeClass("show");
-            // });
-
             // add active class to menu list item
-            this.addClass("active");
-            // toggle dropdown menu
-            if(target){
-                im("#" + target).toggleClass("show");
-            }
-            
+            this.addClass("active");            
         });
     });
 
-    // Hide dropdown when not clicking on the menu link
-    im(document).notClick(a, function(){
-        dropdown.each(function(i){
-            i.removeClass("show");
-        });
-    });
-
-    // Toggle menu
-    im("#menutoggle").click(function(e){
-        e.preventDefault();
-        var target = this.data("target");
-        // toggle dropdown menu
-        if(target){
-            im("#" + target).toggle();
-        }
-    });
+    // // Toggle menu
+    // im("#menutoggle").click(function(e){
+    //     e.preventDefault();
+    //     var target = this.data("target");
+    //     // toggle dropdown menu
+    //     if(target){
+    //         im("#" + target).toggle();
+    //     }
+    // });
     
     </script>
 </body>

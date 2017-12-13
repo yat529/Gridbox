@@ -5,61 +5,117 @@
   .nav.nav-top {
     position: relative;
     top: 0; }
-  .nav .brand .logo {
+
+.logo {
+  position: relative;
+  height: 100%;
+  text-align: center; }
+  .logo img {
+    display: block;
     position: relative;
-    height: 100%;
-    text-align: center; }
-    .nav .brand .logo img {
+    width: 30px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.brandname a {
+  position: relative;
+  display: block;
+  padding: 15px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+  line-height: 20px;
+  text-align: left;
+  text-decoration: none; }
+
+.menutoggle {
+  cursor: pointer; }
+  .menutoggle:hover span {
+    width: 35px; }
+  .menutoggle:hover span::before {
+    top: 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .menutoggle:hover span::after {
+    top: 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  .menutoggle span {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 3px;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    background: #000;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+    .menutoggle span::before {
+      content: "";
+      position: absolute;
       display: block;
-      position: relative;
-      width: 55px;
-      height: auto;
-      top: 50%;
-      -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-      transform: translate(0, -50%); }
-  .nav .brand .brandname, .nav .brand .menutoggle {
-    height: 100%; }
-    .nav .brand .brandname p, .nav .brand .menutoggle p {
-      position: relative;
-      padding: 0.8rem 0;
-      top: 50%;
-      -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-      font-size: 1.3rem;
-      font-weight: bold;
-      text-align: left; }
-  .nav .brand .menutoggle {
-    cursor: pointer; }
-  .nav .navmenuwrap {
-    position: relative; }
-  .nav .navmenu {
-    margin: 0;
-    padding: 0;
-    list-style-type: none; }
-    .nav .navmenu .menuitem {
-      position: relative; }
-      .nav .navmenu .menuitem a {
-        display: block;
-        padding: 15px 20px;
-        text-align: center;
-        text-decoration: none;
-        color: #000; }
-        .nav .navmenu .menuitem a:hover {
-          background: #000;
-          color: #fff; }
-        .nav .navmenu .menuitem a.active {
-          background: #000;
-          color: #fff; }
-      .nav .navmenu .menuitem.dropdown .navmenu-sub {
-        display: none; }
-        .nav .navmenu .menuitem.dropdown .navmenu-sub.show {
-          display: block;
-          position: relative;
-          width: 100%;
-          left: 0;
-          list-style: none;
-          background: #eee; }
-        .nav .navmenu .menuitem.dropdown .navmenu-sub .submenuitem a {
-          padding: 15px 20px; }
+      width: 35px;
+      height: 3px;
+      top: -8px;
+      background: #000;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+    .menutoggle span::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 35px;
+      height: 3px;
+      top: 8px;
+      background: #000;
+      -webkit-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out; }
+
+.navmenuwrap {
+  position: relative; }
+
+.navmenu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+.menuitem {
+  position: relative; }
+  .menuitem a {
+    display: block;
+    padding: 15px 20px;
+    color: #000;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none; }
+    .menuitem a:hover {
+      background: #000;
+      color: #fff; }
+    .menuitem a.active {
+      background: #000;
+      color: #fff; }
+
+.navmenu-sub {
+  display: none;
+  position: absolute;
+  width: 200%;
+  left: 0;
+  list-style: none;
+  background: #eee; }
+  .navmenu-sub a {
+    padding: 15px 20px; }
+
+.dropdown > a:focus ~ ul {
+  display: block; }
