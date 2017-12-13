@@ -14,25 +14,28 @@
 
 
     .brand {
-        display: flex;
 
         .logo {
-            flex: 1 1 auto;
+            position: relative;
             height: 100%;
+            text-align: center;
 
             img {
+                display: block;
                 position: relative;
+                width: 55px;
+                height:auto;
                 top: 50%;
                 transform: translate(0, -50%);
             }
         }
 
         .brandname {
-            flex: 1 1 auto;
             height: 100%;
 
             p {
                 position: relative;
+                padding: 0.8rem 0;
                 top: 50%;
                 transform: translate(0, -50%);
 
@@ -40,56 +43,47 @@
                     size: $logoSize;
                     weight: bold;
                 }
-                text-align: center;
-            }
-            
-        } 
+                text-align: left;
+            }           
+        }
+
+        .menutoggle {
+            @extend .brandname;
+            cursor: pointer;
+        }
     }
 
     .navmenuwrap {
         position: relative;
-
-        // &.responsive {
-        //     position: absolute;
-        // }
-
-        .menutoggle {
-            display: none;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            padding: 10px 15px;
-            transform: translate(0, -50%);
-            background: #fff;
-        }
     }
 
     .navmenu {
-        display: flex;
-        flex-wrap: wrap;
+        // display: flex;
+        // flex-wrap: wrap;
         // position: relative;
         margin: 0;
         padding: 0;
         list-style-type: none;
 
-        &.verticle {
-            flex-direction: column;
+        // &.verticle {
+        //     flex-direction: column;
 
-            .navmenu-sub {
-                // repos changes the position to relative, so the dropdown menu item won't bock other main menu items when displayed vertically
-                // repos is used only when the parent ul.verticle is exists
-                &.repos {
-                    position: relative !important; // overwrite the position to relative
-                }
-            }
-        }
+        //     .navmenu-sub {
+        //         // repos changes the position to relative, so the dropdown menu item won't bock other main menu items when displayed vertically
+        //         // repos is used only when the parent ul.verticle is exists
+        //         &.repos {
+        //             position: relative !important; // overwrite the position to relative
+        //         }
+        //     }
+        // }
 
         .menuitem {
-            flex: 1 1 auto;
+            // flex: 1 1 auto;
+            position: relative;
 
             a {
                 display: block;
-                padding: 10px 15px;
+                padding: 15px 20px;
                 text-align: center;
                 text-decoration: none;
                 color: #000;
@@ -128,11 +122,10 @@
 
                 .navmenu-sub {
                     display: none;
-                    position: absolute;
 
                     &.show{
                         display: block;
-                        position: absolute;
+                        position: relative;
                         width: 100%;
                         left: 0;
                         list-style: none;

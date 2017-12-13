@@ -82,7 +82,7 @@ $colNums: 16;
 //usage: used as the argument for the 'minWidthMQ' MIXIN
 $breakPoints: (
     'default':           0,
-    'phonePortrait':     576,
+    'phonePortrait':     375, // 576
     'phoneLandscape':    768,
     'tablet':            992,
     'laptop':            1200,

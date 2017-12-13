@@ -55,6 +55,8 @@ form {
     color: #868e96; }
   .form-input:-ms-input-placeholder {
     color: #868e96; }
+  .form-input::-ms-input-placeholder {
+    color: #868e96; }
   .form-input::placeholder {
     color: #868e96; }
 

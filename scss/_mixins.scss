@@ -1,3 +1,4 @@
+
 // /* =======================================================================
 //  *                   min-width Media Query Rule Builder
 //  * -----------------------------------------------------------------------
@@ -108,6 +109,24 @@
 }
 
 // /* =======================================================================
+//  *                   Column Hide Css Rule Builder
+//  * -----------------------------------------------------------------------
+//  * Description:    build css rule according to the prefix and column 
+//  *                 number. 
+//  *                   (a). create a flexible width column, ex: col-mob
+//  *                   (b). create a given number of fixed width columns
+//  * -----------------------------------------------------------------------
+//  * Paramaters:     (1). $prefix: String. Prefixes: 'col', 'col-mob', ext. 
+//  * =======================================================================
+//  */
+@mixin columnHideBuild($prefix) {    
+    // hide column ex: col-mob-hide, col-tab-hide
+    .#{$prefix}-hide {
+        display: none;
+    }
+}
+
+// /* =======================================================================
 //  *                       Grid Css Rule Builder
 //  * -----------------------------------------------------------------------
 //  * Description:    build media query grid css rule with breakpoints
@@ -138,8 +157,10 @@
                     @if $device == $breakPoint {
                         // build the grid css rule
                         @include columnBuild($prefix, $colNums);
-                        //build the grid offset rule
+                        // build the grid offset rule
                         @include columnOffsetBuild($prefix, $colNums);
+                        // build column hide
+                        @include columnHideBuild($prefix);
                     } 
                 } 
             }
@@ -156,6 +177,8 @@
                             @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
                             @include columnOffsetBuild($prefix, $colNums);
+                            // build column hide
+                            @include columnHideBuild($prefix);
                         } 
                     }
                 }  
@@ -173,6 +196,8 @@
                             @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
                             @include columnOffsetBuild($prefix, $colNums);
+                            // build column hide
+                            @include columnHideBuild($prefix);
                         } 
                     }
                 }  
@@ -190,6 +215,8 @@
                             @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
                             @include columnOffsetBuild($prefix, $colNums);
+                            // build column hide
+                            @include columnHideBuild($prefix);
                         } 
                     }
                 }  
@@ -207,6 +234,8 @@
                             @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
                             @include columnOffsetBuild($prefix, $colNums);
+                            // build column hide
+                            @include columnHideBuild($prefix);
                         }
                     }
                 }  
@@ -224,6 +253,8 @@
                             @include columnBuild($prefix, $colNums);
                             //build the grid offset rule
                             @include columnOffsetBuild($prefix, $colNums);
+                            // build column hide
+                            @include columnHideBuild($prefix);
                         }
                     }
                 }  
