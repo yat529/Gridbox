@@ -6,35 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/gridbox.css">
     <link rel="stylesheet" href="css/gridbox-grids.css">
+    <link rel="stylesheet" href="css/gridbox-form.css">
     <link rel="stylesheet" href="css/gridbox-nav.css">
     <title>Navigation Bar</title>
 </head>
 <body>
     <div class="container-fluid">
 
-        <nav class="nav nav-default nav-top row">
+        <nav class="nav nav-default nav-top">
             <!-- Brand Name -->
-            <div class="brand col-16 col-lap-4 row">
-                <div class="logo col-1 col-lap-3 col-lap-offset-1">
+            <div class="brand">
+                <div class="logo">
                     <img src="img/gridbox_logo.png" alt="">
                 </div>
-                <div class="brandname col-2 cal-lap-13">
+                <div class="brandname">
                     <!-- Brand name -->
                     <a href="#">Grixbox</a>
                 </div>
                 <!-- Menu Toggle on Mobile Devices -->
-                <div class="menutoggle col-1 col-offset-12 col-lap-hide">
-                    <span id="menutoggle"></span>
+                <div class="menutoggle" id="menutoggler">
+                    <span></span>
                 </div>
             </div>
 
             <!-- Nav Menu -->
-            <div class="navmenuwrap col-16 col-lap-12">    
-                <ul class="navmenu row" id="nav"><!-- JS Target -->
+            <div class="navmenuwrap" id="navToggleTarget">
+                <ul class="navmenu" id="nav"><!-- JS Target -->
                     <!-- Simple Menu Link -->
-                    <li class="menuitem col-lap link"><a class="active" href="#">Home</a></li><!-- JS Target: add .active class -->
+                    <li class="menuitem link"><a class="active" href="#">Home</a></li><!-- JS Target: add .active class -->
                     <!-- Dropdown Menu -->
-                    <li class="menuitem col-lap link dropdown">
+                    <li class="menuitem link dropdown">
                         <a href="#">Product</a>
                         <ul class="navmenu-sub" id="subnav1"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
                             <li class="link"><a href="#">Item 1</a></li>
@@ -42,7 +43,7 @@
                             <li class="link"><a href="#">Item 3</a></li>
                         </ul>
                     </li>
-                    <li class="menuitem col-lap link dropdown">
+                    <li class="menuitem link dropdown">
                         <a href="#">About</a>
                         <ul class="navmenu-sub" id="subnav2"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
                             <li class="link"><a href="#">Another Item 1</a></li>
@@ -50,43 +51,110 @@
                             <li class="link"><a href="#">Another Item 3</a></li>
                         </ul>
                     </li>
-                    <li class="menuitem col-lap link"><a href="#">Contact</a></li>
+                    <li class="menuitem link"><a href="#">Contact</a></li>
+
                     <!-- Search Icon -->
-                    <li class="menuitem col-lap link"><a id="search-icon" href="#">Search</a></li>
+                    <li class="menuitem link">
+                        <a id="searchtoggler" href="#">Search</a>
+                        <div class="searchbar" id="searchbar">
+                            <form action="">
+                                <!-- Text Input -->
+                                <div class="form-group bar">
+                                    <!-- <label class="label-inline" for="inputFormControl-1">Default Text Input</label> -->
+                                    <input type="text" class="form-input" id="search-input" placeholder="Enter Search Content">
+                                    <button type="button" class="btn btn-secondary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
                 </ul>
-            </div>           
+            </div> <!-- .navmenuwrap -->
         </nav>
 
     </div>
     <script src="js/gridbox.js"></script>
     <script>
-    // Show dropdown when clicking menu link
-    var a = im(".link").eachChild();
-    var dropdown = im(".navmenu-sub");
 
+    // DOM Cache
+    var a = im(".link").eachChild();
+        dropdown = im(".navmenu-sub"),
+        menuToggler = im("#menutoggler"),
+        nav = im("#navToggleTarget"),
+        searchbar = im("#searchbar"),
+        searchInput = im("#search-input"),
+        searchToggler = im("#searchtoggler");
+    
+    // Toggle Sub-menu
     a.each(function(){
         //add click event on each of menu list item
         this.click(function(e){
             e.preventDefault();
-            // reset the classes
+            // reset & add .active classes
             a.each(function(){
                 this.removeClass("active");
             });
-            // add active class to menu list item
-            this.addClass("active");            
+            this.addClass("active");
+
+            // click on menuitem not has .dropdown class
+            if(this.parent().hasClass("menuitem") && !this.parent().hasClass("dropdown")){
+                dropdown.each(function(){
+                    this.removeClass("show");
+                });
+                // toggle off searchbar
+                searchbar.removeClass("show");
+            }
+
+            // check if next elem is dropdown
+            if(this.nextSibling().hasClass("navmenu-sub")){
+                if(this.nextSibling().hasClass("show")){
+                    this.nextSibling().removeClass("show");
+                }else{
+                    dropdown.each(function(){
+                        this.removeClass("show");
+                    });
+                    // toggle off searchbar
+                    searchbar.removeClass("show");
+                    // toggle dropdown menu
+                    this.nextSibling().addClass("show");
+                }
+            }
+            
         });
     });
 
-    // // Toggle menu
-    // im("#menutoggle").click(function(e){
-    //     e.preventDefault();
-    //     var target = this.data("target");
-    //     // toggle dropdown menu
-    //     if(target){
-    //         im("#" + target).toggle();
-    //     }
-    // });
-    
+    im(document).notClick(a, function(){
+        dropdown.each(function(){
+            this.removeClass("show");
+        });
+    });
+
+    // Toggle menu
+    menuToggler.click(function(e){
+        e.preventDefault();
+
+        nav.toggleClass("show");
+        menuToggler.toggleClass("active");
+
+        // reset & add .active classes
+        a.each(function(){
+            this.removeClass("active");
+        });
+        a.first().addClass("active");
+
+        // toggle off searchbar
+        searchbar.removeClass("show");
+    });
+
+    // Search bar Toggle
+    searchToggler.click(function(e){
+        e.preventDefault();      
+        searchbar.toggleClass("show");
+        if(searchbar.hasClass("show")){
+            searchInput[0].focus();
+        }
+    });
+
     </script>
 </body>
 </html>

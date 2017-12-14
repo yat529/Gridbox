@@ -14,18 +14,13 @@ textarea {
 form {
   width: 100%;
   padding: 15px;
-  margin-bottom: 15px;
-  background: #fff;
   color: #212529;
-  border: 4px solid rgba(0, 0, 0, 0.1);
   border-bottom: none; }
   form:last-child {
-    margin-bottom: none;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.1); }
+    margin-bottom: none; }
 
 .form-group, .form-field {
   position: relative;
-  margin-bottom: 15px;
   width: 100%; }
 
 .form-field {

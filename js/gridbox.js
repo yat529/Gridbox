@@ -87,14 +87,21 @@
 
         // Get first item in the array
         first: function(){
-            this[0] = this[0][0];
-            return this;
+            // this[0] = this[0][0];
+            // return this;
+            return createObj( this[0][0] );
         },
 
         // Get last item in the array
         last: function(){
-            this[0] = this[0][(this[0].length - 1)];
-            return this;
+            // this[0] = this[0][(this[0].length - 1)];
+            // return this;
+            return createObj( this[0][(this[0].length - 1)] );
+        },
+
+        // Set time out
+        wait: function(time, callback){
+            setTimeout(callback.bind(this), time);
         },
 
     };
@@ -235,6 +242,13 @@
             if(typeof cls !== "string") return "Class name must be String Type";
             this[0].classList.remove(cls);
             return this;
+        },
+
+        // check if has a classname
+        hasClass: function(cls){
+            if(typeof cls !== "string") return "Class name must be String Type";
+            if(!this[0]) return false;
+            return this[0].classList.contains(cls)? true : false;
         },
 
         // css

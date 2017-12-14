@@ -34,15 +34,15 @@ textarea {
 form {
     width: 100%;
     padding: 15px;
-    margin-bottom: 15px;
-    background: #fff;
+    // margin-bottom: 15px;
+    // background: #fff;
     color: $fontColor;
-    border: 4px solid rgba(0, 0, 0, 0.1);
+    // border: 4px solid rgba(0, 0, 0, 0.1);
     border-bottom: none;
 
     &:last-child {
         margin-bottom: none;
-        border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+        // border-bottom: 4px solid rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -57,7 +57,7 @@ form {
 
 .form-group {
     position: relative;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
     width: 100%;
 }
 
