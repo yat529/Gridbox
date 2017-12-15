@@ -99,6 +99,12 @@
             return createObj( this[0][(this[0].length - 1)] );
         },
 
+        // add to array
+        add: function(elem){
+            if(typeof this[0].length) this[0].push(elem[0]);
+            return this;
+        },
+
         // Set time out
         wait: function(time, callback){
             setTimeout(callback.bind(this), time);
@@ -216,6 +222,39 @@
 
             return createObj( match ); 
         },
+
+        // Return all the matched parent in an array
+        parentUntil: function(selector){
+            var match = sReg.exec(selector),
+                parent = this.parent(),
+                parentList = [];
+
+            if(match){
+                // if .classname
+                if(match[1]){
+                    while(parent[0].nodeType === 1){
+                        parentList.push(parent[0]);  
+                        if(parent.hasClass(match[1])){           
+                            break;
+                        }
+                        parent = parent.parent();
+                    }
+                }
+                // if #id
+                else if(match[2]){
+                    while(parent[0].nodeType === 1){
+                        parentList.push(parent[0]);     
+                        if(parent[0].id === match[2]){            
+                            break;
+                        }
+                        parent = parent.parent();
+                    }
+                }
+            }
+
+            // return a Object with HTMLCollection
+            return createObj(parentList);
+        },
         
         // Get all attribute of a DOM element
         data: function(attr){
@@ -288,7 +327,7 @@
         },
 
         // if not click on this element
-        notClick: function(elem, callback){
+        notClickOn: function(elem, callback){
             if(typeof callback !== "function") return "Parameter is not in Function Type!";
             if(!isObj(elem)) return "Must pass in an im Object!";
 

@@ -10,6 +10,9 @@
   .nav.nav-top {
     position: relative;
     top: 0; }
+  @media (min-width: 768px) {
+    .nav {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5); } }
 
 .brand {
   display: -webkit-box;
@@ -22,12 +25,14 @@
   flex: 1 1 100%;
   height: 100%;
   background: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   z-index: 100; }
-  @media screen and (min-width: 1200px) {
+  @media (min-width: 768px) {
     .brand {
       -webkit-box-flex: 0;
       -ms-flex: 0 0 30%;
-      flex: 0 0 30%; } }
+      flex: 0 0 30%;
+      border: none; } }
 
 .logo {
   position: relative;
@@ -50,12 +55,11 @@
 .brandname {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  margin-left: 15px; }
+  flex: 1 1 auto; }
   .brandname a {
     position: relative;
-    display: block;
-    padding: 15px 0;
+    display: inline-block;
+    padding: 15px;
     font-size: 1.3rem;
     font-weight: bold;
     color: #000;
@@ -116,7 +120,7 @@
       -webkit-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-  @media only screen and (min-width: 1200px) {
+  @media (min-width: 768px) {
     .menutoggle {
       display: none; } }
 
@@ -137,7 +141,7 @@
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     margin-top: 0; }
-  @media screen and (min-width: 1200px) {
+  @media (min-width: 768px) {
     .navmenuwrap {
       display: block;
       -webkit-box-flex: 1;
@@ -160,21 +164,26 @@
   -webkit-box-flex: 0;
   -ms-flex: 0 0 25%;
   flex: 0 0 25%; }
-  @media screen and (min-width: 1200px) {
+  @media (min-width: 768px) {
     .menuitem {
       display: block;
       -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-      flex: 1 0 auto; } }
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto; } }
+  .menuitem:nth-child(4n+1) a {
+    border-left: 1px solid rgba(255, 255, 255, 0.5); }
+    @media (min-width: 768px) {
+      .menuitem:nth-child(4n+1) a {
+        border-left: none; } }
   .menuitem:last-child {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%; }
-    @media screen and (min-width: 1200px) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto; }
+    @media (min-width: 768px) {
       .menuitem:last-child {
         -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-        flex: 1 0 auto; } }
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto; } }
   .menuitem a {
     display: block;
     padding: 25px 0;
@@ -182,14 +191,13 @@
     font-weight: 500;
     line-height: 20px;
     text-align: center;
-    text-decoration: none; }
-    @media screen and (min-width: 1200px) {
+    text-decoration: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+    @media (min-width: 768px) {
       .menuitem a {
-        display: block;
-        -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-        flex: 1 0 auto;
-        padding: 15px 20px; } }
+        padding: 15px 20px;
+        border: none; } }
     .menuitem a:hover {
       background-color: #000;
       color: #fff; }
@@ -214,7 +222,13 @@
   position: absolute;
   width: 100%;
   left: 0;
-  background: #eee; }
+  background: #eee;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+  @media (min-width: 768px) {
+    .searchbar {
+      border: none; } }
   .searchbar.show {
     display: block; }
   .searchbar form {
@@ -233,7 +247,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center; }
-  @media screen and (min-width: 1200px) {
+  @media (min-width: 768px) {
     .bar {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -246,7 +260,7 @@
     -ms-flex: 1 1 100%;
     flex: 1 1 100%;
     margin-bottom: 25px; }
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
       .bar input {
         -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
@@ -256,7 +270,7 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 125px;
     flex: 0 0 125px; }
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
       .bar button {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 35px;

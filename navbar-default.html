@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/gridbox.css">
     <link rel="stylesheet" href="css/gridbox-grids.css">
     <link rel="stylesheet" href="css/gridbox-form.css">
-    <link rel="stylesheet" href="css/gridbox-nav.css">
+    <link rel="stylesheet" href="css/gridbox-nav-default.css">
     <title>Navigation Bar</title>
 </head>
 <body>
@@ -28,16 +28,15 @@
                     <span></span>
                 </div>
             </div>
-
             <!-- Nav Menu -->
             <div class="navmenuwrap" id="navToggleTarget">
-                <ul class="navmenu" id="nav"><!-- JS Target -->
+                <ul class="navmenu" id="nav">
                     <!-- Simple Menu Link -->
-                    <li class="menuitem link"><a class="active" href="#">Home</a></li><!-- JS Target: add .active class -->
+                    <li class="menuitem link"><a class="active" href="#">Home</a></li>
                     <!-- Dropdown Menu -->
                     <li class="menuitem link dropdown">
                         <a href="#">Product</a>
-                        <ul class="navmenu-sub" id="subnav1"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
+                        <ul class="navmenu-sub" id="subnav1">
                             <li class="link"><a href="#">Item 1</a></li>
                             <li class="link"><a href="#">Item 2</a></li>
                             <li class="link"><a href="#">Item 3</a></li>
@@ -45,14 +44,13 @@
                     </li>
                     <li class="menuitem link dropdown">
                         <a href="#">About</a>
-                        <ul class="navmenu-sub" id="subnav2"><!-- JS Target: add .show onclick; add repos when parent has .verticle class -->
+                        <ul class="navmenu-sub" id="subnav2">
                             <li class="link"><a href="#">Another Item 1</a></li>
                             <li class="link"><a href="#">Another Item 2</a></li>
                             <li class="link"><a href="#">Another Item 3</a></li>
                         </ul>
                     </li>
                     <li class="menuitem link"><a href="#">Contact</a></li>
-
                     <!-- Search Icon -->
                     <li class="menuitem link">
                         <a id="searchtoggler" href="#">Search</a>
@@ -60,19 +58,18 @@
                             <form action="">
                                 <!-- Text Input -->
                                 <div class="form-group bar">
-                                    <!-- <label class="label-inline" for="inputFormControl-1">Default Text Input</label> -->
                                     <input type="text" class="form-input" id="search-input" placeholder="Enter Search Content">
-                                    <button type="button" class="btn btn-secondary">Search</button>
+                                    <button type="button" class="btn btn-primary">Search</button>
                                 </div>
                             </form>
                         </div>
                     </li>
-
                 </ul>
             </div> <!-- .navmenuwrap -->
         </nav>
 
-    </div>
+    </div> <!-- .container-fluid -->
+
     <script src="js/gridbox.js"></script>
     <script>
 
@@ -81,10 +78,12 @@
         dropdown = im(".navmenu-sub"),
         menuToggler = im("#menutoggler"),
         nav = im("#navToggleTarget"),
-        searchbar = im("#searchbar"),
-        searchInput = im("#search-input"),
-        searchToggler = im("#searchtoggler");
-    
+        searchbar = im("#searchbar"),   // form wrapper
+        searchInput = im("#search-input"),  // form input
+        searchToggler = im("#searchtoggler"),   // a tag
+        form = searchInput.parentUntil("#searchbar");   // used for notClickOn method
+        form = form.add(searchToggler).add(searchInput); // include a tag
+
     // Toggle Sub-menu
     a.each(function(){
         //add click event on each of menu list item
@@ -101,8 +100,11 @@
                 dropdown.each(function(){
                     this.removeClass("show");
                 });
-                // toggle off searchbar
-                searchbar.removeClass("show");
+
+                if(!this.nextSibling().hasClass("searchbar")){
+                    // toggle off searchbar
+                    searchbar.removeClass("show");
+                }
             }
 
             // check if next elem is dropdown
@@ -123,24 +125,27 @@
         });
     });
 
-    im(document).notClick(a, function(){
+    im(document).notClickOn(a, function(){
         dropdown.each(function(){
             this.removeClass("show");
         });
     });
-
+  
     // Toggle menu
     menuToggler.click(function(e){
         e.preventDefault();
 
-        nav.toggleClass("show");
-        menuToggler.toggleClass("active");
-
-        // reset & add .active classes
-        a.each(function(){
+        // reset & add .active classes ONLY when menu not showing
+        if(!nav.hasClass("show")){
+            a.each(function(){
             this.removeClass("active");
         });
-        a.first().addClass("active");
+            a.first().addClass("active");
+        }
+
+        // toggle menu
+        nav.toggleClass("show");
+        menuToggler.toggleClass("active");
 
         // toggle off searchbar
         searchbar.removeClass("show");
@@ -148,11 +153,20 @@
 
     // Search bar Toggle
     searchToggler.click(function(e){
-        e.preventDefault();      
+        e.preventDefault();
+        
         searchbar.toggleClass("show");
+
         if(searchbar.hasClass("show")){
             searchInput[0].focus();
+        }else{
+            searchInput[0].blur();
         }
+    });
+
+    im(document).notClickOn(form, function(){
+        // toggle off searchbar
+        searchbar.removeClass("show");
     });
 
     </script>

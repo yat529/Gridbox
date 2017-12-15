@@ -11,6 +11,8 @@ $font-color: #000;
 $font-color-hover: #fff;
 $font-color-active: #fff;
 
+$menu-border: 1px solid rgba(255, 255, 255, 0.5);
+
 // ------------------- Styles --------------------
 
 // ------------------ parent container ---------------------
@@ -18,7 +20,6 @@ $font-color-active: #fff;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: $margin;
-    
 
     &.nav-default {
         background: $menu-background;
@@ -27,7 +28,11 @@ $font-color-active: #fff;
     &.nav-top{
         position: relative;
         top: 0;
-    } 
+    }
+
+    @media (min-width: 768px) {
+        border-bottom: $menu-border;
+    }
 }
 
 // ------------------ brand section ---------------------
@@ -37,10 +42,12 @@ $font-color-active: #fff;
     flex: 1 1 100%;
     height: 100%;
     background: $menu-background;
+    border: $menu-border;
     z-index: 100;
 
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
         flex: 0 0 30%;
+        border: none;
     }
 }
  
@@ -63,20 +70,16 @@ $font-color-active: #fff;
 
 .brandname {
     flex: 1 1 auto;
-    margin-left: $margin;
     a {
         position: relative;
-        display: block;
-        padding: 15px 0;
-        // top: 50%;
-        // transform: translate(0, -50%);
+        display: inline-block;
+        padding: 15px;
 
         font: {
             size: 1.3rem;
             weight: bold;
         }
         color: $font-color;
-
         line-height: 20px;
         text-align: left;
         text-decoration: none;
@@ -138,7 +141,7 @@ $font-color-active: #fff;
         }  
     }
 
-    @media only screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
         display: none;
     }
 }
@@ -150,19 +153,16 @@ $font-color-active: #fff;
     position: relative;
     flex: 1 1 100%;
     margin-top: -100%;
-    // transform: translate(0, -100%);
     transition: all 0.3s ease-in-out;
     background: $menu-background;
     z-index: 10;
 
     &.show {
-        // display: block;
-        // transform: translate(0, 0);
         transition: all 0.3s ease-in-out;
         margin-top: 0;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
         display: block;
         flex: 1 0 70%;
         margin-top: 0;
@@ -180,17 +180,24 @@ $font-color-active: #fff;
 
 .menuitem {
     flex: 0 0 25%;
-
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
         display: block;
-        flex: 1 0 auto;
+        flex: 1 1 auto;
+    }
+
+    &:nth-child(4n+1) {
+        a {
+            border-left: $menu-border;
+            @media (min-width: 768px) {
+                border-left: none;
+            }
+        } 
     }
 
     &:last-child {
-        flex: 0 0 100%;
-        
-        @media screen and (min-width: 1200px) {
-            flex: 1 0 auto;
+        flex: 1 1 auto;       
+        @media (min-width: 768px) {
+            flex: 1 1 auto;
         }
     }
 
@@ -202,11 +209,12 @@ $font-color-active: #fff;
         line-height: 20px;
         text-align: center;
         text-decoration: none;
+        border-right: $menu-border;
+        border-bottom: $menu-border;
 
-        @media screen and (min-width: 1200px) {
-            display: block;
-            flex: 1 0 auto;
+        @media (min-width: 768px) {
             padding: 15px 20px;
+            border: none;
         }
 
         &:hover {
@@ -246,6 +254,13 @@ $font-color-active: #fff;
     width: 100%;
     left: 0;
     background: $submenu-background;
+    border-left: $menu-border;
+    border-right: $menu-border;
+    border-bottom: $menu-border;
+
+    @media (min-width: 768px) {
+        border: none;
+    }
 
     &.show {
         display: block;
@@ -262,7 +277,7 @@ $font-color-active: #fff;
     flex-direction: row;
     justify-content: center;
 
-    @media screen and (min-width: 1200px) {
+    @media (min-width: 768px) {
         flex-wrap: nowrap;
         flex-direction: row;
     }
@@ -271,7 +286,7 @@ $font-color-active: #fff;
         flex: 1 1 100%;
         margin-bottom: 25px;
 
-        @media screen and (min-width: 1200px) {
+        @media (min-width: 768px) {
             flex: 1 1 auto;
             margin-bottom: 0;
         }
@@ -280,7 +295,7 @@ $font-color-active: #fff;
     button {
         flex: 0 0 125px;
 
-        @media screen and (min-width: 1200px) {
+        @media (min-width: 768px) {
             flex: 0 0 35px;
             margin: 0 0 0 15px;
         }
