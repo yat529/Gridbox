@@ -12,6 +12,7 @@ $overlay-color: #ffc0cb;
     width: 50px;
     height: 50px;
     background: $toggle-background;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
     border: 1px solid $toggle-background;
     border-radius: 50%;
     cursor: pointer;
