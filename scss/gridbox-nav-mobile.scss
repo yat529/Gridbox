@@ -107,7 +107,7 @@ $overlay-color: #ffc0cb;
 
 
 // ----------------- Menu --------------------
-.menu-overlay {
+.overlay {
     display: block;
     position: fixed;
     top: 0;
@@ -118,6 +118,11 @@ $overlay-color: #ffc0cb;
     visibility: hidden;
     background: $overlay-color;
     transition: all 0.3s;
+
+    nav {
+        width: inherit;
+        height: inherit;
+    }
 
     &.show {
         opacity: 1;
@@ -164,7 +169,7 @@ $overlay-color: #ffc0cb;
     }
 }
 
-.menu {
+.main {
     display: flex;
     flex-flow: wrap column;
     position: relative;
@@ -175,7 +180,7 @@ $overlay-color: #ffc0cb;
     list-style-type: none;
 
     li {
-        flex: 1;
+        flex: 1 1 auto;
         margin: 0;
         margin-bottom: 15px;
         padding: 0;

@@ -96,7 +96,8 @@
   top: 0;
   left: 0;
   opacity: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #FFAAAA;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
@@ -133,8 +134,8 @@
         transform: translate(-50%, 0); } }
   .overlay .menuitem {
     -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
     text-align: center;
     opacity: 0;
     visibility: hidden;

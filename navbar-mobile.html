@@ -21,14 +21,16 @@
                 <div class="brandname"><span>Gridbox</span></div>
             </div>
             <!-- fixed -->
-            <nav class="menu-overlay">
-                <ul class="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+            <div class="overlay">
+                <nav>
+                    <ul class="main">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
     </div>
@@ -37,7 +39,7 @@
     <script>
 
     var toggler = im("#menu-toggle");
-    var overlay = im(".menu-overlay");
+    var overlay = im(".overlay");
         
     toggler.click(function(){
         this.toggleClass("active");
