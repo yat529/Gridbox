@@ -1,0 +1,48 @@
+
+.brand {
+    display: flex;
+    flex-flow: wrap row;
+    position: relative;
+    height: 40px;
+    z-index: 100;
+    
+    img {
+        display: block;
+        flex: 0 0 auto;
+        width: auto;
+        height: 35px;
+        align-self: center;
+    }
+
+    .brandname {
+        flex: 0 0 auto;
+        align-self: center;
+        margin-left: 15px;
+        span {
+            display: block;
+            font: {
+                size: 1.5rem;
+                weight: 700;
+            }
+        }
+    }
+
+// /* ===================================================================
+//  *                       Customizations
+//  * ===================================================================
+//  */
+
+    // colors
+    &.default {
+        span {
+            color: $black;
+        }
+    }
+
+    &.grapefruit {
+        span {
+            color: $grapefruit;
+        }
+    }
+
+}

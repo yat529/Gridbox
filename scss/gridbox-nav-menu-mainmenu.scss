@@ -1,0 +1,138 @@
+
+ul.main {
+    display: flex;
+    flex-flow: wrap row;
+    position: absolute;
+    width: 80%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    li {
+        opacity: 0;
+        visibility: hidden;
+        list-style-type: none;
+    }
+
+    &.show {
+        > li {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-flow: wrap column;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+li.menuitem {
+    flex: 1 1 auto;
+    position: relative;
+    margin-right: 15px;
+    text-align: center;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    @media (max-width: 768px) {
+        margin-right: 0;
+
+        &:first-child span {
+            margin-top: 0;
+        }
+    }
+
+    span {
+        display: block;
+        padding: 15px 25px;
+        font: {
+            size: 1.5rem;
+            weight: 600;
+        }  
+        text-align: center;
+
+        @media (max-width: 768px) {
+            margin-top: 30px;
+        }
+    }
+}
+
+li.dropdown {
+    > span {
+        cursor: pointer;
+    }
+}
+
+
+// /* ===================================================================
+//  *                       Customizations
+//  * ===================================================================
+//  */
+
+// color
+li.menuitem {
+    // background: ;
+    // border-bottom: ;
+
+    span {
+        color: $black;
+    }
+}
+
+// animation
+
+.main.show.fadein,
+.sub.show.fadein {
+    opacity: 0;
+    animation: fadein 0.3s forwards;
+    animation-delay: 0.3s;
+}
+
+.main.show.slideup,
+.sub.show.slideup {
+    > li {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideup 0.3s forwards;
+        animation-delay: 0.3s;
+    
+        &:nth-of-type(2) {
+            animation-delay: 0.4s;
+        }
+        &:nth-of-type(3) {
+            animation-delay: 0.5s;
+        }
+       
+        // &:nth-of-type(n) {
+        //     animation-delay: (0.3 + (n - 1) * 0.1)s;
+        // }
+        // NOTE: n is the number of menuitem
+    }
+}
+
+.main.show.slideright,
+.sub.show.slideright {
+    > li {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideright 0.3s forwards;
+        animation-delay: 0.3s;
+    
+        &:nth-of-type(2) {
+            animation-delay: 0.4s;
+        }
+        &:nth-of-type(3) {
+            animation-delay: 0.5s;
+        }
+       
+        // &:nth-of-type(n) {
+        //     animation-delay: (0.3 + (n - 1) * 0.1)s;
+        // }
+        // NOTE: n is the number of menuitem
+    }
+}

@@ -1,0 +1,39 @@
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: opacity 0.5s;
+
+    &.show {
+        opacity: 1;
+    }
+
+// /* ===================================================================
+//  *                       Customizations
+//  * ===================================================================
+//  */
+
+    // background color
+    &.grapefruit {
+        background: lighten($grapefruit, 10%);
+    }
+
+    &.peach {
+        background: lighten($peach, 10%);
+    }
+
+    &.pear {
+        background: lighten($pear, 10%);
+    }
+
+    &.greenapple {
+        background: lighten($greenapple, 10%);
+    }
+
+}

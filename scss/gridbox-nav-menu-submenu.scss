@@ -1,0 +1,52 @@
+
+// submenu
+.sub {
+    position: absolute;
+    width: 100%;
+
+    &.show {
+        > li {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        position: relative;
+        height: 0px;
+
+        &.show {
+            margin-top: 15px;
+            height: auto;
+        }
+    }
+
+    a {
+        display: inline-block;
+        padding: 0px 25px;
+        height: 52px;
+        line-height: 50px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+}
+
+
+// /* ===================================================================
+//  *                       Customizations
+//  * ===================================================================
+//  */
+
+// color
+.sub {
+    // background: ;
+
+    a {
+        color: $black;
+        border-bottom: 2px solid rgba(0, 0, 0, 0);
+
+        &:hover {
+            border-bottom: 2px solid $black;
+        }
+    }
+}

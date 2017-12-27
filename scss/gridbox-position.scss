@@ -1,0 +1,26 @@
+
+// position
+.fixed {
+    position: fixed !important;
+}
+
+// locations
+.top-left {
+    left: 20px;
+    top: 20px;
+}
+
+.bottom-left {
+    left: 20px;
+    bottom: 20px;
+}
+
+.top-right {
+    right: 20px;
+    top: 20px;
+}
+
+.bottom-right {
+    right: 20px;
+    bottom: 20px;
+}
