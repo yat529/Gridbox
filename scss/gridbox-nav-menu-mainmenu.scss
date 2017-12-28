@@ -41,30 +41,22 @@ li.menuitem {
 
     @media (max-width: 768px) {
         margin-right: 0;
+        margin-bottom: 15px;
 
-        &:first-child span {
-            margin-top: 0;
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 
-    span {
+    > a {
         display: block;
-        padding: 15px 25px;
+        padding: 25px 25px;
         font: {
             size: 1.5rem;
             weight: 600;
         }  
         text-align: center;
-
-        @media (max-width: 768px) {
-            margin-top: 30px;
-        }
-    }
-}
-
-li.dropdown {
-    > span {
-        cursor: pointer;
+        text-decoration: none;
     }
 }
 
@@ -74,65 +66,115 @@ li.dropdown {
 //  * ===================================================================
 //  */
 
-// color
-li.menuitem {
-    // background: ;
-    // border-bottom: ;
+// ----------------------------------------------------------
+//      Transition effects by using transition property
+// ----------------------------------------------------------
+// Transition Classes listed below: .slideright, .slideup, etc.
+// NOTE: By default, fade in effect is used if no specific transition class is given
+// Default initial state
+.main,
+.sub {
+    > li {
+        transition: all 0.3s ease-in-out;
+        transition-delay: 0.1s;
 
-    span {
-        color: $black;
+        &:nth-of-type(2) {
+            transition-delay: 0.2s;
+        }
+        &:nth-of-type(3) {
+            transition-delay: 0.3s;
+        }
+
+        // &:nth-of-type(n) {
+        //     transition-delay: (0.1 + (n - 1) * 0.1)s;
+        // }
+        // NOTE: n is the number of menuitem
     }
 }
 
-// animation
-
-.main.show.fadein,
-.sub.show.fadein {
-    opacity: 0;
-    animation: fadein 0.3s forwards;
-    animation-delay: 0.3s;
-}
-
-.main.show.slideup,
-.sub.show.slideup {
+// slide right effect
+.main.slideright,
+.sub.slideright {
     > li {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: slideup 0.3s forwards;
-        animation-delay: 0.3s;
-    
-        &:nth-of-type(2) {
-            animation-delay: 0.4s;
-        }
-        &:nth-of-type(3) {
-            animation-delay: 0.5s;
-        }
-       
-        // &:nth-of-type(n) {
-        //     animation-delay: (0.3 + (n - 1) * 0.1)s;
-        // }
-        // NOTE: n is the number of menuitem
+        transform: translateX(-20px);
     }
 }
 
 .main.show.slideright,
 .sub.show.slideright {
     > li {
-        opacity: 0;
-        transform: translateX(-20px);
-        animation: slideright 0.3s forwards;
-        animation-delay: 0.3s;
-    
-        &:nth-of-type(2) {
-            animation-delay: 0.4s;
-        }
-        &:nth-of-type(3) {
-            animation-delay: 0.5s;
-        }
-       
-        // &:nth-of-type(n) {
-        //     animation-delay: (0.3 + (n - 1) * 0.1)s;
-        // }
-        // NOTE: n is the number of menuitem
+        transform: translateX(0px);
+    } 
+}
+
+// slide up effect
+.main.slideup,
+.sub.slideup {
+    > li {
+        transform: translateY(20px);
     }
 }
+
+.main.show.slideup,
+.sub.show.slideup {
+    > li {
+        transform: translateY(0px);
+    } 
+}
+
+
+// ----------------------------------------------------------
+//      Transition effects by using animation property
+// ----------------------------------------------------------
+
+
+// .main.show.fadein,
+// .sub.show.fadein {
+//     opacity: 0;
+//     animation: fadein 0.3s forwards;
+//     animation-delay: 0.3s;
+// }
+
+// .main.show.slideup,
+// .sub.show.slideup {
+//     > li {
+//         opacity: 0;
+//         transform: translateY(20px);
+//         animation: slideup 0.3s forwards;
+//         animation-delay: 0.3s;
+    
+//         &:nth-of-type(2) {
+//             animation-delay: 0.4s;
+//         }
+//         &:nth-of-type(3) {
+//             animation-delay: 0.5s;
+//         }
+       
+//         // &:nth-of-type(n) {
+//         //     animation-delay: (0.3 + (n - 1) * 0.1)s;
+//         // }
+//         // NOTE: n is the number of menuitem
+//     }
+// }
+
+// .main.show.slideright,
+// .sub.show.slideright {
+//     > li {
+//         opacity: 0;
+//         transform: translateX(-20px);
+//         animation: slideright 0.3s forwards;
+//         animation-delay: 0.3s;
+    
+//         &:nth-of-type(2) {
+//             animation-delay: 0.4s;
+//         }
+//         &:nth-of-type(3) {
+//             animation-delay: 0.5s;
+//         }
+       
+//         // &:nth-of-type(n) {
+//         //     animation-delay: (0.3 + (n - 1) * 0.1)s;
+//         // }
+//         // NOTE: n is the number of menuitem
+//     }
+// }

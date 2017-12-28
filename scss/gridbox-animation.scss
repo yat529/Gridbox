@@ -1,4 +1,5 @@
 
+// fade in effect
 @keyframes fadein {
     0% {
         opacity: 0;
@@ -8,10 +9,20 @@
     }
 }
 
+@keyframes fadeinReverse {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
+// slide up effect
 @keyframes slideup {
     0% {
         opacity: 0;
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
@@ -19,22 +30,36 @@
     }
 }
 
+@keyframes slideupReverse {
+    0% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+}
 
+// slide right effect
 @keyframes slideright {
     0% {
         opacity: 0;
+        transform: translateX(-20px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateX(0px);
     }
 }
 
-@keyframes grow {
+@keyframes sliderightReverse {
     0% {
-        height: 0px;
+        opacity: 1;
+        transform: translateX(0px);
     }
     100% {
-        height: 52px;
+        opacity: 0;
+        transform: translateX(-20px);
     }
 }

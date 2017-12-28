@@ -41,18 +41,15 @@
 
     &.active {
         span {
-            width: 25px;
-            transition: all 0.3s ease-in;
+            width: 20px;
 
             &::before {
                 top: 0;
                 transform: translateX(-50%) rotate(45deg);
-                transition: all 0.3s ease-in;
             }
             &::after {
                 top: 0;
                 transform: translateX(-50%) rotate(-45deg);
-                transition: all 0.3s ease-in;
             }
         }
     }
@@ -61,33 +58,6 @@
     //  *                       Customizations
     //  * ===================================================================
     //  */
-
-    // colors
-    // non-hover states color
-    span {
-        background: $black;
-        &::before {
-            background: $black;
-        }
-        &::after {
-            background: $black;
-        }
-    }
-
-    // hover states colors
-    &.default {
-        &:hover {
-            span {
-                background: $information;
-                &::before {
-                    background: $information;
-                }
-                &::after {
-                    background: $information;
-                }
-            }
-        }
-    }
 
     &.grapefruit {
         &:hover {

@@ -1,0 +1,144 @@
+
+// Default template for Themes
+.nav.themename {
+
+    // toggler span background and ::before, ::after element background
+    .menu-toggle {
+        span {
+            // background: ;
+            &::before {
+                // background: ;
+            }
+            &::after {
+                // background: ;
+            }
+        }
+
+        &:hover {
+            span {
+                // background: ;
+                &::before {
+                    // background: ;
+                }
+                &::after {
+                    // background: ;
+                }
+            }
+        }
+    }
+
+    // brandname span
+    .brand {
+        span {
+            // color: ;
+        }
+    }
+
+    // overlay background
+    .overlay {
+        // background: ;
+    }
+
+    .main {
+        // main menu item background
+        > li {
+            // background: ;
+        }
+
+        // main menu item font style
+        > li > a {
+            // color: ;
+        }
+    }
+
+    // sub menu item font style
+    .sub {
+        a {
+            // color: ;
+        }
+    }
+
+}
+
+
+// /* ===================================================================
+//  *                          Default theme
+//  * ===================================================================
+//  */
+
+.nav {
+    // toggler span background and ::before, ::after element background
+    .menu-toggle {
+        span {
+            background: $black;
+            &::before {
+                background: $black;
+            }
+            &::after {
+                background: $black;
+            }
+        }
+
+        &:hover {
+            span {
+                background: $logoblueDark;
+                &::before {
+                    background: $logoblueDark;
+                }
+                &::after {
+                    background: $logoblueDark;
+                }
+            }
+        }
+
+        &.active {
+            span {
+                background: transparent;
+                &::before {
+                    background: $white;
+                }
+                &::after {
+                    background: $white;
+                }
+            }
+        }
+    }
+
+    // brandname span
+    .brand {
+        span {
+            color: $white;
+        }
+    }
+
+    // overlay background
+    .overlay {
+        background: $lightblue;
+    }
+
+    .main {
+        // main menu item background
+        // > li {
+        //     background: $logoblue;
+        //     box-shadow: 0px 2px 8px -5px rgba(0, 0, 0, 0.5);
+        // }
+
+        // main menu item font style
+        > li > a {
+            color: $white;
+        }
+    }
+
+    // sub menu item font style
+    .sub {
+        a {
+            color: $white;
+            // border-bottom: 2px solid rgba(0, 0, 0, 0);
+
+            &:hover {
+                // border-bottom: 2px solid $white;
+                color: $logoblueDark;
+            }
+        }
+    }
+}

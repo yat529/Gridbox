@@ -1,12 +1,15 @@
 @import '_variables';
 @import '_colors';
+
 // load Modules
 @import 'gridbox-position';
-@import 'gridbox-animation';
+    // @import 'gridbox-animation';        // Optional animations
+
+// load Styling Module
+@import 'gridbox-nav-menu-theme';       // themes
 // Component Module
 @import 'gridbox-nav-menu-toggle';      // menu toggle
 @import 'gridbox-nav-menu-brand';       // brand & logo
 @import 'gridbox-nav-menu-overlay';     // background overlay
 @import 'gridbox-nav-menu-mainmenu';    // main menu list
 @import 'gridbox-nav-menu-submenu';     // sub menu list
-    
