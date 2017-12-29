@@ -48,6 +48,14 @@
         // main menu item font style
         > li > a {
             // color: ;
+
+            // dropdown carret
+            &.sub-toggle {
+                &::after {
+                    // border-top: 2px solid $logoblue;
+                    // border-right: 2px solid $logoblue;
+                } 
+            }
         }
     }
 
@@ -126,6 +134,14 @@
         // main menu item font style
         > li > a {
             color: $white;
+
+            // dropdown carret
+            &.sub-toggle {
+                &::after {
+                    border-top: 2px solid $logoblue;
+                    border-right: 2px solid $logoblue;
+                } 
+            }
         }
     }
 
@@ -136,8 +152,33 @@
             // border-bottom: 2px solid rgba(0, 0, 0, 0);
 
             &:hover {
-                // border-bottom: 2px solid $white;
-                color: $logoblueDark;
+                // color: $pear;
+                font-weight: 700;
+            }
+        }
+    }
+
+    // social
+    .social {
+
+        // divider color
+        &::before {
+            background: $white;
+        }
+
+        > span {
+            color: $white;
+        }
+
+        .icon {
+            color: $white;
+
+            &:hover {
+                color: $logoblue;
+                // hover bg color
+                &::before {
+                    background: $white;
+                }
             }
         }
     }

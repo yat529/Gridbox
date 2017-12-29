@@ -14,15 +14,17 @@
     <div class="container-fluid">
 
         <div class="nav">
-
+            <!-- Brand -->
             <div class="brand fixed default top-left">
                 <img src="img/gridbox_logo.png" alt="">
                 <div class="brandname"><span>Gridbox</span></div>
             </div>
+            <!-- Menu Toggle -->
             <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
 
             <div class="overlay" id="overlay">
                 <nav>
+                    <!-- Menu Item -->
                     <ul class="main slideright">
                         <li class="menuitem"><a href="#">Item 1</a></li>
                         <li class="menuitem dropdown">
@@ -41,7 +43,22 @@
                                 <li><a href="#">Subitem 3</a></li>
                             </ul>
                         </li>
+                        <li class="menuitem">
+                            <a href="#">Item 4</a>
+                        </li>
                     </ul>
+
+                    <!-- Social Icons -->
+                    <div class="social">
+                        <span>Follow us</span>
+                        <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="icon" id="weixin" href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                        <a class="icon" id="weibo" href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+                    </div>
+                    
                 </nav>
             </div>
 
@@ -65,6 +82,7 @@
     var subToggle = im(".sub-toggle");
     subToggle.each(function(){
         this.click(function(){
+            this.toggleClass("clicked");
             this.nextSibling().toggleClass("show");
         });
     });

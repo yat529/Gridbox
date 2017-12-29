@@ -4,10 +4,35 @@
     position: absolute;
     width: 100%;
 
+    &::before {
+        content: "";
+        display: block;
+        position: relative;
+        width: 0%;
+        transition: width 0.3s ease-in-out;
+    }
+
     &.show {
         > li {
             opacity: 1;
             visibility: visible;
+        }
+
+        // border line
+        &::before {
+            content: "";
+            display: block;
+            position: relative;
+            width: 60%;
+            height: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $white;
+            opacity: 0.3;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
         }
     }
     
@@ -20,7 +45,7 @@
         padding: 15px 25px;
         line-height: 20px;
         text-decoration: none;
-        transition: all 0.3s;
+        transition: all 0.1s;
     }
 }
 

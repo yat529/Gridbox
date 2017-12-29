@@ -2,8 +2,10 @@
 ul.main {
     display: flex;
     flex-flow: wrap row;
-    position: absolute;
+    align-items: center;
+    position: relative;
     width: 80%;
+    height: auto;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -23,24 +25,20 @@ ul.main {
 
     @media (max-width: 768px) {
         flex-flow: wrap column;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, 0);
+        margin: 25vh auto 15vh auto;
+        top: auto;
+        left: auto;
+        transform: translate(0%, 0);
     }
 }
 
 li.menuitem {
     flex: 1 1 auto;
     position: relative;
-    margin-right: 15px;
     text-align: center;
 
-    &:last-child {
-        margin-right: 0;
-    }
 
     @media (max-width: 768px) {
-        margin-right: 0;
         margin-bottom: 15px;
 
         &:last-child {
@@ -49,8 +47,9 @@ li.menuitem {
     }
 
     > a {
-        display: block;
-        padding: 25px 25px;
+        display: inline-block;
+        position: relative;
+        padding: 15px 25px;
         font: {
             size: 1.5rem;
             weight: 600;
@@ -65,6 +64,51 @@ li.menuitem {
 //  *                       Customizations
 //  * ===================================================================
 //  */
+
+// ----------------------------------------------------------
+//                  Dropdown list carret
+// ----------------------------------------------------------
+
+a.sub-toggle {
+    &::before {
+        @extend %carret;
+        width: 14px;
+        height: 14px;
+        top: 50%;
+        right: -20px;
+        background: $white;
+        opacity: 0.6;
+        border-radius: 50%;
+        transform: translateY(-50%);
+    }
+    &::after {
+        @extend %carret;
+        width: 5px;
+        height: 5px;
+        top: calc(50% - 2.5px);
+        right: -15px;
+        transform: rotate(45deg);
+        transition: all 0.3s;
+    }  
+}
+
+a.sub-toggle.clicked {
+    &::after {
+        top: calc(50% - 3px);
+        right: -15.5px;
+        transform: rotate(135deg);
+    } 
+}
+
+
+%carret {
+    content: "";
+    display: block;
+    position: absolute;
+    
+}
+
+
 
 // ----------------------------------------------------------
 //      Transition effects by using transition property
