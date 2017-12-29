@@ -4,12 +4,23 @@
     position: absolute;
     width: 100%;
 
+    @media (max-width: 768px) {
+        position: relative;
+    }
+
+    // border line
     &::before {
         content: "";
         display: block;
         position: relative;
         width: 0%;
+        height: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: $white;
+        opacity: 0.3;
         transition: width 0.3s ease-in-out;
+        transition-delay: 0.2s;
     }
 
     &.show {
@@ -18,26 +29,13 @@
             visibility: visible;
         }
 
-        // border line
         &::before {
-            content: "";
-            display: block;
-            position: relative;
             width: 60%;
-            height: 1px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: $white;
-            opacity: 0.3;
 
             @media (max-width: 768px) {
                 width: 100%;
             }
         }
-    }
-    
-    @media (max-width: 768px) {
-        position: relative;
     }
 
     a {

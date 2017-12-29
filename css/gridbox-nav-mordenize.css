@@ -353,35 +353,35 @@ a.sub-toggle::before, a.sub-toggle::after {
 .sub {
   position: absolute;
   width: 100%; }
+  @media (max-width: 768px) {
+    .sub {
+      position: relative; } }
   .sub::before {
     content: "";
     display: block;
     position: relative;
     width: 0%;
-    -webkit-transition: width 0.3s ease-in-out;
-    -o-transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out; }
-  .sub.show > li {
-    opacity: 1;
-    visibility: visible; }
-  .sub.show::before {
-    content: "";
-    display: block;
-    position: relative;
-    width: 60%;
     height: 1px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     background: #fff;
-    opacity: 0.3; }
+    opacity: 0.3;
+    -webkit-transition: width 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+    -webkit-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+    transition-delay: 0.2s; }
+  .sub.show > li {
+    opacity: 1;
+    visibility: visible; }
+  .sub.show::before {
+    width: 60%; }
     @media (max-width: 768px) {
       .sub.show::before {
         width: 100%; } }
-  @media (max-width: 768px) {
-    .sub {
-      position: relative; } }
   .sub a {
     display: inline-block;
     padding: 15px 25px;
