@@ -47,8 +47,8 @@
 .nav .main > li > a {
   color: #fff; }
   .nav .main > li > a.sub-toggle::after {
-    border-top: 2px solid #488dc4;
-    border-right: 2px solid #488dc4; }
+    border-top: 2px solid #7aafdb;
+    border-right: 2px solid #7aafdb; }
 
 .nav .sub a {
   color: #fff; }
@@ -64,14 +64,116 @@
 .nav .social .icon {
   color: #fff; }
   .nav .social .icon:hover {
-    color: #488dc4; }
+    color: #7aafdb; }
     .nav .social .icon:hover::before {
+      background: #fff; }
+
+.nav.grapefruit .menu-toggle span {
+  background: #000; }
+  .nav.grapefruit .menu-toggle span::before {
+    background: #000; }
+  .nav.grapefruit .menu-toggle span::after {
+    background: #000; }
+
+.nav.grapefruit .menu-toggle:hover span {
+  background: #db6464; }
+  .nav.grapefruit .menu-toggle:hover span::before {
+    background: #db6464; }
+  .nav.grapefruit .menu-toggle:hover span::after {
+    background: #db6464; }
+
+.nav.grapefruit .menu-toggle.active span {
+  background: transparent; }
+  .nav.grapefruit .menu-toggle.active span::before {
+    background: #fff; }
+  .nav.grapefruit .menu-toggle.active span::after {
+    background: #fff; }
+
+.nav.grapefruit .brand span {
+  color: #fff; }
+
+.nav.grapefruit .overlay {
+  background: #e68181; }
+
+.nav.grapefruit .main > li > a {
+  color: #fff; }
+  .nav.grapefruit .main > li > a.sub-toggle::after {
+    border-top: 2px solid #e68181;
+    border-right: 2px solid #e68181; }
+
+.nav.grapefruit .sub a {
+  color: #fff; }
+  .nav.grapefruit .sub a:hover {
+    font-weight: 700; }
+
+.nav.grapefruit .social::before {
+  background: #fff; }
+
+.nav.grapefruit .social > span {
+  color: #fff; }
+
+.nav.grapefruit .social .icon {
+  color: #fff; }
+  .nav.grapefruit .social .icon:hover {
+    color: #e68181; }
+    .nav.grapefruit .social .icon:hover::before {
+      background: #fff; }
+
+.nav.pear .menu-toggle span {
+  background: #000; }
+  .nav.pear .menu-toggle span::before {
+    background: #000; }
+  .nav.pear .menu-toggle span::after {
+    background: #000; }
+
+.nav.pear .menu-toggle:hover span {
+  background: #ebd266; }
+  .nav.pear .menu-toggle:hover span::before {
+    background: #ebd266; }
+  .nav.pear .menu-toggle:hover span::after {
+    background: #ebd266; }
+
+.nav.pear .menu-toggle.active span {
+  background: transparent; }
+  .nav.pear .menu-toggle.active span::before {
+    background: #fff; }
+  .nav.pear .menu-toggle.active span::after {
+    background: #fff; }
+
+.nav.pear .brand span {
+  color: #fff; }
+
+.nav.pear .overlay {
+  background: #e7d379; }
+
+.nav.pear .main > li > a {
+  color: #fff; }
+  .nav.pear .main > li > a.sub-toggle::after {
+    border-top: 2px solid #e7d379;
+    border-right: 2px solid #e7d379; }
+
+.nav.pear .sub a {
+  color: #fff; }
+  .nav.pear .sub a:hover {
+    font-weight: 700; }
+
+.nav.pear .social::before {
+  background: #fff; }
+
+.nav.pear .social > span {
+  color: #fff; }
+
+.nav.pear .social .icon {
+  color: #fff; }
+  .nav.pear .social .icon:hover {
+    color: #e7d379; }
+    .nav.pear .social .icon:hover::before {
       background: #fff; }
 
 .menu-toggle {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
@@ -132,11 +234,11 @@
     .menu-toggle.peach:hover span::after {
       background: #ff4444; }
   .menu-toggle.pear:hover span {
-    background: #ffde1e; }
+    background: #d4b426; }
     .menu-toggle.pear:hover span::before {
-      background: #ffde1e; }
+      background: #d4b426; }
     .menu-toggle.pear:hover span::after {
-      background: #ffde1e; }
+      background: #d4b426; }
   .menu-toggle.greenapple:hover span {
     background: #6bc557; }
     .menu-toggle.greenapple:hover span::before {
@@ -208,7 +310,7 @@
   .overlay.peach {
     background: #ffdddd; }
   .overlay.pear {
-    background: #fff4b7; }
+    background: #efe1a4; }
   .overlay.greenapple {
     background: #cfecc9; }
 
@@ -325,6 +427,11 @@ a.sub-toggle::before, a.sub-toggle::after {
     -webkit-transition-delay: 0.3s;
     -o-transition-delay: 0.3s;
     transition-delay: 0.3s; }
+  .main > li:nth-of-type(4),
+  .sub > li:nth-of-type(4) {
+    -webkit-transition-delay: 0.4s;
+    -o-transition-delay: 0.4s;
+    transition-delay: 0.4s; }
 
 .main.slideright > li,
 .sub.slideright > li {

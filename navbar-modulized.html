@@ -15,7 +15,7 @@
 
         <div class="nav">
             <!-- Brand -->
-            <div class="brand fixed default top-left">
+            <div class="brand fixed top-left">
                 <img src="img/gridbox_logo.png" alt="">
                 <div class="brandname"><span>Gridbox</span></div>
             </div>
@@ -26,25 +26,25 @@
                 <nav>
                     <!-- Menu Item -->
                     <ul class="main slideright">
-                        <li class="menuitem"><a href="#">Item 1</a></li>
+                        <li class="menuitem"><a href="#">Link</a></li>
                         <li class="menuitem dropdown">
-                            <a href="#" class="sub-toggle">Item 2</a>
+                            <a href="#" class="sub-toggle">Dropdown</a>
                             <ul class="sub slideup">
-                                <li><a href="#">Subitem 1</a></li>
-                                <li><a href="#">Subitem 2</a></li>
-                                <li><a href="#">Subitem 3</a></li>
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
                             </ul>
                         </li>
                         <li class="menuitem dropdown">
-                            <a href="#" class="sub-toggle">Item 3</a>
+                            <a href="#" class="sub-toggle">Dropdown</a>
                             <ul class="sub slideup">
-                                <li><a href="#">Subitem 1</a></li>
-                                <li><a href="#">Subitem 2</a></li>
-                                <li><a href="#">Subitem 3</a></li>
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
                             </ul>
                         </li>
                         <li class="menuitem">
-                            <a href="#">Item 4</a>
+                            <a href="#">Link</a>
                         </li>
                     </ul>
 
@@ -70,6 +70,7 @@
     <script>
 
     var menuToggle = im("#menu-toggle"),
+        subToggle = im(".sub-toggle"),
         ovrly = im("#overlay"),
         main = im(".main").first();
 
@@ -78,8 +79,7 @@
         ovrly.toggleClass("show");
         main.toggleClass("show");
     });
-
-    var subToggle = im(".sub-toggle");
+    
     subToggle.each(function(){
         this.click(function(){
             this.toggleClass("clicked");
