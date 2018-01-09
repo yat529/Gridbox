@@ -1,7 +1,9 @@
 @import '_variables.scss';
 
-/* Avoid accident click event caused by finger touch */
+// load Modules
+@import 'gridbox-position';
 
+/* Avoid accident click event caused by finger touch */
 a,
 area,
 button,
@@ -9,7 +11,7 @@ button,
 input,
 label,
 select,
-summary,
+// summary,
 textarea {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
@@ -33,7 +35,7 @@ textarea {
 
 form {
     width: 100%;
-    padding: 15px;
+    // padding: 15px;
     // margin-bottom: 15px;
     // background: #fff;
     color: $fontColor;

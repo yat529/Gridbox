@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <link rel="stylesheet" href="css/gridbox-grids.css">
+    <link rel="stylesheet" href="css/gridbox-form.css">
+    <title>Form Element</title>
+</head>
+<body>
+    <div class="container margin-top">
+        <div class="row horizontal-align-center">
+
+            <h3>Sample Full Width Form Inputs</h3>
+
+            <form action="">
+                <!-- Text Input -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="inputFormControl-1">Default Text Input</label>
+                    <input type="text" class="form-input" id="inputFormControl-1" placeholder="Enter text">
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="emailFormControl-1">Default Email Input</label>
+                    <input type="email" class="form-input" id="emailFormControl-1" placeholder="Enter email">
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="passwordFormControl-1">Default Password Input</label>
+                    <input type="password" class="form-input" id="passwordFormControl-1" placeholder="Enter Password">
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="textareaFormControl-1">Textarea Input</label>
+                    <textarea type="text" class="form-input" id="textareaFormControl-1" placeholder="Enter text" rows="3"></textarea>
+                </div>
+
+                <!-- Single Option -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <div class="singleSelectWrapper"> <!-- use a wrapper div to select the ::after element -->
+                        <span class="caret"></span>
+                        <select class="form-input" id="optionFormControl-1">
+                            <option disabled selected>Please select</option>
+                            <option>Option One</option>
+                            <option>Option Two</option>
+                            <option>Option Three</option>
+                            <option>Option Four</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Multiple Option -->
+                <div class="form-group margin-bottom">
+                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <div class="multiSelectWrapper">
+                        <select multiple class="form-input" id="optionFormControl-1">
+                            <option>Option One</option>
+                            <option>Option Two</option>
+                            <option>Option Three</option>
+                            <option>Option Four</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Check Box -->
+                <fieldset class="form-field margin-bottom">
+                    <legend>Default Check Box</legend>
+                    <div class="form-group margin-bottom">
+                        <label class="label-inline margin-right">
+                            <input type="checkbox" class="form-check" id="checkFormControl-1">
+                            <span>Check it</span>
+                        </label>
+                    </div>
+                </fieldset>   
+
+                <!-- Radio Checkbox -->
+                <fieldset class="form-field margin-bottom">
+                    <legend>Radio Check Buttons</legend>
+                    <div class="form-group margin-bottom">
+                        <label class="label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="" checked>
+                            <span>Radio Check One</span>
+                        </label>
+                        <label class="label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
+                            <span>Radio Check One</span>
+                        </label>
+                        <label class="label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
+                            <span>Radio Check One</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Buttons -->
+                <fieldset class="form-field margin-bottom">
+                    <legend>Submit Buttons</legend>
+                    <div class="form-group margin-bottom">
+                        <button type="button" class="btn btn-primary margin-right">Submit</button>
+                        <button type="button" class="btn btn-secondary margin-right">Submit</button>
+                        <button type="button" class="btn btn-success margin-right">Submit</button>
+                        <button type="button" class="btn btn-warning margin-right">Submit</button>
+                        <button type="button" class="btn btn-danger margin-right">Submit</button>
+                    </div>
+                </fieldset>
+
+            </form>
+
+
+        </div>
+    </div>
+
+</body>
+</html>

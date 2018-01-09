@@ -17,6 +17,18 @@
   right: 20px;
   bottom: 20px; }
 
+.margin-top {
+  margin-top: 15px; }
+
+.margin-left {
+  margin-left: 15px; }
+
+.margin-right {
+  margin-right: 15px; }
+
+.margin-bottom {
+  margin-bottom: 15px; }
+
 .nav .menu-toggle span {
   background: #000; }
   .nav .menu-toggle span::before {
