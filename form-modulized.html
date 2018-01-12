@@ -6,44 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/gridbox.css">
-    <link rel="stylesheet" href="css/gridbox-grids.css">
-    <link rel="stylesheet" href="css/gridbox-form.css">
     <title>Form Element</title>
 </head>
 <body>
     <div class="container margin-top">
-        <div class="row horizontal-align-center">
+        <div class="row">
 
-            <h3>Sample Full Width Form Inputs</h3>
+            <div class="form-group center-text margin-bottom"><h3>Sample Full Width Form Inputs</h3></div> 
 
-            <form action="">
+            <form action="" class="margin-bottom-30">
                 <!-- Text Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="inputFormControl-1">Default Text Input</label>
+                    <label class="label" for="inputFormControl-1">Default Text Input</label>
                     <input type="text" class="form-input" id="inputFormControl-1" placeholder="Enter text">
                 </div>
 
                 <!-- Email Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="emailFormControl-1">Default Email Input</label>
+                    <label class="label" for="emailFormControl-1">Default Email Input</label>
                     <input type="email" class="form-input" id="emailFormControl-1" placeholder="Enter email">
                 </div>
 
-                <!-- Email Input -->
+                <!-- Password Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="passwordFormControl-1">Default Password Input</label>
+                    <label class="label" for="passwordFormControl-1">Default Password Input</label>
                     <input type="password" class="form-input" id="passwordFormControl-1" placeholder="Enter Password">
                 </div>
 
                 <!-- Textarea -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="textareaFormControl-1">Textarea Input</label>
+                    <label class="label" for="textareaFormControl-1">Textarea Input</label>
                     <textarea type="text" class="form-input" id="textareaFormControl-1" placeholder="Enter text" rows="3"></textarea>
                 </div>
 
                 <!-- Single Option -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <label class="label" for="optionFormControl-1">Option List</label>
                     <div class="singleSelectWrapper"> <!-- use a wrapper div to select the ::after element -->
                         <span class="caret"></span>
                         <select class="form-input" id="optionFormControl-1">
@@ -58,7 +56,7 @@
 
                 <!-- Multiple Option -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <label class="label" for="optionFormControl-1">Option List</label>
                     <div class="multiSelectWrapper">
                         <select multiple class="form-input" id="optionFormControl-1">
                             <option>Option One</option>
@@ -73,7 +71,7 @@
                 <fieldset class="form-field margin-bottom">
                     <legend>Default Check Box</legend>
                     <div class="form-group margin-bottom">
-                        <label class="label-inline margin-right">
+                        <label class="label margin-right">
                             <input type="checkbox" class="form-check" id="checkFormControl-1">
                             <span>Check it</span>
                         </label>
@@ -84,15 +82,15 @@
                 <fieldset class="form-field margin-bottom">
                     <legend>Radio Check Buttons</legend>
                     <div class="form-group margin-bottom">
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="" checked>
                             <span>Radio Check One</span>
                         </label>
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
                             <span>Radio Check One</span>
                         </label>
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
                             <span>Radio Check One</span>
                         </label>
@@ -111,6 +109,127 @@
                     </div>
                 </fieldset>
 
+            </form>
+
+            <!-- styling test -->
+            <form action="/" class="iconized margin-bottom-30">
+
+                <div class="form-group center-text margin-bottom-30"><h3>Custom Form Input - FontAwsome</h3></div>  
+
+                <!-- username -->
+                <div class="form-group margin-bottom">
+                    <input type="text" class="form-input" id="username" name="username" placeholder="Username">
+                    <span class="input-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                    <span class="input-icon check">
+                        <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                        <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <!-- email -->
+                <div class="form-group margin-bottom">
+                    <input type="email" class="form-input" id="email" name="email" placeholder="Email">
+                    <span class="input-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <span class="input-icon check">
+                        <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                        <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <!-- mobile -->
+                <div class="form-group margin-bottom">
+                    <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="Phone Number">
+                    <span class="input-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    <span class="input-icon check">
+                        <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                        <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <!-- password -->
+                <div class="form-group margin-bottom">
+                    <input type="password" class="form-input" id="password" name="password" placeholder="Password">
+                    <span class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                    <span class="input-icon check">
+                        <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                        <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <!-- date -->
+                <div class="form-group margin-bottom">
+                    <input type="time" class="form-input" id="date" name="date" placeholder="Date">
+                    <span class="input-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <span class="input-icon check">
+                        <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                        <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <!-- textarea -->
+                <div class="form-group margin-bottom">
+                    <textarea type="text" class="form-input" id="textareaFormControl-1" placeholder="Enter text" rows="5"></textarea>
+                    <span class="input-icon"><i class="fa fa-font" aria-hidden="true"></i></span>
+                </div>
+
+            </form>
+
+            <!-- Custom Input Checkbox - FontAwsome -->
+            <form class="iconized margin-bottom-30">
+                <div class="form-group center-text margin-bottom-30"><h3>Custom Checkbox - FontAwsome</h3></div>  
+                <div class="form-group">
+                <!-- Custom Input Checkbox - FontAwsome - Square -->
+                    <label class="custom-form-check" for="customCheck1">
+                        <input type="checkbox" class="hidden-check" name="customCheck1" id="customCheck1">
+                        <span class="check-icon">
+                            <!-- two indentical icon represent each state -->
+                            <i class="unchecked fa fa-square-o" aria-hidden="true"></i>
+                            <i class="checked fa fa-check-square-o" aria-hidden="true"></i>  
+                        </span>
+                        <span class="form-check">Custom Checkbox</span>
+                    </label>
+
+                <!-- Custom Input Checkbox - FontAwsome - Circle -->
+                    <label class="custom-form-check" for="customCheck3">
+                        <input type="checkbox" class="hidden-check" name="customCheck3" id="customCheck3">
+                        <span class="check-icon">
+                            <!-- two indentical icon represent each state -->
+                            <i class="unchecked fa fa-circle-o" aria-hidden="true"></i>
+                            <i class="checked fa fa-check-circle-o" aria-hidden="true"></i>  
+                        </span>
+                        <span class="form-check">Custom Checkbox</span>
+                    </label>
+
+                </div>
+            </form>
+
+
+            <!-- Fieldset -->
+            <form class="iconized margin-bottom-30">
+                <div class="form-group center-text margin-bottom-30"><h3>Form Fields</h3></div>  
+
+                <fieldset class="form-field">
+                    <legend>Custom Checkboxes</legend>
+                        <div class="form-group margin-bottom">
+                            <label class="custom-form-check">
+                                <input type="checkbox" class="hidden-check" name="" id="">
+                                <span class="check-icon">
+                                    <!-- two indentical icon represent each state -->
+                                    <i class="unchecked fa fa-square-o" aria-hidden="true"></i>
+                                    <i class="checked fa fa-check-square-o" aria-hidden="true"></i>  
+                                </span>
+                                <span class="form-check">Custom Checkbox</span>
+                            </label>
+                        </div>
+                </fieldset>
+            </form>
+
+
+            <form action="" class="iconized margin-bottom-30">
+                <div class="form-group">
+                    <button class="btn btn-primary margin-right">Submit</button>
+                    <a href="#" class="btn btn-primary">Submit</a>
+                </div>
             </form>
 
 

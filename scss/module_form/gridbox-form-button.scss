@@ -1,0 +1,141 @@
+
+// /* =======================================================================
+//  *                          Button Styling
+//  * -----------------------------------------------------------------------
+//  * Description:    Remove the browser default styling, and apply gridbox
+//  *                 button styling. Also provide button color options
+//  *                  (a) .btn-primary
+//  *                  (b) .btn-secondary
+//  *                  (c) .btn-success
+//  *                  (d) .btn-warning
+//  *                  (e) .btn-danger
+//  *                  (f) .btn-info
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to the belowing elements
+//  *                 (a) <button class="btn btn-parimary">
+//  *                 (b) <a class="btn btn-parimary">
+//  * ========================================================================
+//  */
+
+// Global button setting
+button {
+    // Remove browser default styling
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+
+    &.btn {
+        padding: 0.5rem 0.75rem;
+        line-height: 1rem;
+        font-size: 1rem;
+        transition: all ease-in-out 0.15s;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            box-shadow: 1px 2px 5px -3px $boxShadow;
+        }
+
+        &:active {
+            box-shadow: none;
+            transform: translate(1px, 1px);
+        }
+    }
+}
+
+// Applied to <a> element
+a {
+    display: inline-block;
+    text-decoration: none;
+
+    &.btn {
+        @extend button.btn;
+    }   
+}
+
+// Primary Button Setting
+.btn-primary {
+    color: #fff;
+    background-color: $information;
+    border: 1px solid $information;
+
+    &:hover,
+    &:active {
+        background-color: $informationDarker;
+        border-color: $informationDarker;
+    }
+}
+
+// Secondary Button Setting
+// Description: use to primary background color for hover and active state
+.btn-secondary {
+    color: $information;
+    background-color: #fff;
+    border: 1px solid $information;
+
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: $informationDarker;
+        border-color: $informationDarker;
+    }
+}
+
+// Success Button Setting
+.btn-success {
+    color: #fff;
+    background-color: $success;
+    border: 1px solid $success;
+
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: $successDarker;
+        border-color: $successDarker;
+    }
+}
+
+// Warning Button Setting
+.btn-warning {
+    color: #fff;
+    background-color: $warning;
+    border: 1px solid $warning;
+
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: $warningDarker;
+        border-color: $warningDarker;
+    }
+}
+
+// Danger Button Setting
+.btn-danger {
+    color: #fff;
+    background-color: $danger;
+    border: 1px solid $danger;
+
+    &:hover,
+    &:active {
+        color: #fff;
+        background-color: $dangerDarker;
+        border-color: $dangerDarker;
+    }
+}
+
+.btn-xs {
+    padding: 2px 5px !important;
+}
+
+.btn-sm {
+    padding: 5px 10px !important;
+}
+
+.btn-lg {
+    padding: 1rem 1.5rem !important;
+}
+
+.btn-xl {
+    padding: 1.5rem 2.3rem !important;
+}

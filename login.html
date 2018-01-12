@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <title>Form Element</title>
+</head>
+<body>
+    <div class="container-fluid full-screen bg-lightgray">
+        <div class="screen-center horizontal-align-center">
+            <div class="padding-around-30 bg-white dropshadow">
+
+                <!-- Brand Section -->
+                <div class="center-text margin-top-45 margin-bottom logo-frame">
+                    <div class="mask"></div>
+                    <img class="img-sm image" src="img/gridbox_logo.png" alt="">
+                </div>
+                <h3 class="center-text margin-bottom-45">Sign Up for Gridbox</h3>
+
+                <!-- Form Input Section -->
+                <form class="iconized row horizontal-align-center margin-top-45" action="">
+                    <!-- username -->
+                    <div class="form-group margin-bottom">
+                        <input type="text" class="form-input" id="username" name="username" placeholder="Username">
+                        <span class="input-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- mobile -->
+                    <div class="form-group margin-bottom">
+                        <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="Phone Number">
+                        <span class="input-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- password -->
+                    <div class="form-group margin-bottom-30">
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Password">
+                        <span class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                        <span class="input-icon toggle">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <button class="btn btn-primary margin-bottom-45 col">Register</button>
+                </form>
+
+                <div class="row horizontal-align-center">
+                    <div class="col-6 divider"></div>
+                </div>
+
+                <!-- Login Section -->
+                <div class="social-group row margin-top-30 margin-bottom">
+                    <div class="col align-right margin-right">
+                        <span class="offblack small">Already have an account?</span>
+                    </div>
+                    <div class="col align-left">
+                        <a class="btn btn-secondary btn-xs small"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gridbox.js"></script>
+    <script>
+
+        im("#username").lengthCheck(6, 12);
+        im("#mobile").formatNumber();
+        im("#password").showPassword();
+    
+    </script>
+</body>
+</html>

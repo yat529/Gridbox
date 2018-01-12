@@ -1,6 +1,6 @@
 
-@import "_mixins.scss";
-@import "_variables.scss";
+// @import "_mixins.scss";
+// @import "_variables.scss";
 
 // /* =======================================================================
 //  *                          Container Element 
@@ -162,6 +162,14 @@
 // col text align
 .center-text {
     text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
 }
 
 // /* =======================================================================

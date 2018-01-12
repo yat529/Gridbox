@@ -1,0 +1,57 @@
+
+// /* =======================================================================
+//  *                       Form input Containers Classes
+//  * -----------------------------------------------------------------------
+//  * Description:    used to wrap the form input elements
+//  * -----------------------------------------------------------------------
+//  * Ussage:         see below
+//  * ========================================================================
+//  */
+
+// <form> element
+// Main Usage:
+// (a). margin bottom: use to seperate forms if multiple forms stack on 
+//      each other, margin bottom is 0 if the only form or last form    
+// (b). border: assign custom border color
+
+form {
+    width: 100%;
+    // padding: 15px;
+    // margin-bottom: 15px;
+    // background: #fff;
+    color: $fontColor;
+    // border: 4px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+
+    &:last-child {
+        // margin-bottom: none;
+        // border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+// .form-group
+// Description: used to wrap the form input element, and assign a 
+//              margin bottom value
+// Main Usage:
+// (a). margin bottom: use to seperate forms if multiple forms stack on 
+//      each other, margin bottom is 0 if the only form or last form    
+// (b). can also used together with .row class, to give child elements
+//      flex grid properties
+
+.form-group {
+    position: relative;
+    // margin-bottom: 15px;
+    width: 100%;
+}
+
+// .form-field
+// Description: similar as .form-group, mainly used to wrap the <fliedset> 
+//              element, and assign a margin bottom value
+//              
+// Main Usage:  same as .form-group
+
+.form-field {
+    @extend .form-group;
+    border: 1px solid rgba(0, 0, 0, 0.15); 
+    border-left: none;
+}
