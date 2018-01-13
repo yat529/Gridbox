@@ -1,0 +1,83 @@
+
+// /* =======================================================================
+//  *                              Margins
+//  * -----------------------------------------------------------------------
+//  * Description:    
+//  *                 
+//  *                 
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block element
+//  * ========================================================================
+//  */
+
+.margin-around {
+    margin: 15px 25px;
+    &-30 { margin: 30px 40px; }
+    &-45 { margin: 45px 55px; }
+}
+
+.margin-top {
+    margin-top: 15px;
+    &-30 { margin-top: 30px; }
+    &-45 { margin-top: 45px; }
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+    &-30 { margin-bottom: 30px; }
+    &-45 { margin-bottom: 45px; }
+}
+
+.margin-left {
+    margin-left: 15px;
+    &-30 { margin-left: 30px; }
+    &-45 { margin-left: 45px; }
+}
+
+.margin-right {
+    margin-right: 15px;
+    &-30 { margin-right: 30px; }
+    &-45 { margin-right: 45px; }
+}
+
+
+// /* =======================================================================
+//  *                              Paddings
+//  * -----------------------------------------------------------------------
+//  * Description:    
+//  *                 
+//  *                 
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block element
+//  * ========================================================================
+//  */
+
+.padding-around {
+    padding: 15px 25px;
+    &-30 { padding: 30px 40px; }
+    &-45 { padding: 45px 55px; }
+}
+
+.padding-top {
+    padding-top: 15px;
+    &-30 { padding-top: 30px; }
+    &-45 { padding-top: 45px; }
+}
+
+.padding-bottom {
+    padding-bottom: 15px;
+    &-30 { padding-bottom: 30px; }
+    &-45 { padding-bottom: 45px; }
+}
+
+.padding-left {
+    padding-left: 15px;
+    &-30 { padding-left: 30px; }
+    &-45 { padding-left: 45px; }
+}
+
+.padding-right {
+    padding-right: 15px;
+    &-30 { padding-right: 30px; }
+    &-45 { padding-right: 45px; }
+}

@@ -1,105 +1,195 @@
 
-// position
+// /* =======================================================================
+//  *                              Position
+//  * -----------------------------------------------------------------------
+//  * Description:    shortcut class of element position property
+//  *                  (1) .fixed        (2) .absolute
+//  *                  (3) .relative
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any non static positioned element
+//  * ========================================================================
+//  */
+
 .fixed {
     position: fixed !important;
 }
 
-.full-screen {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.absolute {
+    position: absolute !important;
 }
 
-.screen-center {
-    position: absolute;
+.relative {
+    position: relative !important;
+}
+
+// /* =======================================================================
+//  *                              Locations
+//  * -----------------------------------------------------------------------
+//  * Description:    9 loctions including 4 corners, 4 centers, middlecenter
+//  *                  (1) .top-left        (2) .top-right
+//  *                  (3) .bottom-left     (4) .bottom-right
+//  *                  (5) .middle-left     (6) .middle-right
+//  *                  (7) .top-center      (8) .bottom-center
+//  *                  (9) .middle-center
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any non static positioned element
+//  * ========================================================================
+//  */
+
+.middle-center {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-// locations
+// top left position
 .top-left {
-    left: 20px;
-    top: 20px;
+    left: 15px;
+    top: 15px;
+
+    &-30 {
+        left: 30px;
+        top: 30px;
+    }
+
+    &-45 {
+        left: 45px;
+        top: 45px;
+    }
 }
 
+// bottom left position
 .bottom-left {
-    left: 20px;
-    bottom: 20px;
+    left: 15px;
+    bottom: 15px;
+
+    &-30 {
+        left: 30px;
+        bottom: 30px;
+    }
+
+    &-45 {
+        left: 45px;
+        bottom: 45px;
+    }
 }
 
+// top right position
 .top-right {
-    right: 20px;
-    top: 20px;
+    right: 15px;
+    top: 15px;
+
+    &-30 {
+        right: 30px;
+        top: 30px;
+    }
+
+    &-45 {
+        right: 45px;
+        top: 45px;
+    }
 }
 
+// bottom right position
 .bottom-right {
-    right: 20px;
-    bottom: 20px;
+    right: 15px;
+    bottom: 15px;
+
+    &-30 {
+        right: 30px;
+        bottom: 30px;
+    }
+
+    &-45 {
+        right: 45px;
+        bottom: 45px;
+    }
 }
 
-// margins
-.margin-top {
-    margin-top: 15px;
+// top center position
+%top-center {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.margin-top-30 {
-    margin-top: 30px;
+.top-center {
+    @extend %top-center;
+    top: 15px;
+
+    &-30 {
+        @extend %top-center;
+        top: 30px;
+    }
+
+    &-45 {
+        @extend %top-center;
+        top: 45px;
+    }
 }
 
-.margin-top-45 {
-    margin-top: 45px;
+// bottom center position
+%bottom-center {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.margin-bottom {
-    margin-bottom: 15px;
+.bottom-center {
+    @extend %bottom-center;
+    bottom: 15px;
+
+    &-30 {
+        @extend %bottom-center;
+        bottom: 30px;
+    }
+
+    &-45 {
+        @extend %bottom-center;
+        bottom: 45px;
+    }
 }
 
-.margin-bottom-30 {
-    margin-bottom: 30px;
+// middle left position
+%middle-left {
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.margin-bottom-45 {
-    margin-bottom: 45px;
+.middle-left {
+    @extend %middle-left;
+    left: 15px;
+
+    &-30 {
+        @extend %middle-left;
+        left: 30px;
+    }
+
+    &-45 {
+        @extend %middle-left;
+        left: 45px;
+    }
 }
 
-
-.margin-left {
-    margin-left: 15px;
+// middle right position
+%middle-right {
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.margin-right {
-    margin-right: 15px;
+.middle-right {
+    @extend %middle-right;
+    right: 15px;
+
+    &-30 {
+        @extend %middle-right;
+        right: 30px;
+    }
+
+    &-45 {
+        @extend %middle-right;
+        right: 45px;
+    }
 }
 
-// paddings
-.padding-around {
-    padding: 15px 25px;
-}
-
-.padding-around-30 {
-    padding: 30px 40px;
-}
-
-
-
-// images
-.img-sm {
-    width: 65px;
-    height: auto;
-}
-
-.img-m {
-    width: 85px;
-    height: auto;
-}
-
-.img-lg {
-    width: 100px;
-    height: auto;
-}
 
 // border
 .border {
@@ -111,82 +201,9 @@
 }
 
 // dropshadow
-.dropshadow {
+.box-shadow {
     box-shadow: 0px 4px 16px -12px $boxShadow;
 }
-
-
-// backgroundColor
-.bg-lightgray {
-    background: $gray;
-}
-
-.bg-white {
-    background: $white;
-}
-
-
-// logo frame
-.logo-frame {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    margin-left: auto;
-    margin-right: auto;
-    background: $gray;
-    border-radius: 50%;
-    box-shadow: 0px 2px 8px -5px $boxShadow;
-
-    .mask {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 2;
-    }
-
-    .image {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 90%;
-        max-height: 90%;
-        z-index: 1;
-    }
-}
-
-
-// ----------------------- fonts -----------------------
-
-// font weight
-.bold {
-    font-weight: bold;
-}
-
-.bolder {
-    font-weight: bolder;
-}
-
-// font style
-.italic {
-    font-style: italic;
-}
-
-// font colors
-.offblack {
-    color: $offBlack;
-}
-
-// font size
-.small {
-    font-size: 0.85rem !important;
-}
-
 
 // ----------------------- divider -----------------------
 
