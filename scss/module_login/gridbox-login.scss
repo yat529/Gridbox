@@ -1,0 +1,113 @@
+
+.login-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 767px) {
+        position: relative;
+        width: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}
+
+.login-form {
+    position: relative;
+    width: 450px;
+    height: 685px;
+    padding: 35px 55px;
+    box-shadow: 0px 4px 16px -12px $boxShadow;
+
+    &.hide {
+        display: none;
+    }
+
+    @media (max-width: 767px) and (orientation: portrait) {
+        position: relative;
+        width: 100%;
+        padding: 25px 35px;
+        top: 0;
+        left: 0;
+        transform: none;
+        box-shadow: none;
+    }
+
+    @media (max-width: 767px) and (orientation: landscape) {
+        position: relative;
+        width: 450px;
+        padding: 25px 35px;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+.login-toggle {
+    position: absolute;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    top: calc(100% - 45px/2);
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    border-radius: 50%;
+    background: $information;
+    box-shadow: 0 1px 13px -7px $black;
+    transition: all 0.1s ease-in;
+    cursor: pointer;
+
+    &.active {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    &:hover {
+        background: $informationDarker;
+    }
+
+    i {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+    }
+
+    @media (max-width: 767px) {
+        display: none;
+        box-shadow: none;
+    }
+}
+
+.social-group {
+    position: absolute;
+    transform: translateY(0%);
+    transition: all 0.3s ease-out;
+    z-index: 2;
+
+    &.slide-up {
+        transform: translateY(-100%);
+        transition: all 0.3s ease-out;
+    }
+
+    a {
+        border: none;
+
+        &.google { background: $googleplusRed; }
+        &.facebook { background: $facebookBlue; }
+        &.twitter { background: $twitterBlue; }
+    }
+
+    @media (max-width: 767px) {
+        display: block !important;
+        position: relative;
+        transform: none;
+        border-top: 1px solid $gray;
+    }
+}
+

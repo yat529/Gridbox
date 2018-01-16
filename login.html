@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <title>Login Form</title>
+</head>
+<body class="bg-lightgray">
+    <div class="login-form-container">
+
+            <!-- 1st panel -->
+            <div class="login-form bg-white" id="register-form">
+
+                <!-- Brand Section -->
+                <div class="center-text margin-around-30 logo-frame">
+                    <div class="mask"></div>
+                    <img class="img-sm image" src="img/gridbox_logo.png" alt="">
+                </div>
+                <h3 class="center-text">Sign Up for Gridbox</h3>
+
+                <!-- Form Input Section -->
+                <form class="iconized row horizontal-align-center margin-top-45" action="">
+                    <!-- username -->
+                    <div class="form-group margin-bottom">
+                        <input type="text" class="form-input" id="username" name="username" placeholder="Username">
+                        <span class="input-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- mobile -->
+                    <div class="form-group margin-bottom">
+                        <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="Phone Number">
+                        <span class="input-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- password -->
+                    <div class="form-group margin-bottom-30">
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Password">
+                        <span class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                        <span class="input-icon toggle">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <button class="btn btn-primary margin-bottom-45 col">Register</button>
+                </form>
+
+                <div class="row horizontal-align-center">
+                    <div class="col-6 divider"></div>
+                </div>
+
+                <!-- Login Section -->
+                <div class="row margin-top-30">
+                    <div class="col align-right margin-right">
+                        <span class="offblack small">Already have an account?</span>
+                    </div>
+                    <div class="col align-left">
+                        <a class="btn btn-secondary btn-xs small"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="login-toggle" class="login-toggle top-layer"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+
+            <!-- 2nd Panel -->
+            <div class="login-form bg-white social-group hide" id="social-form">
+                <div class="margin-top-45 margin-bottom-45">
+                    <h3 class="center-text">Register Securely</h3>
+                    <h4 class="center-text">with your social media account</h6>
+                </div>
+
+                <div class="absolute full-width middle-center">
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 facebook" id="facebook"><i class="fa fa-facebook-square margin-right" aria-hidden="true"></i>Facebook</a>
+                    </div>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider margin-around-30"></div>
+                    </div>
+    
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 google" id="google+"><i class="fa fa-google-plus-square margin-right" aria-hidden="true"></i>Google+</a>
+                    </div>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider margin-around-30"></div>
+                    </div>
+    
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 twitter" id="twitter"><i class="fa fa-twitter-square margin-right" aria-hidden="true"></i>Twitter</a>
+                    </div>
+                </div>
+                
+            </div>
+
+    </div>
+
+    <script src="js/gridbox.js"></script>
+    <script>
+
+        im("#username").lengthCheck(6, 12);
+        im("#mobile").formatNumber();
+        im("#password").showPassword();
+
+        im("#login-toggle").click(function(){
+            var sf = im("#social-form");
+            
+            this.toggleClass("active");
+
+            if(sf.hasClass("hide")) {
+                sf.removeClass("hide");
+                setTimeout(function(){
+                    sf.addClass("slide-up");
+                }, 50);
+            } else {
+                sf.removeClass("slide-up");
+                setTimeout(function(){
+                    sf.addClass("hide");
+                }, 300);
+            } 
+        });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+
+// /* =======================================================================
+//  *                           Form input Control
+//  * -----------------------------------------------------------------------
+//  * Description:    used to control the style of form input element,
+//  *                 normalize the font size, line-height, and assigne
+//  *                 a custom border color, also applied a transition
+//  *                 effect when focused
+//  *                  (a). can be used as a block level element, 100% width.
+//  *                  (b). can be used with a grid class, ex: col-1 to act
+//  *                       like a flex grid. (need to wrap by .row or similar
+//  *                       classes.
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to Form input such as <input>, <textarea>, 
+//  *              <option>, <checkbox>, etc
+//  * ========================================================================
+//  */
+
+.form-input {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    color: $fontColor;
+    font-size: $inputFontSize;
+    line-height: $inputLineHeight;
+    border: 1px solid $border;  
+    transition: all 0.3s;
+
+    &:focus {
+        border-color: $information;
+        outline: none;
+    }
+
+    &::placeholder {
+        color: $disabled;
+    }
+}
+
+// Form Checkbox
+// Description: set a larger space between the checkbox and text
+// Usage: applied to <input> element only with a typle of checkbox, ex: <input type="checkbox" class="form-check">
+// NOTE:  it's important to wrap input with this class by a <label> with a .label-inline class
+.form-check {
+    margin-right: 0.25rem;
+}
+
+// Textarea
+// Description: only allow vertical resize, horizontal size can be styled by using a grid class, ex: col-3
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+// /* =======================================================================
+//  *                          Select Element, <select>
+//  * -----------------------------------------------------------------------
+//  * Description:    the <select> element is displayed differently with
+//  *                 different browsers, so we try to normalize it by remove
+//  *                 the appearance property (to remove the browser default 
+//  *                 carret), and use a customized carret. So we create a
+//  *                 wrapper (.singleSelectoWrapper or .multiSelectWrapper)
+//  *                 to contain the <select> and .caret element.
+//  *
+//  *                 Since <select> has single or multiple options, so we 
+//  *                 create .singleSelectoWrapper and .multiSelectWrapper
+//  *                 respectively
+//  * -----------------------------------------------------------------------
+//  * Ussage:         see below
+//  * ========================================================================
+//  */
+
+// overwrite the default <select> styling
+select {
+    display: block;
+    -webkit-appearance: none;  
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    background: transparent !important;
+    z-index: 2; // make it top layer
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// .singleSelectoWrapper and .multiSelectWrapper
+// Description: the wrapper element for <select>          
+// Main Usage:  apply to a <div>, can also be used with grid class, ex: col-3
+
+.singleSelectWrapper {
+    position: relative;
+    overflow: auto; 
+    z-index: 1;
+
+    //.caret
+    //Description: the custom caret
+    //Main Usage: applied to the <span> sibling of the <select>
+    .caret {
+        display: block;
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        top: calc( (2.5rem + 2px) / 2); // lineheight 1.5rem; padding 1rem; border: 2px
+        right: 1rem;
+        transform: translateY(-50%);
+        border-top: 0.3rem solid $caretColor;
+        border-right: 0.3rem solid transparent;
+        border-left: 0.3rem solid transparent;
+        z-index: 1; 
+    }
+
+    .single-select {
+        padding-right: 3rem;
+    }
+}
+
+.multiSelectWrapper {
+    @extend .singleSelectWrapper;
+
+    .multi-select {
+        max-height: 8rem;
+
+        option {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid $border;
+    
+            &:first-child {
+                margin-top: -0.5rem;
+            }
+    
+            &:last-child {
+                margin-bottom: -0.5rem;
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+
+// /* =======================================================================
+//  *                  Labeling Class, <label> and <legend>
+//  * -----------------------------------------------------------------------
+//  * Description:    two classes associated with the <label> element, 
+//  *                  (a) .label-col
+//  *                  (b) .label-inline
+//  *                 they are indentical, just make the name more self
+//  *                 descriptive. The two classes will normalize the size
+//  *                 of <label> with element has .form-input class for a
+//  *                 proper aligning result
+//  * -----------------------------------------------------------------------
+//  * Ussage:         (a) .label-col: applied to <label> with a grid class
+//  *                 (b) .label-inline: applied to block level <label>
+//  * ========================================================================
+//  */
+
+.label {
+    display: inline-block;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    font-size: $inputFontSize;
+    line-height: $inputLineHeight;
+    border: 1px solid transparent;
+}
+
+// .label-col {
+    // display: inline-block;
+    // padding: 0.5rem 0.75rem 0.5rem 0;
+    // font-size: $inputFontSize;
+    // line-height: $inputLineHeight;
+    // border: 1px solid transparent;
+// }
+
+// .label-inline {
+//     @extend .label-col;
+//     margin-bottom: 0.35rem;
+// }
+
+// Disabled Input
+// Description: used if <label> is used to wrap the .form-input element
+// Usage: apply to <label> if <label> wraps input element
+//        or apply to elements with .form-input class directly
+.disabled {
+    color: $disabled;
+    cursor: not-allowed;
+}
+
+legend {
+    padding: 0.5rem 1.5rem 0.5rem 0;
+    // margin-bottom: 15px;
+}

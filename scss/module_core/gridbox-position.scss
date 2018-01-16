@@ -1,0 +1,213 @@
+
+// /* =======================================================================
+//  *                              Position
+//  * -----------------------------------------------------------------------
+//  * Description:    shortcut class of element position property
+//  *                  (1) .fixed        (2) .absolute
+//  *                  (3) .relative
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any non static positioned element
+//  * ========================================================================
+//  */
+
+.fixed {
+    position: fixed !important;
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+.relative {
+    position: relative !important;
+}
+
+// /* =======================================================================
+//  *                              Locations
+//  * -----------------------------------------------------------------------
+//  * Description:    9 loctions including 4 corners, 4 centers, middlecenter
+//  *                  (1) .top-left        (2) .top-right
+//  *                  (3) .bottom-left     (4) .bottom-right
+//  *                  (5) .middle-left     (6) .middle-right
+//  *                  (7) .top-center      (8) .bottom-center
+//  *                  (9) .middle-center
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any non static positioned element
+//  * ========================================================================
+//  */
+
+.middle-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// top left position
+.top-left {
+    left: 15px;
+    top: 15px;
+
+    &-30 {
+        left: 30px;
+        top: 30px;
+    }
+
+    &-45 {
+        left: 45px;
+        top: 45px;
+    }
+}
+
+// bottom left position
+.bottom-left {
+    left: 15px;
+    bottom: 15px;
+
+    &-30 {
+        left: 30px;
+        bottom: 30px;
+    }
+
+    &-45 {
+        left: 45px;
+        bottom: 45px;
+    }
+}
+
+// top right position
+.top-right {
+    right: 15px;
+    top: 15px;
+
+    &-30 {
+        right: 30px;
+        top: 30px;
+    }
+
+    &-45 {
+        right: 45px;
+        top: 45px;
+    }
+}
+
+// bottom right position
+.bottom-right {
+    right: 15px;
+    bottom: 15px;
+
+    &-30 {
+        right: 30px;
+        bottom: 30px;
+    }
+
+    &-45 {
+        right: 45px;
+        bottom: 45px;
+    }
+}
+
+// top center position
+%top-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-center {
+    @extend %top-center;
+    top: 15px;
+
+    &-30 {
+        @extend %top-center;
+        top: 30px;
+    }
+
+    &-45 {
+        @extend %top-center;
+        top: 45px;
+    }
+}
+
+// bottom center position
+%bottom-center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bottom-center {
+    @extend %bottom-center;
+    bottom: 15px;
+
+    &-30 {
+        @extend %bottom-center;
+        bottom: 30px;
+    }
+
+    &-45 {
+        @extend %bottom-center;
+        bottom: 45px;
+    }
+}
+
+// middle left position
+%middle-left {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.middle-left {
+    @extend %middle-left;
+    left: 15px;
+
+    &-30 {
+        @extend %middle-left;
+        left: 30px;
+    }
+
+    &-45 {
+        @extend %middle-left;
+        left: 45px;
+    }
+}
+
+// middle right position
+%middle-right {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.middle-right {
+    @extend %middle-right;
+    right: 15px;
+
+    &-30 {
+        @extend %middle-right;
+        right: 30px;
+    }
+
+    &-45 {
+        @extend %middle-right;
+        right: 45px;
+    }
+}
+
+
+// border
+.border {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.border-radius {
+    border-radius: 15px;
+}
+
+// dropshadow
+.box-shadow {
+    box-shadow: 0px 4px 16px -12px $boxShadow;
+}
+
+// ----------------------- divider -----------------------
+
+.divider {
+    height: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

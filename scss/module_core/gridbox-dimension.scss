@@ -1,0 +1,186 @@
+
+// /* =======================================================================
+//  *                              Full screen
+//  * -----------------------------------------------------------------------
+//  * Description:    element covers the whole screen, by default,
+//  *                 relative postion is used, if want fixed position,
+//  *                 user .full-screen-fixed
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block-level element
+//  * ========================================================================
+//  */
+
+%full-screen {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.full-screen {
+    position: absolute;
+    @extend %full-screen;
+
+    &-fixed {
+        position: fixed;
+        @extend %full-screen;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+// /* =======================================================================
+//  *                           Fixed-width Rectangle
+//  * -----------------------------------------------------------------------
+//  * Description:    retangular shaped block element,
+//  *                 - has 2 width/height ratio:
+//  *                   (1) 4/3                   (2) 16/9
+//  *                 - has 6 width sizes:
+//  *                   (1) 200px (default)       (2) 350px
+//  *                   (3) 500px                 (4) 700px
+//  *                   (5) 900px                 (6) 1200px
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block-level element
+//  * ========================================================================
+//  */
+
+@mixin rectangle($width, $ratio) {
+    width: $width;
+    height: ($width / $ratio);
+}
+
+.rectangle-43 {
+    @include rectangle(200px, 4/3);
+
+    &-350 {
+        @include rectangle(350px, 4/3);
+    }
+
+    &-500 {
+        @include rectangle(500px, 4/3);
+    }
+
+    &-700 {
+        @include rectangle(700px, 4/3);
+    }
+
+    &-900 {
+        @include rectangle(900px, 4/3);
+    }
+
+    &-1200 {
+        @include rectangle(1200px, 4/3);
+    }
+}
+
+
+.rectangle-169 {
+    @include rectangle(200px, 16/9);
+
+    &-350 {
+        @include rectangle(350px, 16/9);
+    }
+
+    &-500 {
+        @include rectangle(500px, 16/9);
+    }
+
+    &-700 {
+        @include rectangle(700px, 16/9);
+    }
+
+    &-900 {
+        @include rectangle(900px, 16/9);
+    }
+
+    &-1200 {
+        @include rectangle(1200px, 16/9);
+    }
+}
+
+// /* =======================================================================
+//  *                           Fixed-width Square
+//  * -----------------------------------------------------------------------
+//  * Description:    square shaped block element,
+//  *                 - has 6 width sizes:
+//  *                   (1) 200px (default)       (2) 350px
+//  *                   (3) 500px                 (4) 700px
+//  *                   (5) 900px                 (6) 1200px
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block-level element
+//  * ========================================================================
+//  */
+
+@mixin square($width) {
+    width: $width;
+    height: $width;
+}
+
+.square {
+    @include square(200px);
+
+    &-350 {
+        @include square(350px);
+    }
+
+    &-500 {
+        @include square(500px);
+    }
+
+    &-700 {
+        @include square(700px);
+    }
+
+    &-900 {
+        @include square(900px);
+    }
+
+    &-1200 {
+        @include square(1200px);
+    }
+}
+
+// /* =======================================================================
+//  *                           Fixed-width Circle
+//  * -----------------------------------------------------------------------
+//  * Description:    circle shaped block element,
+//  *                 - has 6 width sizes:
+//  *                   (1) 200px (default)       (2) 350px
+//  *                   (3) 500px                 (4) 700px
+//  *                   (5) 900px                 (6) 1200px
+//  * -----------------------------------------------------------------------
+//  * Ussage:         Can be applied to any block-level element
+//  * ========================================================================
+//  */
+
+@mixin circle($width) {
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+}
+
+.circle {
+    @include circle(200px);
+
+    &-350 {
+        @include circle(350px);
+    }
+
+    &-500 {
+        @include circle(500px);
+    }
+
+    &-700 {
+        @include circle(700px);
+    }
+
+    &-900 {
+        @include circle(900px);
+    }
+
+    &-1200 {
+        @include circle(1200px);
+    }
+}

@@ -4,9 +4,12 @@
     // RegExp for Selectors
     var sReg = /^(?:\.([\w-]+)|\#([\w-]+))$/;
 
-    // Function Bank
     var init = {
-        // Extend Functions
+
+        // 
+        // -------------------- Core Functions --------------------------
+        // 
+        
         extend: function(obj, name){
             if(typeof obj !== "object" && typeof obj !== "function") return "Argument must be an Object or function!";
             
@@ -112,8 +115,16 @@
 
     };
 
+    // 
+    // -------------------- Entry Point --------------------------
+    // 
+
     // Object Constructor
     var iAm = function(selector){
+
+        // if only extend methods, for plugins
+        if(!selector) return init;
+
         var F = Object.create(init);
 
         if(sReg.exec(selector)){
@@ -126,8 +137,9 @@
         
     };
 
-
-    // Helper Functions
+    // 
+    // -------------------- Helper Functions --------------------------
+    // 
 
     // Create an im Object
     // Input is HTMLelement or HTMLCollection
@@ -144,8 +156,10 @@
         return (obj.length && obj[0] && typeof obj[0])? true : false;
     }
 
+    // 
+    // -------------------- Core Methods --------------------------
+    // 
 
-    // Extend features
     init.extend({
 
         // DOM Traversal
@@ -188,7 +202,7 @@
 
         // Return lastSibling Object
         lastSibling: function(){
-            return createObj( this[0].lastElementSibling ); 
+            return createObj( this[0].parentElement.children[this[0].parentElement.children.length - 1] ); 
         },
 
         // Return siblings Array
@@ -202,7 +216,7 @@
             var match = [],
                 next = this[0].nextElementSibling;
 
-            while(next.nodeType === 1){
+            while(next){
                 match.push(next);
                 next = next.nextElementSibling;
             }
@@ -215,7 +229,7 @@
             var match = [],
             next = this[0].previousElementSibling;
 
-            while(next.nodeType === 1){
+            while(next){
                 match.push(next);
                 next = next.previousElementSibling;
             }
@@ -349,10 +363,242 @@
             return this;
         },
 
+        // focus event
+        onfocus: function(callback) {
+            if(typeof callback !== "function") return "Parameter Type Error";
+            this[0].addEventListener("focus", callback.bind(this), false);
+        },
+
+        focus: function() {
+            this[0].focus();
+        },
+
+        // blur event (out of focus)
+        onblur: function(callback) {
+            if(typeof callback !== "function") return "Parameter Type Error";
+            this[0].addEventListener("blur", callback.bind(this), false);
+        },
+
+        // keydown event
+        keydown: function(callback) {
+            if(typeof callback !== "function") return "Parameter Type Error";
+            this[0].addEventListener("keydown", callback.bind(this), false);
+        },
+
+        // keyup event
+        keyup: function(callback) {
+            if(typeof callback !== "function") return "Parameter Type Error";
+            this[0].addEventListener("keyup", callback.bind(this), false);
+        }
+
     });
 
-    // export to gloabl
+    // 
+    // -------------------- Exit Point --------------------------
+    // 
+
+    // Export to Gloabl
     global.im = iAm;
+
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    // 
+
+    init.extend({
+
+        // -----------------------------------------------------------
+        //                  Input Length Check
+        // -----------------------------------------------------------
+        // Description: Use to check input string length. Will check
+        //              validity, and display status icon
+        // -----------------------------------------------------------
+        // Parameter:   min
+        // Description: minimun length
+        // Parameter:   max
+        // Description: maximun length
+        // Parameter:   statusElem (Optional)
+        // Description: the element object for the check icon
+        // -----------------------------------------------------------
+        // Note:  if statusElem parameter is not passed, will use the 
+        //        default value. The default HTML template is requied
+        // -----------------------------------------------------------
+
+        lengthCheck: function(min, max, statusElem){
+            var self = this;
+            var status = statusElem || self.nextSibling().nextSibling();
+
+            self.onfocus(function(){
+                resetStatus(status)
+            });
+
+            self.onblur(function(){
+                if(self[0].value.length >= min && self[0].value.length <= max) {
+                    status.addClass("valid");
+                } else {
+                    status.addClass("invalid");
+                }
+            });
+        },
+
+        // -----------------------------------------------------------
+        //                  Format Phone Number Input
+        // -----------------------------------------------------------
+        // Description: Use for <input type="tel">, add format symbol
+        //              to the inpunt value. Will also check for
+        //              input validity, and show status icon
+        // Note:        (xxx) xxx-xxxx format is used
+        // -----------------------------------------------------------
+        // Parameter:   statusElem (Optional)
+        // Description: the element object for the check icon
+        // -----------------------------------------------------------
+        // Note:  if statusElem parameter is not passed, will use the 
+        //        default value. The default HTML template is requied
+        // -----------------------------------------------------------
+
+        formatNumber: function(statusElem){
+
+            var self = this;
+            var status = statusElem || self.nextSibling().nextSibling();
+            var regexp = /^\([0-9]{3}\)\s{1}[0-9]{3}\-[0-9]{4}$/;
+     
+            // define format
+            // format array will have 3 items
+            var seporator = ["(",")", " ","-"];
+
+            self.keydown(function(evt){               
+                addSeporator(self, evt, seporator, true);
+            });
+
+            self.keyup(function(evt){
+                // reset all classes
+                if(self[0].value.length <= 13) {
+                    resetStatus(status)
+                }
+
+                addSeporator(self, evt, seporator, false);
+
+                // add success class if length and format is valid, else add invalid
+                if(self[0].value.length === 14) {
+                    resetStatus(status)
+
+                    if(regexp.test(self[0].value)) {
+                        status.addClass("valid");
+                    } else {
+                        status.addClass("invalid");
+                    }    
+                }
+
+                // add invalid class
+                if(self[0].value.length > 14 && !status.hasClass("invalid")) {
+                    status.removeClass("valid");
+                    status.addClass("invalid");
+                }
+            });
+
+            // exit check (when lose focus)
+            self.onblur(function(){
+                resetStatus(status)
+
+                if(regexp.test(self[0].value)) {
+                    status.addClass("valid");
+                } else {
+                    status.addClass("invalid");
+                }
+            })
+
+            // helper function
+            function addSeporator(elem, event, seporator, initial){
+
+                if(initial) {
+                    // add initial seporators
+                    if(event.keyCode !== 8 && !elem[0].value.length) {
+                        elem[0].value += seporator[0];
+                    }
+                }
+
+                if(event.keyCode !== 8 && elem[0].value.length === 4) {
+                    elem[0].value += seporator[1];
+                }
+                if(event.keyCode !== 8 && elem[0].value.length === 5) {
+                    elem[0].value += seporator[2];
+                }
+                if(event.keyCode !== 8 && elem[0].value.length === 9) {
+                    elem[0].value += seporator[3];
+                }
+            }
+        },
+
+        // -----------------------------------------------------------
+        //                  Show Input Password
+        // -----------------------------------------------------------
+        // Description: Use for <input type="password">, change its
+        //              type to "text" to show the password. Will
+        //              check for input validity and show status icon
+        // -----------------------------------------------------------
+        // Parameter:   toggleElem (Optional)
+        // Description: the element object for the toggler
+        // Parameter:   statusElem (Optional)
+        // Description: the element object for the check icon
+        // -----------------------------------------------------------
+        // Note:  if the two parameter is not passed, will use the 
+        //        default value. The default HTML template is requied
+        // -----------------------------------------------------------
+
+        showPassword: function(toggleElem, statusElem){
+            var self = this;
+            var toggle = toggleElem || self.lastSibling();
+            var status = statusElem || self.nextSibling().nextSibling();
+
+            // show the icon
+            self.onfocus(function(){
+                toggle.css({ opacity: 1 });
+                resetStatus(status);
+            });
+
+            // hide the icon
+            self.onblur(function(){
+                toggle.css({ opacity: 0 });
+
+                // exit validation
+                if(self[0].value.length >= 6 && self[0].value.length <= 12) {
+                    status.addClass("valid");
+                } else {
+                    status.addClass("invalid");
+                }
+            });
+
+            // toggle password
+            toggle.click(function(){
+
+                toggle.toggleClass("active");
+                self.focus();
+
+                if(self[0].type === "password") {
+                    self[0].type = "text";
+                } else {
+                    self[0].type = "password";
+                }
+            })
+        },
+
+    });
+
+    // 
+    // -----------Gridbox Plugin Helper Functions-----------------
+    // 
+
+    // -----------------------------------------------------------
+    //              reset the check icon classes
+    // -----------------------------------------------------------
+    // Parameter: statusElem
+    // Description: the element object for the check icon
+    // -----------------------------------------------------------
+    function resetStatus(statusElem) {
+        if(statusElem.hasClass("valid")) statusElem.removeClass("valid");
+        if(statusElem.hasClass("invalid")) statusElem.removeClass("invalid");
+    }
 
 })(window);
 
