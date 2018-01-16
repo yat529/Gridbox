@@ -6,13 +6,87 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/gridbox.css">
     <link rel="stylesheet" href="css/gridbox-grids.css">
-    <link rel="stylesheet" href="css/gridbox-form.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <title>Gridbox</title>
+    <link rel="stylesheet" href="css/gridbox-nav-mordenize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Morden Navigation Bar - Modulized</title>
 </head>
 <body>
-    <div class="test"></div>
-    <div id="testid"></div>
+    <div class="container-fluid">
+
+        <div class="nav">
+            <!-- Brand -->
+            <div class="brand fixed top-left">
+                <img src="img/gridbox_logo.png" alt="">
+                <div class="brandname"><span>Gridbox</span></div>
+            </div>
+            <!-- Menu Toggle -->
+            <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
+
+            <div class="overlay" id="overlay">
+                <nav>
+                    <!-- Menu Item -->
+                    <ul class="main slideright">
+                        <li class="menuitem"><a href="#">Link</a></li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem">
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="social">
+                        <span>Follow us</span>
+                        <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="icon" id="weixin" href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                        <a class="icon" id="weibo" href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+                    </div>
+                    
+                </nav>
+            </div>
+
+        </div> <!-- /.nav -->
+
+    </div> <!-- .container-fluid -->
+
     <script src="js/gridbox.js"></script>
+    <script>
+
+    var menuToggle = im("#menu-toggle"),
+        subToggle = im(".sub-toggle"),
+        ovrly = im("#overlay"),
+        main = im(".main").first();
+
+    menuToggle.click(function(){
+        this.toggleClass("active");
+        ovrly.toggleClass("show");
+        main.toggleClass("show");
+    });
+    
+    subToggle.each(function(){
+        this.click(function(){
+            this.toggleClass("clicked");
+            this.nextSibling().toggleClass("show");
+        });
+    });
+
+    </script>
 </body>
 </html>

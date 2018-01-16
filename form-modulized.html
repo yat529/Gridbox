@@ -14,36 +14,36 @@
     <div class="container margin-top">
         <div class="row horizontal-align-center">
 
-            <h3>Sample Full Width Form Inputs</h3>
+            <h3 class="margin-bottom">Sample Full Width Form Inputs</h3>
 
-            <form action="">
+            <form class="margin-bottom" action="">
                 <!-- Text Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="inputFormControl-1">Default Text Input</label>
+                    <label class="label" for="inputFormControl-1">Default Text Input</label>
                     <input type="text" class="form-input" id="inputFormControl-1" placeholder="Enter text">
                 </div>
 
                 <!-- Email Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="emailFormControl-1">Default Email Input</label>
+                    <label class="label" for="emailFormControl-1">Default Email Input</label>
                     <input type="email" class="form-input" id="emailFormControl-1" placeholder="Enter email">
                 </div>
 
                 <!-- Email Input -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="passwordFormControl-1">Default Password Input</label>
+                    <label class="label" for="passwordFormControl-1">Default Password Input</label>
                     <input type="password" class="form-input" id="passwordFormControl-1" placeholder="Enter Password">
                 </div>
 
                 <!-- Textarea -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="textareaFormControl-1">Textarea Input</label>
-                    <textarea type="text" class="form-input" id="textareaFormControl-1" placeholder="Enter text" rows="3"></textarea>
+                    <label class="label" for="textareaFormControl-1">Textarea Input</label>
+                    <textarea type="text" class="form-input" id="textareaFormControl-1" placeholder="Enter text" rows="5"></textarea>
                 </div>
 
                 <!-- Single Option -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <label class="label" for="optionFormControl-1">Option List</label>
                     <div class="singleSelectWrapper"> <!-- use a wrapper div to select the ::after element -->
                         <span class="caret"></span>
                         <select class="form-input" id="optionFormControl-1">
@@ -58,7 +58,7 @@
 
                 <!-- Multiple Option -->
                 <div class="form-group margin-bottom">
-                    <label class="label-inline" for="optionFormControl-1">Option List</label>
+                    <label class="label" for="optionFormControl-1">Option List</label>
                     <div class="multiSelectWrapper">
                         <select multiple class="form-input" id="optionFormControl-1">
                             <option>Option One</option>
@@ -73,7 +73,7 @@
                 <fieldset class="form-field margin-bottom">
                     <legend>Default Check Box</legend>
                     <div class="form-group margin-bottom">
-                        <label class="label-inline margin-right">
+                        <label class="label margin-right">
                             <input type="checkbox" class="form-check" id="checkFormControl-1">
                             <span>Check it</span>
                         </label>
@@ -84,15 +84,15 @@
                 <fieldset class="form-field margin-bottom">
                     <legend>Radio Check Buttons</legend>
                     <div class="form-group margin-bottom">
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="" checked>
                             <span>Radio Check One</span>
                         </label>
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
                             <span>Radio Check One</span>
                         </label>
-                        <label class="label-inline">
+                        <label class="label">
                             <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="">
                             <span>Radio Check One</span>
                         </label>
@@ -108,6 +108,75 @@
                         <button type="button" class="btn btn-success margin-right">Submit</button>
                         <button type="button" class="btn btn-warning margin-right">Submit</button>
                         <button type="button" class="btn btn-danger margin-right">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <h3 class="margin-bottom-30">Sample Inline Form Inputs</h3>
+
+            <!-- Flex Display Form -->
+            <form action="">
+                <!-- Text Input -->
+                <div class="form-group row margin-bottom-30">
+                    <label class="col-2 label" for="inputFormControl-2">Text Input</label>
+                    <input type="text" class="col-5 form-input" id="inputFormControl-2" placeholder="Enter text">
+                <!-- Email Input -->
+                    <label class="col-2 col-offset-1 label" for="emailFormControl-2">Email Input</label>
+                    <input type="email" class="col-6 form-input" id="emailFormControl-2" placeholder="Enter email">
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group row margin-bottom-30">
+                    <label class="col-2 label" for="textareaFormControl-1">Textarea Input</label>
+                    <textarea type="text" class="col-14 form-input" id="textareaFormControl-1" placeholder="Enter text" rows="5"></textarea>
+                </div>
+
+                <!-- Single Option -->
+                <div class="form-group row margin-bottom">
+                    <label class="col-2 label" for="optionFormControl-1">Option List</label>
+                    <div class="col-4 singleSelectWrapper"> <!-- use a wrapper div to select the ::after element -->
+                        <span class="caret"></span>
+                        <select class="form-input single-select" id="optionFormControl-1">
+                            <option disabled selected>Please select</option>
+                            <option>Option One</option>
+                            <option>Option Two</option>
+                            <option>Option Three</option>
+                            <option>Option Four</option>
+                        </select>
+                    </div>
+                <!-- Multiple Option -->
+                    <label class="col-2 col-offset-1 label" for="optionFormControl-1">Option List</label>
+                    <div class="multiSelectWrapper col-7">
+                        <select multiple class="form-input" id="optionFormControl-1">
+                            <option>Option One</option>
+                            <option>Option Two</option>
+                            <option>Option Three</option>
+                            <option>Option Four</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- Horizontal Radio Checkbox -->
+                <fieldset class="form-field margin-bottom-30">
+                    <legend>Radio Check Buttons</legend>
+                    <div class="form-group row center-text horizontal-align-center-equal-space-around margin-bottom">
+                        <label class="col-2 label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-1" name="radioFormControl_1" value="" checked>
+                            <span>Check One</span>
+                        </label>
+                        <label class="col-2 label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-2" name="radioFormControl_1" value="">
+                            <span>Check Two</span>
+                        </label>
+                        <label class="col-2 label-inline">
+                            <input type="radio" class="form-check" id="radioFormControl-3" name="radioFormControl_1" value="">
+                            <span>Check Three</span>
+                        </label>
+                        <label class="col-3 label-inline disabled">
+                            <input type="radio" class="form-check" id="radioFormControl-4" name="radioFormControl_1" value="" disabled>
+                            <span>Check Four (Disabled)</span>
+                        </label>
                     </div>
                 </fieldset>
 

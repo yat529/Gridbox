@@ -29,6 +29,9 @@
 .margin-bottom {
   margin-bottom: 15px; }
 
+.margin-bottom-30 {
+  margin-bottom: 30px; }
+
 /* Avoid accident click event caused by finger touch */
 a,
 area,
@@ -111,17 +114,20 @@ select {
     position: absolute;
     width: 3px;
     height: 3px;
-    top: 50%;
+    top: 21px;
     right: 1rem;
     border-top: 0.3rem solid #495057;
     border-right: 0.3rem solid transparent;
     border-left: 0.3rem solid transparent;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
     z-index: 1; }
   .singleSelectWrapper .single-select, .multiSelectWrapper .single-select {
     padding-right: 3rem; }
 
 .multiSelectWrapper .multi-select {
-  max-height: 8rem; }
+  max-height: 3rem; }
   .multiSelectWrapper .multi-select option {
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
@@ -131,7 +137,7 @@ select {
       margin-bottom: -0.5rem;
       border-bottom: none; }
 
-.label-col, .label-inline {
+.label {
   display: inline-block;
   padding-top: calc(0.5rem + 1px);
   padding-right: 0.75rem;
@@ -139,9 +145,6 @@ select {
   padding-left: 0;
   font-size: 1rem;
   line-height: 1.5rem; }
-
-.label-inline {
-  margin-bottom: 0.35rem; }
 
 .disabled {
   color: #868e96;

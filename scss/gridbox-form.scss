@@ -59,7 +59,6 @@ form {
 
 .form-group {
     position: relative;
-    // margin-bottom: 15px;
     width: 100%;
 }
 
@@ -168,7 +167,7 @@ select {
 
 .singleSelectWrapper {
     position: relative;
-    overflow: auto; 
+    overflow: auto;
     z-index: 1;
 
     //.caret
@@ -179,11 +178,12 @@ select {
         position: absolute;
         width: 3px;
         height: 3px;
-        top: 50%;
+        top: 21px; // !!hard coded, inline element has a height of 42px
         right: 1rem;
         border-top: 0.3rem solid $caretColor;
         border-right: 0.3rem solid transparent;
         border-left: 0.3rem solid transparent;
+        transform: translateY(-50%);
         z-index: 1; 
     }
 
@@ -196,7 +196,7 @@ select {
     @extend .singleSelectWrapper;
 
     .multi-select {
-        max-height: 8rem;
+        max-height: 3rem;
 
         option {
             padding: 0.5rem 0;
@@ -230,7 +230,7 @@ select {
 //  * ========================================================================
 //  */
 
-.label-col {
+.label {
     display: inline-block;
     padding-top: calc(0.5rem + 1px); // add 1px to paddng because .form-input element has 1px border
     padding-right: 0.75rem;
@@ -238,11 +238,6 @@ select {
     padding-left: 0;
     font-size: $inputFontSize;
     line-height: $inputLineHeight;
-}
-
-.label-inline {
-    @extend .label-col;
-    margin-bottom: 0.35rem;
 }
 
 // Disabled Input
