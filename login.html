@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="css/gridbox.css">
     <title>Login Form</title>
 </head>
-<body>
-    <div class="login-form-container bg-lightgray ">
+<body class="bg-lightgray">
+    <div class="login-form-container">
 
-            <div class="login-form bg-white">
+            <!-- 1st panel -->
+            <div class="login-form bg-white" id="register-form">
 
                 <!-- Brand Section -->
-                <div class="center-text margin-top-45 margin-bottom logo-frame">
+                <div class="center-text margin-around-30 logo-frame">
                     <div class="mask"></div>
                     <img class="img-sm image" src="img/gridbox_logo.png" alt="">
                 </div>
-                <h3 class="center-text margin-bottom-45">Sign Up for Gridbox</h3>
+                <h3 class="center-text">Sign Up for Gridbox</h3>
 
                 <!-- Form Input Section -->
                 <form class="iconized row horizontal-align-center margin-top-45" action="">
@@ -63,7 +64,7 @@
                 </div>
 
                 <!-- Login Section -->
-                <div class="social-group row margin-top-30 margin-bottom">
+                <div class="row margin-top-30">
                     <div class="col align-right margin-right">
                         <span class="offblack small">Already have an account?</span>
                     </div>
@@ -74,6 +75,39 @@
 
             </div>
 
+            <div id="login-toggle" class="login-toggle top-layer"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+
+            <!-- 2nd Panel -->
+            <div class="login-form bg-white social-group hide" id="social-form">
+                <div class="margin-top-45 margin-bottom-45">
+                    <h3 class="center-text">Register Securely</h3>
+                    <h4 class="center-text">with your social media account</h6>
+                </div>
+
+                <div class="absolute full-width middle-center">
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 facebook" id="facebook"><i class="fa fa-facebook-square margin-right" aria-hidden="true"></i>Facebook</a>
+                    </div>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider margin-around-30"></div>
+                    </div>
+    
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 google" id="google+"><i class="fa fa-google-plus-square margin-right" aria-hidden="true"></i>Google+</a>
+                    </div>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider margin-around-30"></div>
+                    </div>
+    
+                    <div class="row horizontal-align-center center-text">
+                        <a href="#" class="btn btn-primary col-10 twitter" id="twitter"><i class="fa fa-twitter-square margin-right" aria-hidden="true"></i>Twitter</a>
+                    </div>
+                </div>
+                
+            </div>
+
     </div>
 
     <script src="js/gridbox.js"></script>
@@ -82,6 +116,24 @@
         im("#username").lengthCheck(6, 12);
         im("#mobile").formatNumber();
         im("#password").showPassword();
+
+        im("#login-toggle").click(function(){
+            var sf = im("#social-form");
+            
+            this.toggleClass("active");
+
+            if(sf.hasClass("hide")) {
+                sf.removeClass("hide");
+                setTimeout(function(){
+                    sf.addClass("slide-up");
+                }, 50);
+            } else {
+                sf.removeClass("slide-up");
+                setTimeout(function(){
+                    sf.addClass("hide");
+                }, 300);
+            } 
+        });
     
     </script>
 </body>

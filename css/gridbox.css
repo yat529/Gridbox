@@ -149,6 +149,9 @@ html {
   .full-screen-fixed {
     position: fixed; }
 
+.full-width {
+  width: 100%; }
+
 .rectangle-43 {
   width: 200px;
   height: 150px; }
@@ -378,6 +381,12 @@ html {
     max-width: 90%;
     max-height: 90%;
     z-index: 1; }
+
+.top-layer {
+  z-index: 999; }
+
+.bottom-layer {
+  z-index: -999; }
 
 .container, .container-fluid {
   width: 93.75%;
@@ -2275,27 +2284,30 @@ a {
 
 .login-form-container {
   position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  overflow-y: scroll; }
-  @media (max-width: 767px) {
-    .login-form-container {
-      position: relative;
-      background: none !important; } }
-
-.login-form {
-  position: absolute;
-  width: 450px;
-  height: auto;
-  padding: 35px 55px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+  @media (max-width: 767px) {
+    .login-form-container {
+      position: relative;
+      width: 100%;
+      top: 0;
+      left: 0;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none; } }
+
+.login-form {
+  position: relative;
+  width: 450px;
+  height: 685px;
+  padding: 35px 55px;
   -webkit-box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 4px 16px -12px rgba(0, 0, 0, 0.5); }
+  .login-form.hide {
+    display: none; }
   @media (max-width: 767px) and (orientation: portrait) {
     .login-form {
       position: relative;
@@ -2321,3 +2333,75 @@ a {
       transform: none;
       -webkit-box-shadow: none;
       box-shadow: none; } }
+
+.login-toggle {
+  position: absolute;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  top: calc(100% - 45px/2);
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(180deg);
+  -ms-transform: translateX(-50%) rotate(180deg);
+  transform: translateX(-50%) rotate(180deg);
+  border-radius: 50%;
+  background: #1e88e5;
+  -webkit-box-shadow: 0 1px 13px -7px #000;
+  box-shadow: 0 1px 13px -7px #000;
+  -webkit-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer; }
+  .login-toggle.active {
+    -webkit-transform: translateX(-50%) rotate(0deg);
+    -ms-transform: translateX(-50%) rotate(0deg);
+    transform: translateX(-50%) rotate(0deg); }
+  .login-toggle:hover {
+    background: #1565c0; }
+  .login-toggle i, .login-toggle .iconized .input-icon.check .success, .iconized .input-icon.check .login-toggle .success, .login-toggle .iconized .input-icon.check .fail, .iconized .input-icon.check .login-toggle .fail, .login-toggle .iconized .check-icon .unchecked, .iconized .check-icon .login-toggle .unchecked, .login-toggle .iconized .check-icon .checked, .iconized .check-icon .login-toggle .checked {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff; }
+  @media (max-width: 767px) {
+    .login-toggle {
+      display: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; } }
+
+.social-group {
+  position: absolute;
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  z-index: 2; }
+  .social-group.slide-up {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out; }
+  .social-group a {
+    border: none; }
+    .social-group a.google {
+      background: #dd4b39; }
+    .social-group a.facebook {
+      background: #3B5998; }
+    .social-group a.twitter {
+      background: #00aced; }
+  @media (max-width: 767px) {
+    .social-group {
+      display: block !important;
+      position: relative;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      border-top: 1px solid #f5f5f5; } }
