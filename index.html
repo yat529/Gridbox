@@ -4,15 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/gridbox.css">
-    <link rel="stylesheet" href="css/gridbox-grids.css">
-    <link rel="stylesheet" href="css/gridbox-form.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <title>Gridbox</title>
 </head>
 <body>
-    <div class="test"></div>
-    <div id="testid"></div>
+
+    <div class="fixed full-screen bg-lightgray">
+
+        <!-- Navigation -->
+        <div class="nav">
+            <!-- Brand -->
+            <div class="brand fixed top-left">
+                <img src="img/gridbox_logo.png" alt="">
+                <div class="brandname"><span>Gridbox</span></div>
+            </div>
+            <!-- Menu Toggle -->
+            <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
+
+            <div class="overlay" id="overlay">
+                <nav>
+                    <!-- Menu Item -->
+                    <ul class="main slideright">
+                        <li class="menuitem"><a href="#">Link</a></li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem">
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="social">
+                        <span>Follow us</span>
+                        <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="icon" id="weixin" href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                        <a class="icon" id="weibo" href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+                    </div>
+                    
+                </nav>
+            </div>
+
+        </div> <!-- /.nav -->
+
+        <!-- Login Form -->
+        <div class="login-form-container">
+
+            <!-- 1st panel -->
+            <div class="login-form bg-white" id="register-form">
+
+                <!-- Brand Section -->
+                <div class="center-text logo-frame">
+                    <div class="mask"></div>
+                    <img class="img-sm image" src="img/gridbox_logo.png" alt="">
+                </div>
+                <h3 class="center-text">Sign Up for Gridbox</h3>
+
+                <!-- Form Input Section -->
+                <form class="iconized" action="">
+                    <!-- username -->
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="username" name="username" placeholder="Username">
+                        <span class="input-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- mobile -->
+                    <div class="form-group">
+                        <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="Phone Number">
+                        <span class="input-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- password -->
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Password">
+                        <span class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <span class="input-icon check">
+                            <i class="fa fa-check-circle-o success" aria-hidden="true"></i>
+                            <i class="fa fa-times-circle-o fail" aria-hidden="true"></i>
+                        </span>
+                        <span class="input-icon toggle">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <button class="btn btn-primary">Register</button>
+                </form>
+
+                <div class="row horizontal-align-center">
+                    <div class="col-6 divider"></div>
+                </div>
+
+                <!-- Login Section -->
+                <div class="row">
+                    <div class="col align-right margin-right">
+                        <span class="offblack small">Already have an account?</span>
+                    </div>
+                    <div class="col align-left">
+                        <a class="btn btn-secondary btn-xs small"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="login-toggle" class="login-toggle top-layer"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+
+            <!-- 2nd Panel -->
+            <div class="login-form bg-white social-group" id="social-form">
+                
+                <h3 class="center-text">
+                    <span>Register Securely,</span><br/>
+                    <span class="small">with your social media account</span>
+                </h3>
+
+                <div class="social-btns">
+                    <a href="#" class="btn btn-primary facebook" id="facebook"><i class="fa fa-facebook-square margin-right" aria-hidden="true"></i>Facebook</a>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider"></div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary google" id="google+"><i class="fa fa-google-plus-square margin-right" aria-hidden="true"></i>Google+</a>
+                    
+                    <div class="row horizontal-align-center">
+                        <div class="col-6 divider"></div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary twitter" id="twitter"><i class="fa fa-twitter-square margin-right" aria-hidden="true"></i>Twitter</a>
+                </div>
+                
+            </div>
+    
+        </div> <!-- . login-form-container -->
+
+    </div> <!-- .container-fluid -->
+
+
     <script src="js/gridbox.js"></script>
+    <script>
+        var menuToggle = im("#menu-toggle"),
+            subToggle = im(".sub-toggle"),
+            brand = im(".brandname").first(),
+            ovrly = im("#overlay"),
+            main = im(".main").first();
+
+        menuToggle.click(function(){
+            this.toggleClass("active");
+            brand.toggleClass("contrast");
+            ovrly.toggleClass("show");
+            main.toggleClass("show");
+        });
+        
+        subToggle.each(function(){
+            this.click(function(){
+                this.toggleClass("clicked");
+                this.nextSibling().toggleClass("show");
+            });
+        });
+
+        im("#username").lengthCheck(6, 12);
+        im("#mobile").formatNumber();
+        im("#password").showPassword();
+
+        im("#login-toggle").click(function(){
+            this.toggleClass("active");
+            im("#social-form").toggleClass("slide-up");
+        });
+    
+    </script>
 </body>
 </html>
