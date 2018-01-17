@@ -102,6 +102,11 @@
             return createObj( this[0][(this[0].length - 1)] );
         },
 
+        // Get array length
+        getLength: function() {
+            return this[0].length;
+        },
+
         // add to array
         add: function(elem){
             if(typeof this[0].length) this[0].push(elem[0]);
@@ -133,6 +138,9 @@
             return createObj(selector);
         }else if(selector === document){
             return createObj(document);
+        } else {
+            // wrap DOM obj
+            return createObj(selector);
         }
         
     };
@@ -398,7 +406,7 @@
     // 
 
     // Export to Gloabl
-    global.im = iAm;
+    global.im = im = iAm;
 
 
 
@@ -599,6 +607,93 @@
         if(statusElem.hasClass("valid")) statusElem.removeClass("valid");
         if(statusElem.hasClass("invalid")) statusElem.removeClass("invalid");
     }
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    // 
+
+    init.extend({
+
+        // -----------------------------------------------------------
+        //                         Carousel
+        // -----------------------------------------------------------
+        // Description: Enable to carousel effect for HTML showcase
+        //              element
+        // -----------------------------------------------------------
+        // Parameter:   min
+        // Description: minimun length
+        // 
+        // -----------------------------------------------------------
+        // Note:  Must use gridbox carousel format 
+        // -----------------------------------------------------------
+
+
+        carousel: function() {
+        
+            var self = this;
+            var toggleLeft = self.get(".toggle").first().get(".left").first() || null;
+            var toggleRight = self.get(".toggle").first().get(".right").first() || null;
+            var showcase = self.get(".showcase").first() || null;
+            var slides = self.get(".showcase-carousel") || null;
+    
+            if(!toggleLeft || !toggleRight || !showcase || !slides) {
+                return new Error("Element Missing. Must use default HTML Template Format");
+            }
+    
+            var slidesLength = slides.getLength();
+            var counter = 0;
+    
+            // classes to toggle
+            // on slides - waiting, active
+            // on showcase - deactive
+    
+            // click right counter ++, slides[counter - 1] add class active
+            // if counter == slidesLength, reset showcase deactive
+            // click left counter --
+    
+            // console.log(slides);
+    
+            toggleLeft.click(function(){
+    
+                counter--;
+    
+                if(counter < 0) {
+                    counter = slidesLength;
+                    showcase.addClass("hide");
+                    im(slides[0][counter - 1]).addClass("show");
+                } else {
+                    if(counter === 0) {
+                        im(slides[0][counter]).removeClass("show");
+                        showcase.removeClass("hide");
+                    } else {
+                        im(slides[0][counter]).removeClass("show");
+                        im(slides[0][counter - 1]).addClass("show");
+                    } 
+                }
+            });
+    
+            toggleRight.click(function(){
+    
+                if(counter === slidesLength) {
+                    im(slides[0][counter - 1]).removeClass("show");
+                    counter = 0;
+                    showcase.removeClass("hide");
+                } else {
+                    if(counter === 0) {
+                        showcase.addClass("hide");
+                        im(slides[0][counter]).addClass("show");
+                    } else {
+                        im(slides[0][counter - 1]).removeClass("show");
+                        im(slides[0][counter]).addClass("show");
+                    }
+                    counter++;
+                } 
+            });
+    
+        }
+
+    });
 
 })(window);
 
