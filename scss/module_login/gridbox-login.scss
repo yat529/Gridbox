@@ -1,49 +1,65 @@
+// Break Points for Media Query
+$width: 380px;
+$height: 630px;
+
 
 .login-form-container {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    @media (max-width: 767px) {
-        position: relative;
+    // small screen computer height < login panel height
+    @media (max-height: $height) {
+        top: 0;
+        transform: translate(-50%,0%);
+    }
+
+    // mobile - portrait mode
+    @media (max-width: 450px) and (orientation: portrait) {
+        position: fixed;
         width: 100%;
         top: 0;
+        right: 0;
+        bottom: 0;
         left: 0;
         transform: none;
+    }
+
+    // mobile - landscape mode
+    @media (max-width: 767px) and (orientation: landscape) {
+        top: 0;
+        transform: translate(-50%,0%);
     }
 }
 
 .login-form {
     position: relative;
-    width: 450px;
-    height: 685px;
-    padding: 35px 55px;
+    width: $width;
+    height: $height;
+    padding: 35px;
     box-shadow: 0px 4px 16px -12px $boxShadow;
+    z-index: 1;
 
-    &.hide {
-        display: none;
-    }
-
-    @media (max-width: 767px) and (orientation: portrait) {
-        position: relative;
+    // x-small screen mobile
+    @media (max-width: 350px) and (orientation: portrait) {
         width: 100%;
-        padding: 25px 35px;
-        top: 0;
-        left: 0;
-        transform: none;
+        height: 100vh;
+        padding: 15px 25px;
         box-shadow: none;
     }
 
-    @media (max-width: 767px) and (orientation: landscape) {
-        position: relative;
-        width: 450px;
+    // mobile - portrait mode
+    @media (min-width: 351px) and (max-width: 450px) and (orientation: portrait) {
+        width: 100%;
+        height: 100vh;
         padding: 25px 35px;
-        margin: 0 auto;
-        top: 0;
-        left: 0;
-        transform: none;
         box-shadow: none;
+    }
+
+    // mobile - landscape mode
+    @media (max-width: 767px) and (orientation: landscape) {
+        // box-shadow: none;
     }
 }
 
@@ -60,6 +76,7 @@
     box-shadow: 0 1px 13px -7px $black;
     transition: all 0.1s ease-in;
     cursor: pointer;
+    z-index: 3;
 
     &.active {
         transform: translateX(-50%) rotate(0deg);
@@ -78,19 +95,49 @@
         color: $white;
     }
 
-    @media (max-width: 767px) {
+    // small screen computer height < login panel height
+    @media (max-height: $height) {
         display: none;
-        box-shadow: none;
+    }
+
+    // x-small screen mobile
+    @media (max-width: 350px) and (orientation: portrait) {
+        top: 15px;
+        left: 15px;
+        transform: translate(0, 0) rotate(180deg);
+
+        &.active {
+            transform: translate(0, 0) rotate(0deg);
+        }
+    }
+
+    // mobile - portrait mode
+    @media (min-width: 351px) and (max-width: 375px) and (orientation: portrait) {
+        top: calc(100% - 60px);
+    }
+
+    @media (min-width: 376px) and (max-width: 450px) and (orientation: portrait) {
+        top: calc(100% - 80px);
+    }
+
+    // mobile - landscape mode
+    @media (max-width: 767px) and (orientation: landscape) {
+        display: none;
     }
 }
 
 .social-group {
     position: absolute;
-    transform: translateY(0%);
+    margin-left: auto;
+    margin-right: auto;
     transition: all 0.3s ease-out;
+    top: auto;
+    left: auto;
+    opacity: 0;
     z-index: 2;
 
     &.slide-up {
+        opacity: 1;
         transform: translateY(-100%);
         transition: all 0.3s ease-out;
     }
@@ -98,16 +145,102 @@
     a {
         border: none;
 
-        &.google { background: $googleplusRed; }
-        &.facebook { background: $facebookBlue; }
-        &.twitter { background: $twitterBlue; }
+        &.google { 
+            background: $googleplusRed; 
+            &:hover {
+                background: darken($googleplusRed, 7%); 
+            }
+        }
+        &.facebook { 
+            background: $facebookBlue; 
+            &:hover {
+                background: darken($facebookBlue, 7%); 
+            }
+        }
+        &.twitter { 
+            background: $twitterBlue; 
+            &:hover {
+                background: darken($twitterBlue, 7%); 
+            }
+        }
     }
 
-    @media (max-width: 767px) {
-        display: block !important;
+    // small screen computer height <= login panel height
+    @media (max-height: $height) {
         position: relative;
-        transform: none;
-        border-top: 1px solid $gray;
+        opacity: 1;
+        margin-top: 30px;
+    }
+
+    // mobile - landscape mode
+    @media (max-width: 767px) and (orientation: landscape) {
+        position: relative;
+        opacity: 1;
+        margin-top: 30px;
+    }
+
+    // iphone x optimized
+    @media (width: 375px) and (height: 812px) and (orientation: portrait) {
+        // position: relative;
+        opacity: 1;
+        perspective: 1000px;
+        transform: rotateX(80deg);
+    }
+}
+
+// positioning
+.login-form {
+
+    .logo-frame {
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        margin-bottom: 30px;
+    }
+
+    form {
+        margin-bottom: 30px;
+
+        .form-group {
+            margin-bottom: 15px;
+            &:last-of-type {
+                margin-bottom: 30px;
+            }
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+
+    .divider {
+        margin-bottom: 15px;
+    }
+}
+
+.social-group {
+    h3 {
+        position: absolute;
+        width: 80%;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .social-btns {
+        position: absolute;
+        width: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        a {
+            display: block;
+            margin: 0 auto 15px auto;
+            padding: 15px 25px;
+        }
     }
 }
 

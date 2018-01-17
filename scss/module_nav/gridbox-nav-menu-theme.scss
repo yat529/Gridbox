@@ -42,9 +42,15 @@
     }
 
     // brandname span
-    .brand {
+    .brandname {
         span {
-            color: $white;
+            color: $black;
+        }
+
+        &.contrast {
+            span {
+                color: $white
+            }
         }
     }
 
@@ -156,9 +162,15 @@
     }
 
     // brandname span
-    .brand {
+    .brandname {
         span {
-            color: $white;
+            color: $black;
+        }
+
+        &.contrast {
+            span {
+                color: $white
+            }
         }
     }
 
@@ -270,9 +282,15 @@
     }
 
     // brandname span
-    .brand {
+    .brandname {
         span {
-            color: $white;
+            color: $black;
+        }
+
+        &.contrast {
+            span {
+                color: $white
+            }
         }
     }
 

@@ -9,22 +9,23 @@
     <title>Login Form</title>
 </head>
 <body class="bg-lightgray">
+    
     <div class="login-form-container">
 
             <!-- 1st panel -->
             <div class="login-form bg-white" id="register-form">
 
                 <!-- Brand Section -->
-                <div class="center-text margin-around-30 logo-frame">
+                <div class="center-text logo-frame">
                     <div class="mask"></div>
                     <img class="img-sm image" src="img/gridbox_logo.png" alt="">
                 </div>
                 <h3 class="center-text">Sign Up for Gridbox</h3>
 
                 <!-- Form Input Section -->
-                <form class="iconized row horizontal-align-center margin-top-45" action="">
+                <form class="iconized" action="">
                     <!-- username -->
-                    <div class="form-group margin-bottom">
+                    <div class="form-group">
                         <input type="text" class="form-input" id="username" name="username" placeholder="Username">
                         <span class="input-icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
                         <span class="input-icon check">
@@ -34,7 +35,7 @@
                     </div>
 
                     <!-- mobile -->
-                    <div class="form-group margin-bottom">
+                    <div class="form-group">
                         <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="Phone Number">
                         <span class="input-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
                         <span class="input-icon check">
@@ -44,7 +45,7 @@
                     </div>
 
                     <!-- password -->
-                    <div class="form-group margin-bottom-30">
+                    <div class="form-group">
                         <input type="password" class="form-input" id="password" name="password" placeholder="Password">
                         <span class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
                         <span class="input-icon check">
@@ -56,7 +57,7 @@
                         </span>
                     </div>
 
-                    <button class="btn btn-primary margin-bottom-45 col">Register</button>
+                    <button class="btn btn-primary">Register</button>
                 </form>
 
                 <div class="row horizontal-align-center">
@@ -64,7 +65,7 @@
                 </div>
 
                 <!-- Login Section -->
-                <div class="row margin-top-30">
+                <div class="row">
                     <div class="col align-right margin-right">
                         <span class="offblack small">Already have an account?</span>
                     </div>
@@ -75,35 +76,30 @@
 
             </div>
 
-            <div id="login-toggle" class="login-toggle top-layer"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+            <div id="login-toggle" class="login-toggler"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
 
             <!-- 2nd Panel -->
-            <div class="login-form bg-white social-group hide" id="social-form">
-                <div class="margin-top-45 margin-bottom-45">
-                    <h3 class="center-text">Register Securely</h3>
-                    <h4 class="center-text">with your social media account</h6>
-                </div>
+            <div class="login-form bg-white social-group" id="social-form">
+                
+                <h3 class="center-text">
+                    <span>Register Securely,</span><br/>
+                    <span class="small">with your social media account</span>
+                </h3>
 
-                <div class="absolute full-width middle-center">
-                    <div class="row horizontal-align-center center-text">
-                        <a href="#" class="btn btn-primary col-10 facebook" id="facebook"><i class="fa fa-facebook-square margin-right" aria-hidden="true"></i>Facebook</a>
-                    </div>
+                <div class="social-btns">
+                    <a href="#" class="btn btn-primary facebook" id="facebook"><i class="fa fa-facebook-square margin-right" aria-hidden="true"></i>Facebook</a>
                     
                     <div class="row horizontal-align-center">
-                        <div class="col-6 divider margin-around-30"></div>
-                    </div>
-    
-                    <div class="row horizontal-align-center center-text">
-                        <a href="#" class="btn btn-primary col-10 google" id="google+"><i class="fa fa-google-plus-square margin-right" aria-hidden="true"></i>Google+</a>
+                        <div class="col-6 divider"></div>
                     </div>
                     
+                    <a href="#" class="btn btn-primary google" id="google+"><i class="fa fa-google-plus-square margin-right" aria-hidden="true"></i>Google+</a>
+                  
                     <div class="row horizontal-align-center">
-                        <div class="col-6 divider margin-around-30"></div>
+                        <div class="col-6 divider"></div>
                     </div>
-    
-                    <div class="row horizontal-align-center center-text">
-                        <a href="#" class="btn btn-primary col-10 twitter" id="twitter"><i class="fa fa-twitter-square margin-right" aria-hidden="true"></i>Twitter</a>
-                    </div>
+                    
+                    <a href="#" class="btn btn-primary twitter" id="twitter"><i class="fa fa-twitter-square margin-right" aria-hidden="true"></i>Twitter</a>
                 </div>
                 
             </div>
@@ -118,21 +114,8 @@
         im("#password").showPassword();
 
         im("#login-toggle").click(function(){
-            var sf = im("#social-form");
-            
             this.toggleClass("active");
-
-            if(sf.hasClass("hide")) {
-                sf.removeClass("hide");
-                setTimeout(function(){
-                    sf.addClass("slide-up");
-                }, 50);
-            } else {
-                sf.removeClass("slide-up");
-                setTimeout(function(){
-                    sf.addClass("hide");
-                }, 300);
-            } 
+            im("#social-form").toggleClass("slide-up");
         });
     
     </script>
