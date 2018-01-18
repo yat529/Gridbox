@@ -1,0 +1,94 @@
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+
+    .toggle {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+
+        %arrow {
+            display: block;
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            top: 50%;
+            left: 50%;
+            border-top: 2px solid $white;
+            border-right: 2px solid $white;
+        }
+
+        %arrow-container {
+            display: inline-block;
+            position: relative;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.3s;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .left {
+            @extend %arrow-container;
+            float: left;
+            left: 15px;
+            span {
+                @extend %arrow;
+                transform: translate(-6.5px, -50%) rotate(-135deg);
+            }
+        }
+
+        .right {
+            @extend %arrow-container;
+            float: right;
+            right: 15px;
+            span {
+                @extend %arrow;
+                transform: translate(-19px, -50%) rotate(45deg);
+            }
+        }
+    }
+}
+
+
+// animations
+// --------- fade effect ----------
+.showcase {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+
+    // action class
+    &.hide {
+        opacity: 0;
+    }
+}
+
+.showcase-carousel {
+    display: block;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    // action class
+    &.show {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+

@@ -1688,7 +1688,8 @@ html {
   overflow-y: auto;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
-  transition: opacity 0.5s; }
+  transition: opacity 0.5s;
+  z-index: -1; }
   .overlay.show {
     opacity: 1;
     z-index: 99; }
@@ -2489,7 +2490,7 @@ a {
     width: 100%; }
 
 .login-form .divider {
-  margin-bottom: 15px; }
+  margin: 15px auto; }
 
 .social-group h3 {
   position: absolute;
@@ -2510,5 +2511,132 @@ a {
   transform: translate(-50%, -50%); }
   .social-group .social-btns a {
     display: block;
-    margin: 0 auto 15px auto;
+    margin: 0 auto;
     padding: 15px 25px; }
+
+.showcase, .showcase-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  max-height: 90vh;
+  overflow: hidden; }
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1; }
+  .hero-image img {
+    display: block;
+    position: relative;
+    width: 100%;
+    min-width: 900px;
+    max-width: 100%;
+    height: auto;
+    min-height: 80vh;
+    max-height: 100%; }
+  .hero-image .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.05;
+    z-index: 2; }
+
+.text-content {
+  position: absolute;
+  max-width: 500px;
+  z-index: 3; }
+  .text-content .btn {
+    display: block;
+    width: 35%;
+    min-width: 120px;
+    padding: 10px 25px;
+    text-align: center; }
+  .text-content.left {
+    margin-right: 10%;
+    top: 50%;
+    left: 10%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .text-content.right {
+    margin-left: 5%;
+    top: 50%;
+    right: 5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .text-content.center {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden; }
+  .carousel .toggle {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 20; }
+    .carousel .toggle .left span, .carousel .toggle .right span {
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 50%;
+      left: 50%;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff; }
+    .carousel .toggle .left, .carousel .toggle .right {
+      display: inline-block;
+      position: relative;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      background: transparent;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
+      .carousel .toggle .left:hover, .carousel .toggle .right:hover {
+        background: rgba(0, 0, 0, 0.2); }
+    .carousel .toggle .left {
+      float: left;
+      left: 15px; }
+      .carousel .toggle .left span {
+        -webkit-transform: translate(-6.5px, -50%) rotate(-135deg);
+        -ms-transform: translate(-6.5px, -50%) rotate(-135deg);
+        transform: translate(-6.5px, -50%) rotate(-135deg); }
+    .carousel .toggle .right {
+      float: right;
+      right: 15px; }
+      .carousel .toggle .right span {
+        -webkit-transform: translate(-19px, -50%) rotate(45deg);
+        -ms-transform: translate(-19px, -50%) rotate(45deg);
+        transform: translate(-19px, -50%) rotate(45deg); }
+
+.showcase {
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out; }
+  .showcase.hide {
+    opacity: 0; }
+
+.showcase-carousel {
+  display: block;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out; }
+  .showcase-carousel.show {
+    opacity: 1; }
