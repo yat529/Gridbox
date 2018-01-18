@@ -47,8 +47,7 @@
     z-index: 3;
 
     .btn {
-        display: block;
-        width: 35%;
+        display: inline-block;
         min-width: 120px;
         padding: 10px 25px;
         text-align: center;
@@ -63,9 +62,9 @@
     }
 
     &.right {
-        margin-left: 5%;
+        margin-left: 10%;
         top: 50%;
-        right: 5%;
+        right: 10%;
         transform: translateY(-50%);
     }
 

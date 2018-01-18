@@ -2548,8 +2548,7 @@ a {
   max-width: 500px;
   z-index: 3; }
   .text-content .btn {
-    display: block;
-    width: 35%;
+    display: inline-block;
     min-width: 120px;
     padding: 10px 25px;
     text-align: center; }
@@ -2561,9 +2560,9 @@ a {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); }
   .text-content.right {
-    margin-left: 5%;
+    margin-left: 10%;
     top: 50%;
-    right: 5%;
+    right: 10%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%); }
