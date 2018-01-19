@@ -2592,13 +2592,16 @@ a {
       height: 25px;
       top: 50%;
       left: 50%;
-      border-top: 2px solid #fff;
-      border-right: 2px solid #fff; }
+      border-top: 2px solid rgba(0, 0, 0, 0.3);
+      border-right: 2px solid rgba(0, 0, 0, 0.3);
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
     .carousel .toggle .left, .carousel .toggle .right {
       display: inline-block;
       position: relative;
       width: 45px;
-      height: 45px;
+      height: 55px;
       cursor: pointer;
       background: transparent;
       -webkit-transition: all 0.3s;
@@ -2606,6 +2609,9 @@ a {
       transition: all 0.3s; }
       .carousel .toggle .left:hover, .carousel .toggle .right:hover {
         background: rgba(0, 0, 0, 0.2); }
+        .carousel .toggle .left:hover span, .carousel .toggle .right:hover span {
+          border-top: 2px solid #fff;
+          border-right: 2px solid #fff; }
     .carousel .toggle .left {
       float: left;
       left: 15px; }
@@ -2620,6 +2626,31 @@ a {
         -webkit-transform: translate(-19px, -50%) rotate(45deg);
         -ms-transform: translate(-19px, -50%) rotate(45deg);
         transform: translate(-19px, -50%) rotate(45deg); }
+  .carousel .indicator {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 20; }
+    .carousel .indicator span {
+      display: inline-block;
+      width: 25px;
+      height: 5px;
+      margin-right: 5px;
+      background: rgba(0, 0, 0, 0.3);
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      cursor: pointer; }
+      .carousel .indicator span:last-of-type {
+        margin-right: 0px; }
+      .carousel .indicator span:hover {
+        background: #1e88e5; }
+      .carousel .indicator span.active {
+        background: #1e88e5; }
 
 .showcase {
   opacity: 1;
