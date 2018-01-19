@@ -18,21 +18,27 @@
             height: 25px;
             top: 50%;
             left: 50%;
-            border-top: 2px solid $white;
-            border-right: 2px solid $white;
+            border-top: 2px solid rgba(0, 0, 0, 0.3);
+            border-right: 2px solid rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
         }
 
         %arrow-container {
             display: inline-block;
             position: relative;
             width: 45px;
-            height: 45px;
+            height: 55px;
             cursor: pointer;
             background: transparent;
             transition: all 0.3s;
 
             &:hover {
                 background: rgba(0, 0, 0, 0.2);
+
+                span {
+                    border-top: 2px solid $white;
+                    border-right: 2px solid $white;
+                }
             }
         }
 
@@ -53,6 +59,37 @@
             span {
                 @extend %arrow;
                 transform: translate(-19px, -50%) rotate(45deg);
+            }
+        }
+    }
+
+    .indicator {
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        bottom: 25px;
+        transform: translateX(-50%);
+        z-index: 20;
+
+        span {
+            display: inline-block;
+            width: 25px;
+            height: 5px;
+            margin-right: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+
+            &:last-of-type {
+                margin-right: 0px;
+            }
+
+            &:hover {
+                background: $information;
+            }
+
+            &.active {
+                background: $information;
             }
         }
     }

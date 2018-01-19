@@ -170,6 +170,13 @@
 
     init.extend({
 
+        // DOM Manipulate
+        // add html
+        html: function(html) {
+            this[0].innerHTML = html;
+            return this;
+        },
+
         // DOM Traversal
         // Return children Array
         children: function(){
@@ -643,25 +650,28 @@
     
             var slidesLength = slides.getLength();
             var counter = 0;
-    
-            // classes to toggle
-            // on slides - waiting, active
-            // on showcase - deactive
-    
-            // click right counter ++, slides[counter - 1] add class active
-            // if counter == slidesLength, reset showcase deactive
-            // click left counter --
-    
-            // console.log(slides);
+
+            // indicator
+            var indicator = im(".indicator").first();
+            var html = '<span id="0" class="active"></span>';
+
+            for(var i = 0; i < slidesLength; i++) {
+                html += '<span id="' + (i + 1) + '"></span>';
+            }
+
+            // setup indicator span
+            indicator.html(html);
+
     
             toggleLeft.click(function(){
     
                 counter--;
-    
+
                 if(counter < 0) {
                     counter = slidesLength;
                     showcase.addClass("hide");
                     im(slides[0][counter - 1]).addClass("show");
+                    
                 } else {
                     if(counter === 0) {
                         im(slides[0][counter]).removeClass("show");
@@ -671,6 +681,15 @@
                         im(slides[0][counter - 1]).addClass("show");
                     } 
                 }
+
+                if(indicator) {
+                    indicator.children().each(function(){
+                        this.removeClass("active");
+                    });
+    
+                    im(indicator.children()[0][counter]).addClass("active");
+                }
+
             });
     
             toggleRight.click(function(){
@@ -689,8 +708,44 @@
                     }
                     counter++;
                 } 
-            });
+
+                if(indicator) {
+                    indicator.children().each(function(){
+                        this.removeClass("active");
+                    });
     
+                    im(indicator.children()[0][counter]).addClass("active");
+                }
+            });
+
+
+            // assign click event
+            indicator.children().each(function(){
+                this.click(function(){
+                    var id = this[0].id;
+
+                    indicator.children().each(function(){
+                        this.removeClass("active");
+                    });
+                    
+                    slides.each(function(){
+                        this.removeClass("show");
+                    });
+
+                    this.addClass("active");
+                    
+                    if(id == 0){  
+                        if(showcase.hasClass("hide")){
+                            showcase.removeClass("hide");
+                        }
+                    } else {
+                        showcase.addClass("hide");
+                        im(slides[0][id - 1]).addClass("show");
+                    }
+
+                });
+            });
+
         }
 
     });
