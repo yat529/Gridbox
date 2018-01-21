@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <title>Showcase Parallax Effect</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div class="nav">
+            <!-- Brand -->
+            <div class="brand fixed top-left">
+                <img src="img/gridbox_logo.png" alt="">
+                <div class="brandname"><span>Gridbox</span></div>
+            </div>
+            <!-- Menu Toggle -->
+            <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
+
+            <div class="overlay" id="overlay">
+                <nav>
+                    <!-- Menu Item -->
+                    <ul class="main slideright">
+                        <li class="menuitem"><a href="#">Link</a></li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem">
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="social">
+                        <span>Follow us</span>
+                        <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="icon" id="weixin" href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                        <a class="icon" id="weibo" href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+                    </div>
+                    
+                </nav>
+            </div>
+
+        </div> <!-- /.nav -->
+
+        
+        <!-- showcase section -->
+        <div class="showcase bg-lightgray">
+
+            <div class="text-content left">
+                <h1 class="margin-bottom">Hello World!</h1>
+                <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+    
+                <!-- optional Call to Action Btn -->
+                <a href="#" class="btn btn-primary">Discover</a>
+            </div>
+            
+        </div>
+
+
+
+        <!-- Showcase Parallax -->
+        <div class="showcase-narrow bg-white parallax" id="p1" data-bgUrl="./img/sample-image-1.jpeg">
+    
+            <!-- optional background mask -->
+            <div class="mask"></div>
+
+            <div class="text-content right">
+                <h1 class="margin-bottom">Hello World!</h1>
+                <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+    
+                <!-- optional Call to Action Btn -->
+                <a href="#" class="btn btn-primary">Discover</a>
+            </div>
+            
+        </div>
+
+
+
+        <!-- showcase section -->
+        <div class="showcase bg-lightgray">
+
+            <div class="text-content left">
+                <h1 class="margin-bottom">Hello World!</h1>
+                <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+    
+                <!-- optional Call to Action Btn -->
+                <a href="#" class="btn btn-primary">Discover</a>
+            </div>
+            
+        </div>
+
+
+
+    </div> <!-- .container-fluid -->
+
+
+    <script src="js/gridbox.js"></script>
+    <script>
+
+var menuToggle = im("#menu-toggle"),
+    subToggle = im(".sub-toggle"),
+    brand = im(".brandname").first(),
+    ovrly = im("#overlay"),
+    main = im(".main").first();
+
+    menuToggle.click(function(){
+        this.toggleClass("active");
+            brand.toggleClass("contrast");
+            ovrly.toggleClass("show");
+            main.toggleClass("show");
+    });
+
+    subToggle.each(function(){
+        this.click(function(){
+            this.toggleClass("clicked");
+            this.nextSibling().toggleClass("show");
+        });
+    });
+
+    // Parallax
+
+    im("#p1").parallax();
+
+    </script>
+</body>
+</html>

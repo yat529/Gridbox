@@ -83,7 +83,7 @@
                     var obj = Object.create(init);
                     obj[0] = array[j];
                     // change this and the argument to obj
-                    f.call(obj, obj);
+                    f.call(obj, j);
                 })(i, fn);
             }
         },
@@ -636,115 +636,217 @@
         // -----------------------------------------------------------
 
 
-        carousel: function() {
+        carousel: function(optionObj) {
         
             var self = this;
-            var toggleLeft = self.get(".toggle").first().get(".left").first() || null;
-            var toggleRight = self.get(".toggle").first().get(".right").first() || null;
-            var showcase = self.get(".showcase").first() || null;
-            var slides = self.get(".showcase-carousel") || null;
+
+            // Toggle & Indicator Cache
+            var arrowLeft = im(".toggle").first().get(".left").first() || null;
+            var arrowRight = im(".toggle").first().get(".right").first() || null;
+            var indicator = im(".indicator").first();
+
+            // Slides Cache
+            var slides = im(".showcase-carousel") || null;
     
-            if(!toggleLeft || !toggleRight || !showcase || !slides) {
-                return new Error("Element Missing. Must use default HTML Template Format");
-            }
-    
+            // Slides Counter
             var slidesLength = slides.getLength();
             var counter = 0;
 
-            // indicator
-            var indicator = im(".indicator").first();
-            var html = '<span id="0" class="active"></span>';
+            // options
+            optionObj = optionObj || {arrowToggle: true, indicator: true};
 
-            for(var i = 0; i < slidesLength; i++) {
-                html += '<span id="' + (i + 1) + '"></span>';
+            // check if slides exists
+            if(!slides) return new Error("Slides Missing. Must use default HTML Template Format");
+
+            // Check for option object
+            if(typeof optionObj !== "object") return new Error("Option must be an Object");
+
+
+            // if arrow toggle is choose
+            if(optionObj.arrowToggle) {
+
+                // check if arrow element exists
+                if(!arrowLeft || !arrowRight) {
+                    return new Error("Element Missing. Must use default HTML Template Format");
+                }
+
+                arrowLeft.click(function(){
+                    // reset classes
+                    slides.each(function(){
+                        resetClasses(this, "remove", "show");
+                    });
+
+                    counter --;
+
+                    // check counter
+                    if(counter < 0) {
+                        counter = slidesLength - 1;
+                        im(slides[0][counter]).addClass("show");
+                        
+                    } else {
+                        im(slides[0][counter]).addClass("show");            
+                    }
+
+                    // Update indicator
+                    if(optionObj.indicator) {
+                        indicator.children().each(function(){
+                            resetClasses(this, "remove", "active");
+                        });
+                        im(indicator.children()[0][counter]).addClass("active");
+                    }
+                });
+
+                arrowRight.click(function(){
+                    // reset classes
+                    slides.each(function(){
+                        resetClasses(this, "remove", "show");
+                    });
+
+                    counter ++;
+
+                    // check counter
+                    if(counter === slidesLength) {                        
+                        counter = 0;
+                        im(slides[0][counter]).addClass("show");
+                    } else {
+                        im(slides[0][counter]).addClass("show");  
+                    }
+
+                    // Update indicator
+                    if(optionObj.indicator) {
+                        indicator.children().each(function(){
+                            resetClasses(this, "remove", "active");
+                        });
+                        im(indicator.children()[0][counter]).addClass("active");
+                    }
+                });
+
             }
 
-            // setup indicator span
-            indicator.html(html);
-
-    
-            toggleLeft.click(function(){
-    
-                counter--;
-
-                if(counter < 0) {
-                    counter = slidesLength;
-                    showcase.addClass("hide");
-                    im(slides[0][counter - 1]).addClass("show");
-                    
-                } else {
-                    if(counter === 0) {
-                        im(slides[0][counter]).removeClass("show");
-                        showcase.removeClass("hide");
-                    } else {
-                        im(slides[0][counter]).removeClass("show");
-                        im(slides[0][counter - 1]).addClass("show");
-                    } 
+            // if indicator is choose
+            if(optionObj.indicator) {
+                // setup indicator span
+                var html = '<span class="active"></span>';
+                for(var i = 0; i < slidesLength - 1; i++) {
+                    html += '<span></span>';
                 }
+                indicator.html(html);
 
-                if(indicator) {
-                    indicator.children().each(function(){
-                        this.removeClass("active");
+                // assign click event
+                indicator.children().each(function(i){
+                    this.click(function(){
+                        // reset classes
+                        indicator.children().each(function(){
+                            resetClasses(this, "remove", "active");
+                        });
+                        slides.each(function(){
+                            resetClasses(this, "remove", "show");
+                        });
+
+                        // add classes
+                        this.addClass("active");
+                        im(slides[0][i]).addClass("show");
+                        
+                        // update counter
+                        counter = i;
                     });
-    
-                    im(indicator.children()[0][counter]).addClass("active");
-                }
-
-            });
-    
-            toggleRight.click(function(){
-    
-                if(counter === slidesLength) {
-                    im(slides[0][counter - 1]).removeClass("show");
-                    counter = 0;
-                    showcase.removeClass("hide");
-                } else {
-                    if(counter === 0) {
-                        showcase.addClass("hide");
-                        im(slides[0][counter]).addClass("show");
-                    } else {
-                        im(slides[0][counter - 1]).removeClass("show");
-                        im(slides[0][counter]).addClass("show");
-                    }
-                    counter++;
-                } 
-
-                if(indicator) {
-                    indicator.children().each(function(){
-                        this.removeClass("active");
-                    });
-    
-                    im(indicator.children()[0][counter]).addClass("active");
-                }
-            });
-
-
-            // assign click event
-            indicator.children().each(function(){
-                this.click(function(){
-                    var id = this[0].id;
-
-                    indicator.children().each(function(){
-                        this.removeClass("active");
-                    });
-                    
-                    slides.each(function(){
-                        this.removeClass("show");
-                    });
-
-                    this.addClass("active");
-                    
-                    if(id == 0){  
-                        if(showcase.hasClass("hide")){
-                            showcase.removeClass("hide");
-                        }
-                    } else {
-                        showcase.addClass("hide");
-                        im(slides[0][id - 1]).addClass("show");
-                    }
-
                 });
+            }
+
+            // helper function
+            function resetClasses(elem, action, cls) {
+                if(action === "add") {
+                    elem.addClass(cls);
+                } else if(action === "remove") {
+                    if(elem.hasClass(cls)) 
+                        elem.removeClass(cls);
+                }
+            }
+        }
+    });
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    // 
+
+    init.extend({
+
+        // -----------------------------------------------------------
+        //                         Carousel
+        // -----------------------------------------------------------
+        // Description: Enable to carousel effect for HTML showcase
+        //              element
+        // -----------------------------------------------------------
+        // Parameter:   min
+        // Description: minimun length
+        // 
+        // -----------------------------------------------------------
+        // Note:  Must use gridbox carousel format 
+        // -----------------------------------------------------------
+
+        parallax: function(optionObj) {
+
+            var self = this;
+            var mask = im(".mask").first();
+
+            // get the bg url via data-bgUrl attribute
+            var url = self.data("bgUrl");
+            // set options
+            var optionObj = optionObj || {
+                dynamicBackground: { direction: "up" },
+                mask: { color: "#000", opacity: "0.1" },
+            }
+
+            // set the bg image via css
+            self.css({
+                "background-image": "url('" + url + "')"
             });
+
+            // set bg mask
+            if(optionObj.mask) {
+                if(optionObj.mask.color && optionObj.mask.opacity) {
+                    mask.css({ 
+                        "background": optionObj.mask.color,
+                        "opacity": optionObj.mask.opacity,
+                    });
+                }
+            }
+
+            // if(optionObj.dynamicBackground) {
+            //     var direnction = optionObj.dynamicBackground.direction;
+            // }
+
+
+            function moveBackground(direction) {
+
+                switch (direction) {
+                    case "up":
+                        self.css({
+                            "background-position": "bottom " + + "%"
+                        });
+                        break;
+
+                    case "down":
+                        self.css({
+                            "background-position": "top " + + "%"
+                        });
+                        break;
+
+                    case "left":
+                        self.css({
+                            "background-position": "right " + + "%"
+                        });
+                        break;
+
+                    case "right":
+                        self.css({
+                            "background-position": "left " + + "%"
+                        });
+                        break;
+                }
+                
+            }
+
 
         }
 

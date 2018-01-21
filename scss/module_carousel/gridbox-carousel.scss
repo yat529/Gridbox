@@ -115,6 +115,10 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 
+    &.default {
+        position: relative;
+    }
+
     // action class
     &.show {
         opacity: 1;

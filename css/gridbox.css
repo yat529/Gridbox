@@ -351,15 +351,15 @@ html {
   background: #e68181; }
 
 .img-sm {
-  width: 65px;
+  max-width: 65px;
   height: auto; }
 
 .img-m {
-  width: 85px;
+  max-width: 85px;
   height: auto; }
 
 .img-lg {
-  width: 100px;
+  max-width: 100px;
   height: auto; }
 
 .logo-frame {
@@ -2132,7 +2132,6 @@ a {
 
 .btn-secondary {
   color: #1e88e5;
-  background-color: #fff;
   border: 1px solid #1e88e5; }
   .btn-secondary:hover, .btn-secondary:active {
     color: #fff;
@@ -2514,12 +2513,19 @@ a {
     margin: 0 auto;
     padding: 15px 25px; }
 
-.showcase, .showcase-carousel {
+.showcase, .showcase-carousel, .showcase-full-screen, .showcase-narrow {
   position: relative;
   width: 100%;
-  min-height: 80vh;
-  max-height: 90vh;
   overflow: hidden; }
+
+.showcase {
+  height: 80vh; }
+  .showcase-carousel {
+    height: 80vh; }
+  .showcase-full-screen {
+    height: 100vh; }
+  .showcase-narrow {
+    height: 300px; }
 
 .hero-image {
   position: relative;
@@ -2528,13 +2534,10 @@ a {
   z-index: 1; }
   .hero-image img {
     display: block;
-    position: relative;
     width: 100%;
     min-width: 900px;
-    max-width: 100%;
     height: auto;
-    min-height: 80vh;
-    max-height: 100%; }
+    min-height: 80vh; }
   .hero-image .mask {
     position: absolute;
     width: 100%;
@@ -2572,6 +2575,32 @@ a {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
+
+.parallax {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-perspective: 1px;
+  perspective: 1px; }
+  .parallax .parallax-back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateZ(-1px) scale(2);
+    transform: translateZ(-1px) scale(2); }
+    .parallax .parallax-back img {
+      display: block;
+      min-width: 100%;
+      height: 100%; }
+  .parallax .parallax-fore {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateZ(0px);
+    transform: translateZ(0px); }
 
 .carousel {
   position: relative;
@@ -2668,5 +2697,59 @@ a {
   -webkit-transition: opacity 0.5s ease-in-out;
   -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out; }
+  .showcase-carousel.default {
+    position: relative; }
   .showcase-carousel.show {
     opacity: 1; }
+
+.card {
+  position: relative;
+  padding: 15px 25px;
+  margin-bottom: 45px;
+  -webkit-box-shadow: 0 5px 15px -13px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px -13px rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s; }
+  .card:hover {
+    -webkit-transform: translate(1px, 1px);
+    -ms-transform: translate(1px, 1px);
+    transform: translate(1px, 1px);
+    -webkit-box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.5); }
+  @media (min-width: 1200px) {
+    .card {
+      margin-bottom: 0px; } }
+  .card .card-image {
+    display: block;
+    width: calc(100% + 50px);
+    margin-top: -15px;
+    margin-left: -25px;
+    margin-bottom: 20px;
+    height: auto; }
+  .card .card-title {
+    margin-bottom: 15px; }
+  .card .card-text {
+    height: 150px;
+    margin-bottom: 50px;
+    overflow-y: hidden; }
+  .card .btn {
+    position: absolute;
+    padding: 10px 25px;
+    min-width: 100px;
+    bottom: 15px;
+    text-align: center; }
+
+.parallax {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed; }
+  .parallax .mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1; }
