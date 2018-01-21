@@ -404,7 +404,13 @@
         keyup: function(callback) {
             if(typeof callback !== "function") return "Parameter Type Error";
             this[0].addEventListener("keyup", callback.bind(this), false);
-        }
+        },
+
+        // scroll event 
+        // on element
+        scroll: function(callback) {
+            this[0].addEventListener("scroll", callback.bind(this), false);
+        },
 
     });
 
@@ -812,35 +818,47 @@
                 }
             }
 
-            // if(optionObj.dynamicBackground) {
-            //     var direnction = optionObj.dynamicBackground.direction;
-            // }
+            if(optionObj.dynamicBackground) {
+                var direnction = optionObj.dynamicBackground.direction;
+                im(document).scroll(function(){
+                    var offsetY = window.pageYOffset;
+                    // var elemHeight = self[0].offsetHeight;
+                    var viewHeight = document.documentElement.clientHeight;
+                    // var scrollHight = self[0].scrollHeight;
+                    // var elemOffTop = self[0].offsetTop;
+
+                    var increament = offsetY / viewHeight;
+                    // console.log(viewHeight);
+
+                    // moveBackground("up", increament);
+                });
+            }
 
 
-            function moveBackground(direction) {
+            function moveBackground(direction, increament) {
 
                 switch (direction) {
                     case "up":
                         self.css({
-                            "background-position": "bottom " + + "%"
+                            "background-position-y": increament + "px"
                         });
                         break;
 
                     case "down":
                         self.css({
-                            "background-position": "top " + + "%"
+                            "background-position": "top " + increament/10 + "px left 0px"
                         });
                         break;
 
                     case "left":
                         self.css({
-                            "background-position": "right " + + "%"
+                            "background-position": "right " + increament/10 + "px left 0px"
                         });
                         break;
 
                     case "right":
                         self.css({
-                            "background-position": "left " + + "%"
+                            "background-position": "left " + increament/10 + "px left 0px"
                         });
                         break;
                 }
