@@ -778,16 +778,16 @@
     init.extend({
 
         // -----------------------------------------------------------
-        //                         Carousel
+        //                         Parallax
         // -----------------------------------------------------------
-        // Description: Enable to carousel effect for HTML showcase
-        //              element
+        // Description: give element with .parallax class a parallax
+        //              effect
         // -----------------------------------------------------------
-        // Parameter:   min
-        // Description: minimun length
-        // 
+        // Parameter:   optionObj
+        // Description: two options, mask and dynamic background. If
+        //              not passed in, default value will be used
         // -----------------------------------------------------------
-        // Note:  Must use gridbox carousel format 
+        // Note:  element must have a .parallax class and bg image 
         // -----------------------------------------------------------
 
         parallax: function(optionObj) {
@@ -804,9 +804,9 @@
             }
 
             // set the bg image via css
-            self.css({
-                "background-image": "url('" + url + "')"
-            });
+            // self.css({
+            //     "background-image": "url('" + url + "')"
+            // });
 
             // set bg mask
             if(optionObj.mask) {
@@ -820,50 +820,69 @@
 
             if(optionObj.dynamicBackground) {
                 var direnction = optionObj.dynamicBackground.direction;
-                im(document).scroll(function(){
-                    var offsetY = window.pageYOffset;
-                    // var elemHeight = self[0].offsetHeight;
-                    var viewHeight = document.documentElement.clientHeight;
-                    // var scrollHight = self[0].scrollHeight;
-                    // var elemOffTop = self[0].offsetTop;
+                var winHeight = getWindowHeight();
+                var offsetY = self[0].offsetTop;
 
-                    var increament = offsetY / viewHeight;
-                    // console.log(viewHeight);
+                window.addEventListener("scroll", function(){
+                    if(isVisible(self[0])) {
+                        var offsetY = Math.abs(window.pageYOffset);
+                        var elemHeight = self[0].offsetHeight;
 
-                    // moveBackground("up", increament);
+                        if(offsetY < elemHeight) {
+                            moveBackground("up", offsetY/10);
+                        }
+                    }
                 });
+
             }
 
 
+            // Helper Functions
             function moveBackground(direction, increament) {
 
                 switch (direction) {
                     case "up":
                         self.css({
-                            "background-position-y": increament + "px"
+                            "background-position": "center -" + increament + "px"
                         });
                         break;
 
                     case "down":
                         self.css({
-                            "background-position": "top " + increament/10 + "px left 0px"
+                            "background-position": "center " + increament + "px"
                         });
                         break;
 
-                    case "left":
-                        self.css({
-                            "background-position": "right " + increament/10 + "px left 0px"
-                        });
-                        break;
+                    // case "left":
+                    //     self.css({
+                    //         "background-position": "right " + increament/10 + "px left 0px"
+                    //     });
+                    //     break;
 
-                    case "right":
-                        self.css({
-                            "background-position": "left " + increament/10 + "px left 0px"
-                        });
-                        break;
+                    // case "right":
+                    //     self.css({
+                    //         "background-position": "left " + increament/10 + "px left 0px"
+                    //     });
+                    //     break;
                 }
                 
             }
+
+            function getWindowHeight() {
+                return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            }
+        
+            function getWindowWidth() {
+                return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            }
+        
+            function isVisible(elem) {
+                if(window.pageYOffset + document.documentElement.clientHeight >= elem.offsetTop 
+                && window.pageYOffset <= elem.offsetTop + elem.offsetHeight)
+                    return true;
+                return false;
+            }
+
 
 
         }

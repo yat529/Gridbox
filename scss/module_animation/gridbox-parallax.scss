@@ -3,8 +3,9 @@
     background: {
         size: cover;
         repeat: no-repeat;
-        position: top;
+        // position: center;
         attachment: fixed;
+        image: url("/img/sample-image-1.jpeg");
     }
 
     .mask {
