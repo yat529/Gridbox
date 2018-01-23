@@ -296,6 +296,10 @@
         },
         
         // Get all attribute of a DOM element
+        attr: function(attr) {
+            return this[0].getAttribute(attr) || undefined;
+        },
+
         data: function(attr){
             if(typeof attr !== "string") return "Attributes must be String Type";
             return this[0].getAttribute("data-" + attr) || undefined;
@@ -800,7 +804,7 @@
         // Note:  element must have a .parallax class and bg image 
         // -----------------------------------------------------------
 
-        parallax: function(optionObj) {
+        parallax_toberemoved: function(optionObj) {
 
             var self = this,
                 mask = im(".mask").first() || null,
@@ -908,6 +912,228 @@
             }
         }
     });
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                     Parallax - Responsive
+        // -----------------------------------------------------------
+        // Description: give element with .parallax class a parallax
+        //              effect
+        // -----------------------------------------------------------
+        // Parameter:   optionObj
+        // Description: two options, mask and dynamic background. If
+        //              not passed in, default value will be used
+        // -----------------------------------------------------------
+        // Note:  element must have a .parallax class and bg image 
+        // -----------------------------------------------------------
+
+
+        parallax: function(elem, bg) {
+
+            var elem, bg;
+    
+            // check if im.js is used
+            if(this.length && this[0]) {
+                elem = this[0],
+                bg = this.find(".bg").first()[0];
+            } else {
+                elem = elem[0],
+                bg = bg[0];
+            }
+            
+    
+            var url = bg.getAttribute("src"),
+                movement = {};
+    
+            loadImage(url).then(
+                function success(result) {
+                    var imgWidth = result.naturalWidth,
+                        imgHeight = result.naturalHeight,
+                        winWidth = getWindowWidth(),
+                        winHeight = getWindowHeight();
+    
+                    // initial setup
+                    init(elem, bg, movement, imgWidth, imgHeight, winWidth, winHeight);
+    
+                    // update window width and height on resize
+                    update(elem, bg, movement, imgWidth, imgHeight);
+    
+                    // run the animation on scroll
+                    animate(elem, bg, movement, imgWidth, imgHeight);
+                }, 
+                function failure(error) {
+                    console.error(error.name, error.message);
+                }
+            );
+    
+            // Core functions
+            // load image to retrieve image actual size
+            function loadImage(url) {
+                return new Promise(function(resolve, reject){
+                    var img = new Image();
+    
+                    img.src = url;
+                    img.onload = function() {
+                        resolve(img);
+                    }
+                    img.onerror = function() {
+                        reject( new Error("Could not load image at URL " + img.src + ".") );
+                    }
+                }); 
+            }
+    
+            // init function
+            function init(elem, bg, movement, imgWidth, imgHeight, winWidth, winHeight) {
+                if(!movement || typeof movement !== "object") throw new Error("The movement object is not defined!");
+    
+                // setup background width and height, and display mode
+                var fitMode = movement.fitMode = autoFit(bg, imgWidth, imgHeight, winWidth, winHeight);
+    
+                // set background position
+                setPosition(bg, fitMode);
+    
+                // set background movement range
+                var range = movement.range = setMovementRange(bg, fitMode, imgWidth, imgHeight, winWidth, winHeight);
+    
+                // get current position, and setup movement state
+                var winHeight = getWindowHeight(),
+                    scrollRange = elem.offsetHeight + winHeight,
+                    scrollY = window.pageYOffset - elem.offsetTop + winHeight,
+                    speed = scrollY / scrollRange;
+    
+                if(isVisible(elem)) {
+                    bg.style.opacity = 1;
+                    moveBackground(bg, fitMode, -speed, range, "px");
+                } else {
+                    bg.style.opacity = 0;
+                }
+            }
+    
+            // update image state on window resize
+            function update(elem, bg, movement, imgWidth, imgHeight) {
+                window.addEventListener("resize", function() {
+    
+                    var winWidth = getWindowWidth(),
+                        winHeight = getWindowHeight();
+    
+                    init(elem, bg, movement, imgWidth, imgHeight, winWidth, winHeight);
+                })
+            }
+    
+            // animate parallax
+            function animate(elem, bg, movement, imgWidth, imgHeight) {
+                if(!movement || typeof movement !== "object") throw new Error("The movement object is not defined!");
+    
+                window.addEventListener("scroll", function(){
+    
+                    var winHeight = getWindowHeight(),
+                        scrollRange = elem.offsetHeight + winHeight,
+                        range = movement.range,
+                        fitMode = movement.fitMode,
+                        scrollY = window.pageYOffset - elem.offsetTop + winHeight;
+    
+                    if(isVisible(elem)) {
+                        var speed = scrollY / scrollRange;
+    
+                        bg.style.opacity = 1;
+                        moveBackground(bg, fitMode, -speed, range, "px");
+                    } else {
+                        bg.style.opacity = 0;
+                    }
+                });
+            }
+    
+            // Helper functions
+            // auto set the image size to conver the window/screen
+            function autoFit(elem, imgWidth, imgHeight, winWidth, winHeight) {
+                // first check for landscape fit
+                // check w/h ratio
+                var imgRatio = imgWidth / imgHeight;
+                var winRatio = winWidth / winHeight;
+    
+                //  image width is larger than window width when height is equal => image height === window height
+                if(imgRatio >= winRatio && imgWidth >= winWidth) {
+                    elem.style.height = winHeight + "px";
+                    elem.style.width = winHeight * imgRatio + "px";
+    
+                    return "landscape";
+                } 
+                //  image height is larger than window height when width is equal => image width === window width
+                else if(imgRatio < winRatio && imgHeight > winHeight) {
+                    elem.style.width = winWidth + "px";
+                    elem.style.height = winWidth / imgRatio + "px";
+    
+                    return "portrait";
+                }
+                else {
+                    // image size too small to conver the screen
+                    throw new Error("Image size is too small to cover the screen. Minimum image dimension is " + winWidth + "px X " + winHeight + "px.");
+                }
+            }
+    
+            // set image element positions according to the fitMode
+            function setPosition(elem, fitMode) {
+                if(fitMode === "landscape") {
+                    elem.style.top = 0;
+                    elem.style.left = 0;
+                } else if(fitMode === "portrait") {
+                    elem.style.left = 0;
+                    elem.style.top = "auto";
+                    elem.style.bottom = 0;
+                } else {
+                    throw new Error("fitMode is missing. Please specify the fitMode to position the image.");
+                }
+            }
+    
+            // set image movement range during parallax
+            function setMovementRange(elem, fitMode, imgWidth, imgHeight, winWidth, winHeight) {
+                var imgRatio = imgWidth / imgHeight;
+                var winRatio = winWidth / winHeight;
+    
+                if(fitMode === "landscape") {
+                    return winHeight * imgRatio - winWidth;
+                } else if(fitMode === "portrait") {
+                    return winWidth / imgRatio - winHeight;
+                } else {
+                    throw new Error("fitMode is missing. Please specify the fitMode to set movement distance.");
+                }
+            }
+    
+            // move the background with specified css property
+            function moveBackground(elem, fitMode, speed, range, unit) {
+                if(fitMode === "landscape") {
+                    elem.style.transform = "translateX(" + speed * range + unit + ")";
+                } else if(fitMode === "portrait") {
+                    elem.style.transform = "translateY(" + (- speed) * range + unit + ")";
+                } else {
+                    throw new Error("fitMode is missing. Please specify the fitMode to set movement.");
+                }
+            }
+    
+            // check if elem is visible to window
+            // function isVisible(elem) {
+            //     var scrollY = window.pageYOffset;
+    
+            //     if(scrollY + getWindowHeight() > elem.offsetTop && scrollY < elem.offsetHeight + elem.offsetTop) {
+            //         return true;
+            //     } else {
+            //         return false;
+            //     }
+            // }
+    
+            // // get current window size
+            // function getWindowWidth() {
+            // return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+            // }
+    
+            // function getWindowHeight() {
+            //     return (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
+            // }
+        }
+
+    });
+
+
 
     // 
     // -----------Gridbox Plugin Helper Functions-----------------

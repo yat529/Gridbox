@@ -2716,14 +2716,11 @@ a {
 
 .parallax {
   position: relative;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed; }
-  .parallax.vertical {
-    background-size: 100% auto !important; }
-  .parallax.horizontal {
-    background-size: 115% auto !important; }
+  background: transparent; }
+  .parallax .bg {
+    display: block;
+    position: fixed;
+    z-index: -10; }
   .parallax .mask {
     position: absolute;
     top: 0;

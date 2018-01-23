@@ -6,15 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/gridbox.css">
-    <style>
-        #p1 {
-            background-image: url("/img/sample-image-1.jpg");
-        }
-
-        #p2 {
-            background-image: url("/img/sample-image-2.jpg");
-        }
-    </style>
     <title>Showcase Parallax Effect</title>
 </head>
 <body>
@@ -89,6 +80,8 @@
 
         <!-- Showcase Parallax -->
         <div class="showcase bg-white parallax" id="p1">
+
+            <img src="/img/sample-image-1.jpg" alt="background layer 1" class="bg">
     
             <!-- optional background mask -->
             <div class="mask"></div>
@@ -101,11 +94,8 @@
             
         </div>
 
-        <!-- Showcase Parallax -->
-        <div class="showcase bg-white parallax" id="p2">
-    
-            <!-- optional background mask -->
-            <div class="mask"></div>
+        <!-- showcase section -->
+        <div class="showcase bg-lightgray">
 
             <div class="text-content left">
                 <h1 class="margin-bottom">Hello World!</h1>
@@ -116,21 +106,6 @@
             </div>
             
         </div>
-
-        <!-- showcase section -->
-        <div class="showcase bg-lightgray">
-
-            <div class="text-content right">
-                <h1 class="margin-bottom">Hello World!</h1>
-                <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
-    
-                <!-- optional Call to Action Btn -->
-                <a href="#" class="btn btn-primary">Discover</a>
-            </div>
-            
-        </div>
-
-
 
     </div> <!-- .container-fluid -->
 
@@ -159,9 +134,7 @@ var menuToggle = im("#menu-toggle"),
     });
 
     // Parallax
-    im("#p1").parallax({ movement: null });
-
-    im("#p2").parallax();
+    im("#p1").parallax();
 
     </script>
 </body>
