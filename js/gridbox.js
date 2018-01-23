@@ -29,7 +29,6 @@
 
         // Selector API, can use .classname or #id
         get: function(selector, ctx){
-            if(typeof selector !== "string") return "Selector must be String Type";
             var match = sReg.exec(selector),
                 ctx;
 
@@ -138,7 +137,7 @@
             return createObj(selector);
         }else if(selector === document){
             return createObj(document);
-        } else {
+        } else if(typeof selector === "object") {
             // wrap DOM obj
             return createObj(selector);
         }
@@ -169,6 +168,17 @@
     // 
 
     init.extend({
+
+        // Query DOM
+        find: function(selector) {
+            var match = sReg.exec(selector);
+
+            if(match[1]){
+                return createObj( this[0].getElementsByClassName(match[1]) );
+            }else if(match[2]){
+                return createObj( this[0].getElementById(match[2]) );
+            }
+        },
 
         // DOM Manipulate
         // add html
@@ -792,102 +802,148 @@
 
         parallax: function(optionObj) {
 
-            var self = this;
-            var mask = im(".mask").first();
+            var self = this,
+                mask = im(".mask").first() || null,
+                imgUrl = self.css("background-image");
 
-            // get the bg url via data-bgUrl attribute
-            var url = self.data("bgUrl");
+            // check image dimensions
+            try {
+                checkImgSize(imgUrl, function(size){
+                    var width = size.width,
+                        height = size.height;
+    
+                    if( width < getWindowWidth() || height < getWindowHeight()) {
+                        throw new Error("Image size too small to cover the background.");
+                    }
+                });
+            } catch(e) {
+                console.error(e.name, e.message);
+            }
+
             // set options
-            var optionObj = optionObj || {
-                dynamicBackground: { direction: "up" },
+            var opt = optionObj || {
+                movement: { direction: "up", speed: 10 },
                 mask: { color: "#000", opacity: "0.1" },
             }
 
-            // set the bg image via css
-            // self.css({
-            //     "background-image": "url('" + url + "')"
-            // });
-
             // set bg mask
-            if(optionObj.mask) {
-                if(optionObj.mask.color && optionObj.mask.opacity) {
+            if(opt.mask && mask) {
+                if(opt.mask.color && opt.mask.opacity) {
                     mask.css({ 
-                        "background": optionObj.mask.color,
-                        "opacity": optionObj.mask.opacity,
+                        "background": opt.mask.color,
+                        "opacity": opt.mask.opacity,
                     });
                 }
+            } else if(!opt.mask && mask) {
+                mask.css({ 
+                    "background": "#000",
+                    "opacity": "0.1",
+                });
             }
 
-            if(optionObj.dynamicBackground) {
-                var direnction = optionObj.dynamicBackground.direction;
-                var winHeight = getWindowHeight();
-                var offsetY = self[0].offsetTop;
+            // set dynamic background
+            if(opt.movement) {
+                var direction = opt.movement.direction,
+                    speed = opt.movement.speed || 30,
+                    totalDistY = self[0].offsetTop + self[0].offsetHeight; // elemOffsetY + winHeight
+
+                // check for moving direction, and assign class
+                if( ["up", "down"].includes(direction) ) self.addClass("vertical");
+                if( ["left", "right"].includes(direction) ) self.addClass("horizontal");
 
                 window.addEventListener("scroll", function(){
                     if(isVisible(self[0])) {
-                        var offsetY = Math.abs(window.pageYOffset);
-                        var elemHeight = self[0].offsetHeight;
-
-                        if(offsetY < elemHeight) {
-                            moveBackground("up", offsetY/10);
+                        var scrollY = Math.abs(window.pageYOffset);
+                        
+                        if(scrollY < totalDistY) {
+                            moveBackground(direction, scrollY / totalDistY, speed / 2);
                         }
                     }
                 });
-
             }
 
-
             // Helper Functions
-            function moveBackground(direction, increament) {
+            function moveBackground(direction, increament, magnifier) {
 
                 switch (direction) {
                     case "up":
                         self.css({
-                            "background-position": "center -" + increament + "px"
+                            "background-position": "center " + (50 - increament * magnifier) + "%"
                         });
                         break;
 
                     case "down":
                         self.css({
-                            "background-position": "center " + increament + "px"
+                            "background-position": "center " + (50 + increament * magnifier) + "%"
                         });
                         break;
 
-                    // case "left":
-                    //     self.css({
-                    //         "background-position": "right " + increament/10 + "px left 0px"
-                    //     });
-                    //     break;
+                    case "left":
+                        self.css({
+                            "background-position": (50 + increament * magnifier) + "%"
+                        });
+                        break;
 
-                    // case "right":
-                    //     self.css({
-                    //         "background-position": "left " + increament/10 + "px left 0px"
-                    //     });
-                    //     break;
+                    case "right":
+                        self.css({
+                            "background-position": (50 - increament * magnifier) + "%"
+                        });
+                        break;
                 }
-                
             }
 
-            function getWindowHeight() {
-                return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-            }
-        
-            function getWindowWidth() {
-                return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            }
-        
-            function isVisible(elem) {
-                if(window.pageYOffset + document.documentElement.clientHeight >= elem.offsetTop 
-                && window.pageYOffset <= elem.offsetTop + elem.offsetHeight)
-                    return true;
-                return false;
-            }
+            function checkImgSize(url, callback) {
+                var urlRegex = /url\(['"]*(.*?)['"]*\)/g,
+                    url = urlRegex.exec(url)[1],
+                    img = new Image();
 
-
-
+                img.src = url;
+                img.onload = function() {
+                    size = {
+                        width: img.naturalWidth,
+                        height: img.naturalHeight
+                    }
+                    callback(size);
+                }
+            }
         }
-
     });
+
+    // 
+    // -----------Gridbox Plugin Helper Functions-----------------
+    // 
+
+    // -----------------------------------------------------------
+    //              Get window width and height
+    // -----------------------------------------------------------
+    // Parameter: none
+    // Description: cross-browser method
+    // -----------------------------------------------------------
+
+    function getWindowHeight() {
+        return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    }
+
+    function getWindowWidth() {
+        return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    }
+
+    function widthToHeightRatio(width, height) {
+        return width/height;
+    }
+
+    // ---------------------------------------------------------------
+    //              element is in view
+    // ---------------------------------------------------------------
+    // Parameter: element to check, (default DOM elem, not wrapper)
+    // Description: check if the target elem is in the view window
+    // ---------------------------------------------------------------
+    function isVisible(elem) {
+        if(window.pageYOffset + document.documentElement.clientHeight >= elem.offsetTop 
+        && window.pageYOffset <= elem.offsetTop + elem.offsetHeight)
+            return true;
+        return false;
+    }
 
 })(window);
 
