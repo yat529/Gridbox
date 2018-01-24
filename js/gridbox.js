@@ -364,9 +364,22 @@
         },
 
         // click event
-        click: function(callback){
+        click: function(callback, bubbling){
             if(typeof callback !== "function") return "Paramete Type Error";
-            this[0].addEventListener("click", callback.bind(this), false);
+
+            var bubbling = bubbling === undefined ? true : bubbling;
+            var callback = callback;
+
+            this[0].addEventListener("click", (function(e) {
+                if(!bubbling) {
+                    if(this[0] === e.target) {
+                        callback.call(this);
+                    }
+                } else {
+                    callback.call(this);
+                }
+            }).bind(this), false);
+              
         },
 
         // if not click on this element
@@ -1071,6 +1084,59 @@
             return true;
         return false;
     }
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+    init.extend({
+    // -----------------------------------------------------------
+    //                          Modal
+    // -----------------------------------------------------------
+    // Description: toggle the modal elements
+    // -----------------------------------------------------------
+    // Parameter:   none
+    // Description: none
+    // -----------------------------------------------------------
+    // Note:  must use Modal HTML Template
+    // -----------------------------------------------------------
+
+        modal: function() {
+            var self = this;
+
+            var modalID = self.data("target");
+            var modal = im(modalID);
+            var modalBox = modal.find(".modal-box").first();
+            var dismiss = im("#dismiss");
+
+            // show the modal
+            self.click(showModal);
+
+            // dismiss the modal
+            dismiss.click(hideModal);
+            modal.click(hideModal, false);
+
+            // dismiss when esc pressed
+            window.addEventListener("keypress", function(e){
+                if(e.keyCode == 27 && modalBox.hasClass("slide-in")) {
+                    hideModal();
+                }
+            });
+
+            // helper functions
+            function showModal() {
+                modal.addClass("show");
+                modalBox.addClass("slide-in");
+            }
+
+            function hideModal() {
+                modal.removeClass("show");
+                modalBox.removeClass("slide-in");
+            }
+        }
+
+    });
 
 })(window);
 

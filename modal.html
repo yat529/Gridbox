@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <title>Sample Home Page</title>
+</head>
+<body>
+
+    <div class="absolute middle-center">
+        <!-- Button need to specify a data-target attribute with a value of modal's ID name -->
+        <button class="btn btn-secondary" id="modal-toggle" data-target="#modal">Show Modal</button>
+    </div>
+
+    <!-- Modal Template -->
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <h3 class="modal-title">Modal Title</h3>
+            <div class="modal-content"><span class="bold">Modal Content</span> - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non praesentium mollitia accusantium ipsam maiores. Ifugit similique itaque hic?</div>
+            <div class="modal-actions">
+                <a href="#" class="btn btn-secondary" id="dismiss">Cancel</a>
+                <a href="#" class="btn btn-primary">Confirm</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="/js/gridbox.js"></script>
+
+    <script>
+    
+        im("#modal-toggle").modal();
+    
+    </script>
+</body>
+</html>
