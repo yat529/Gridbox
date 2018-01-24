@@ -2133,6 +2133,7 @@ a {
 
 .btn-secondary {
   color: #1e88e5;
+  background-color: transparent;
   border: 1px solid #1e88e5; }
   .btn-secondary:hover, .btn-secondary:active {
     color: #fff;
