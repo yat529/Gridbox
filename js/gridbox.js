@@ -1125,14 +1125,27 @@
             });
 
             // helper functions
+            function animate() {
+                return new Promise( function(resolve) {
+                    modal.toggleClass("fade");
+                    modalBox.toggleClass("slide-in");
+                    setTimeout(resolve, 300); // 300ms is the transition time
+                });
+            }
+
+            function toggleDisplay() {
+                return new Promise( function(resolve) {
+                    modal.toggleClass("show");
+                    setTimeout(resolve, 100);
+                });
+            }
+
             function showModal() {
-                modal.addClass("show");
-                modalBox.addClass("slide-in");
+                toggleDisplay().then(animate);
             }
 
             function hideModal() {
-                modal.removeClass("show");
-                modalBox.removeClass("slide-in");
+                animate().then(toggleDisplay);
             }
         }
 

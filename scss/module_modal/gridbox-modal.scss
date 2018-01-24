@@ -1,6 +1,6 @@
 
 .modal {
-    display: block;
+    display: none;
     position: fixed;
     width: 100%;
     top: 0;
@@ -14,6 +14,10 @@
     z-index: 99;
 
     &.show {
+        display: block;
+    }
+
+    &.fade {
         opacity: 1;
         pointer-events: auto;
     }
@@ -67,5 +71,3 @@
         }
     }
 }
-
-// .dismiss class is used for js to toggle off the modal

@@ -2717,7 +2717,7 @@ a {
     text-align: center; }
 
 .modal {
-  display: block;
+  display: none;
   position: fixed;
   width: 100%;
   top: 0;
@@ -2732,6 +2732,8 @@ a {
   transition: all 0.3s;
   z-index: 99; }
   .modal.show {
+    display: block; }
+  .modal.fade {
     opacity: 1;
     pointer-events: auto; }
 
