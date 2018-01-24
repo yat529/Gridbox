@@ -391,8 +391,8 @@ html {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 55%;
+    max-height: 55%;
     z-index: 1; }
 
 .top-layer {
