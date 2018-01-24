@@ -1689,10 +1689,11 @@ html {
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
-  z-index: -1; }
+  pointer-events: none;
+  z-index: 99; }
   .overlay.show {
     opacity: 1;
-    z-index: 99; }
+    pointer-events: initial; }
   .overlay nav {
     height: inherit; }
     @media (max-width: 768px) {
@@ -1861,13 +1862,13 @@ a.sub-toggle::before, a.sub-toggle::after {
     display: block;
     position: relative;
     width: 0%;
-    height: 1px;
+    height: 2px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     background: #fff;
-    opacity: 0.3;
+    opacity: 0.6;
     -webkit-transition: width 0.3s ease-in-out;
     -o-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;

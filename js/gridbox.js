@@ -39,7 +39,7 @@
             if(match[1]){
                 this[0] = ctx.getElementsByClassName(match[1]);
             }else if(match[2]){
-                this[0] = ctx.getElementById(match[2]);
+                this[0] = document.getElementById(match[2]);
             }
 
             this.length = 1;
@@ -176,7 +176,7 @@
             if(match[1]){
                 return createObj( this[0].getElementsByClassName(match[1]) );
             }else if(match[2]){
-                return createObj( this[0].getElementById(match[2]) );
+                return createObj( document.getElementById(match[2]) );
             }
         },
 
@@ -434,6 +434,65 @@
 
     // Export to Gloabl
     global.im = im = iAm;
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    // 
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                         Navigation Bar
+        // -----------------------------------------------------------
+        // Description: enable the navigation bar toggle feature
+        // -----------------------------------------------------------
+        // Parameter:   name (optional)
+        // Description: navigation bar theme name, modulized theme
+        //              is used by default
+        // -----------------------------------------------------------
+        // Note:  Must use gridbox navbar template
+        // -----------------------------------------------------------
+
+        navbar: function(name) {
+
+            var self = this;
+
+            if(!name || name === "modulized") {
+
+                var menuToggle = self.find("#menu-toggle"),
+                    menuOvrly = self.find("#menu-overlay"),
+                    brandname = self.find("#brandname"),
+                    subToggles = self.find(".sub-toggle"),
+                    mainMenu = self.find(".main").first();
+
+                // check if key element is cached
+                if(!menuToggle || !menuOvrly || !mainMenu)
+                    throw new Error("HTML element missing. Must use defautl HTML template.");
+
+                // show main menu
+                menuToggle.click(function(){
+                    this.addClass("active");
+                    menuOvrly.toggleClass("show");
+                    mainMenu.toggleClass("show");
+                    // optional brand name text contrast feature
+                    if(brandname) brandname.toggleClass("contrast");
+                });
+
+                // show sub menu (optional)
+                if(subToggles) {
+                    subToggles.each(function(){
+                        this.click(function(){
+                            this.toggleClass("clicked");
+                            this.nextSibling().toggleClass("show");
+                        });
+                    });
+                }
+            }
+
+            // if other themes, wirte code below
+            // ...
+        }
+    })
 
 
 

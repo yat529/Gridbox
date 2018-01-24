@@ -11,16 +11,16 @@
 <body>
     <div class="container-fluid">
 
-        <div class="nav">
+        <div class="nav" id="navbar">
             <!-- Brand -->
             <div class="brand fixed top-left">
                 <img src="img/gridbox_logo.png" alt="">
-                <div class="brandname"><span>Gridbox</span></div>
+                <div class="brandname" id="brandname"><span>Gridbox</span></div>
             </div>
             <!-- Menu Toggle -->
             <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
 
-            <div class="overlay" id="overlay">
+            <div class="overlay" id="menu-overlay">
                 <nav>
                     <!-- Menu Item -->
                     <ul class="main slideright">
@@ -132,26 +132,8 @@
     <script src="js/gridbox.js"></script>
     <script>
 
-var menuToggle = im("#menu-toggle"),
-    subToggle = im(".sub-toggle"),
-    brand = im(".brandname").first(),
-    ovrly = im("#overlay"),
-    main = im(".main").first();
-
-    menuToggle.click(function(){
-        this.toggleClass("active");
-            brand.toggleClass("contrast");
-            ovrly.toggleClass("show");
-            main.toggleClass("show");
-    });
-
-    subToggle.each(function(){
-        this.click(function(){
-            this.toggleClass("clicked");
-            this.nextSibling().toggleClass("show");
-        });
-    });
-
+    
+    im("#navbar").navbar();
     im(".carousel").carousel();
 
     </script>

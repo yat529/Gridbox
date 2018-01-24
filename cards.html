@@ -11,16 +11,16 @@
 <body>
     <div class="container-fluid">
 
-        <div class="nav">
+        <div class="nav" id="navbar">
             <!-- Brand -->
             <div class="brand fixed top-left">
                 <img src="img/gridbox_logo.png" alt="">
-                <div class="brandname"><span>Gridbox</span></div>
+                <div class="brandname" id="brandname"><span>Gridbox</span></div>
             </div>
             <!-- Menu Toggle -->
             <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
 
-            <div class="overlay" id="overlay">
+            <div class="overlay" id="menu-overlay">
                 <nav>
                     <!-- Menu Item -->
                     <ul class="main slideright">
@@ -131,7 +131,7 @@
     <div class="container-fluid margin-top-45 margin-bottom-45">
         <div class="row">
             <div class="col-lap-4 col-lap-offset-1 col-tab-5 col-tab-offset-2 card bg-lightgray">
-                <img src="./img/sample-image-1.jpeg" alt="" class="card-image">
+                <img src="/img/sample-image-1.jpg" alt="" class="card-image">
                 <h3 class="card-title">Card Title</h3>
                 <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, et exercitationem laudantium reprehenderit quisquam cum quia commodi deserunt quae eius accusamus velit, facilis magnam cumque eveniet vero. At, corrupti eos.
@@ -140,7 +140,7 @@
             </div>
 
             <div class="col-lap-4 col-lap-offset-1 col-tab-5 col-tab-offset-2 card bg-lightgray">
-                <img src="./img/sample-image-2.jpeg" alt="" class="card-image">
+                <img src="/img/sample-image-2.jpg" alt="" class="card-image">
                 <h3 class="card-title">Card Title</h3>
                 <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, et exercitationem laudantium reprehenderit quisquam cum quia commodi deserunt quae eius accusamus velit.
@@ -149,7 +149,7 @@
             </div>
 
             <div class="col-lap-4 col-lap-offset-1 col-tab-5 col-tab-offset-2 card bg-lightgray">
-                <img src="./img/sample-image-3.jpeg" alt="" class="card-image">
+                <img src="/img/sample-image-3.jpg" alt="" class="card-image">
                 <h3 class="card-title">Card Title</h3>
                 <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, et exercitationem laudantium reprehenderit quisquam cum quia commodi deserunt quae eius accusamus velit, facilis magnam cumque eveniet vero. At, corrupti eos.
@@ -164,26 +164,7 @@
     <script src="js/gridbox.js"></script>
     <script>
 
-var menuToggle = im("#menu-toggle"),
-    subToggle = im(".sub-toggle"),
-    brand = im(".brandname").first(),
-    ovrly = im("#overlay"),
-    main = im(".main").first();
-
-    menuToggle.click(function(){
-        this.toggleClass("active");
-            brand.toggleClass("contrast");
-            ovrly.toggleClass("show");
-            main.toggleClass("show");
-    });
-
-    subToggle.each(function(){
-        this.click(function(){
-            this.toggleClass("clicked");
-            this.nextSibling().toggleClass("show");
-        });
-    });
-
+    im("#navbar").navbar();
     im(".carousel").carousel();
 
     </script>
