@@ -787,131 +787,7 @@
 
     // 
     // -------------------- Gridbox Plugins --------------------------
-    // 
-
-    init.extend({
-
-        // -----------------------------------------------------------
-        //                         Parallax
-        // -----------------------------------------------------------
-        // Description: give element with .parallax class a parallax
-        //              effect
-        // -----------------------------------------------------------
-        // Parameter:   optionObj
-        // Description: two options, mask and dynamic background. If
-        //              not passed in, default value will be used
-        // -----------------------------------------------------------
-        // Note:  element must have a .parallax class and bg image 
-        // -----------------------------------------------------------
-
-        parallax_toberemoved: function(optionObj) {
-
-            var self = this,
-                mask = im(".mask").first() || null,
-                imgUrl = self.css("background-image");
-
-            // check image dimensions
-            try {
-                checkImgSize(imgUrl, function(size){
-                    var width = size.width,
-                        height = size.height;
-    
-                    if( width < getWindowWidth() || height < getWindowHeight()) {
-                        throw new Error("Image size too small to cover the background.");
-                    }
-                });
-            } catch(e) {
-                console.error(e.name, e.message);
-            }
-
-            // set options
-            var opt = optionObj || {
-                movement: { direction: "up", speed: 10 },
-                mask: { color: "#000", opacity: "0.1" },
-            }
-
-            // set bg mask
-            if(opt.mask && mask) {
-                if(opt.mask.color && opt.mask.opacity) {
-                    mask.css({ 
-                        "background": opt.mask.color,
-                        "opacity": opt.mask.opacity,
-                    });
-                }
-            } else if(!opt.mask && mask) {
-                mask.css({ 
-                    "background": "#000",
-                    "opacity": "0.1",
-                });
-            }
-
-            // set dynamic background
-            if(opt.movement) {
-                var direction = opt.movement.direction,
-                    speed = opt.movement.speed || 30,
-                    totalDistY = self[0].offsetTop + self[0].offsetHeight; // elemOffsetY + winHeight
-
-                // check for moving direction, and assign class
-                if( ["up", "down"].includes(direction) ) self.addClass("vertical");
-                if( ["left", "right"].includes(direction) ) self.addClass("horizontal");
-
-                window.addEventListener("scroll", function(){
-                    if(isVisible(self[0])) {
-                        var scrollY = Math.abs(window.pageYOffset);
-                        
-                        if(scrollY < totalDistY) {
-                            moveBackground(direction, scrollY / totalDistY, speed / 2);
-                        }
-                    }
-                });
-            }
-
-            // Helper Functions
-            function moveBackground(direction, increament, magnifier) {
-
-                switch (direction) {
-                    case "up":
-                        self.css({
-                            "background-position": "center " + (50 - increament * magnifier) + "%"
-                        });
-                        break;
-
-                    case "down":
-                        self.css({
-                            "background-position": "center " + (50 + increament * magnifier) + "%"
-                        });
-                        break;
-
-                    case "left":
-                        self.css({
-                            "background-position": (50 + increament * magnifier) + "%"
-                        });
-                        break;
-
-                    case "right":
-                        self.css({
-                            "background-position": (50 - increament * magnifier) + "%"
-                        });
-                        break;
-                }
-            }
-
-            function checkImgSize(url, callback) {
-                var urlRegex = /url\(['"]*(.*?)['"]*\)/g,
-                    url = urlRegex.exec(url)[1],
-                    img = new Image();
-
-                img.src = url;
-                img.onload = function() {
-                    size = {
-                        width: img.naturalWidth,
-                        height: img.naturalHeight
-                    }
-                    callback(size);
-                }
-            }
-        }
-    });
+    //
 
     init.extend({
         // -----------------------------------------------------------
@@ -920,33 +796,24 @@
         // Description: give element with .parallax class a parallax
         //              effect
         // -----------------------------------------------------------
-        // Parameter:   optionObj
-        // Description: two options, mask and dynamic background. If
-        //              not passed in, default value will be used
+        // Parameter:   none
+        // Description: none
         // -----------------------------------------------------------
-        // Note:  element must have a .parallax class and bg image 
+        // Note:  element must have a .parallax class and encapsulate
+        //        a <img> element with a .bg class 
         // -----------------------------------------------------------
 
 
-        parallax: function(elem, bg) {
+        parallax: function() {
 
-            var elem, bg;
-    
-            // check if im.js is used
-            if(this.length && this[0]) {
-                elem = this[0],
+            var elem = this[0],
                 bg = this.find(".bg").first()[0];
-            } else {
-                elem = elem[0],
-                bg = bg[0];
-            }
             
-    
             var url = bg.getAttribute("src"),
                 movement = {};
     
-            loadImage(url).then(
-                function success(result) {
+            loadImage(url)
+                .then(function success(result) {
                     var imgWidth = result.naturalWidth,
                         imgHeight = result.naturalHeight,
                         winWidth = getWindowWidth(),
@@ -960,11 +827,10 @@
     
                     // run the animation on scroll
                     animate(elem, bg, movement, imgWidth, imgHeight);
-                }, 
-                function failure(error) {
+                })
+                .catch(function failure(error) {
                     console.error(error.name, error.message);
-                }
-            );
+                });
     
             // Core functions
             // load image to retrieve image actual size
@@ -1025,14 +891,13 @@
                 if(!movement || typeof movement !== "object") throw new Error("The movement object is not defined!");
     
                 window.addEventListener("scroll", function(){
-    
-                    var winHeight = getWindowHeight(),
-                        scrollRange = elem.offsetHeight + winHeight,
-                        range = movement.range,
-                        fitMode = movement.fitMode,
-                        scrollY = window.pageYOffset - elem.offsetTop + winHeight;
-    
                     if(isVisible(elem)) {
+                        var winHeight = getWindowHeight(),
+                            scrollRange = elem.offsetHeight + winHeight,
+                            range = movement.range,
+                            fitMode = movement.fitMode,
+                            scrollY = window.pageYOffset - elem.offsetTop + winHeight;
+
                         var speed = scrollY / scrollRange;
     
                         bg.style.opacity = 1;
@@ -1109,31 +974,8 @@
                     throw new Error("fitMode is missing. Please specify the fitMode to set movement.");
                 }
             }
-    
-            // check if elem is visible to window
-            // function isVisible(elem) {
-            //     var scrollY = window.pageYOffset;
-    
-            //     if(scrollY + getWindowHeight() > elem.offsetTop && scrollY < elem.offsetHeight + elem.offsetTop) {
-            //         return true;
-            //     } else {
-            //         return false;
-            //     }
-            // }
-    
-            // // get current window size
-            // function getWindowWidth() {
-            // return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
-            // }
-    
-            // function getWindowHeight() {
-            //     return (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
-            // }
         }
-
     });
-
-
 
     // 
     // -----------Gridbox Plugin Helper Functions-----------------
