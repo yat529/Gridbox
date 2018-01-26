@@ -484,7 +484,7 @@
 
                 // show main menu
                 menuToggle.click(function(){
-                    this.addClass("active");
+                    this.toggleClass("active");
                     menuOvrly.toggleClass("show");
                     mainMenu.toggleClass("show");
                     // optional brand name text contrast feature
