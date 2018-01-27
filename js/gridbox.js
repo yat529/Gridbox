@@ -225,6 +225,11 @@
             return createObj( this[0].nextElementSibling );  
         },
 
+        // 
+        previousSibling: function(){
+            return createObj( this[0].previousElementSibling );
+        },
+
         // Return lastSibling Object
         lastSibling: function(){
             return createObj( this[0].parentElement.children[this[0].parentElement.children.length - 1] ); 
@@ -1085,6 +1090,51 @@
         return false;
     }
 
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+    init.extend({
+    // -----------------------------------------------------------
+    //                          Footer
+    // -----------------------------------------------------------
+    // Description: fix footer reveal effect
+    // -----------------------------------------------------------
+    // Parameter:   none
+    // Description: none
+    // -----------------------------------------------------------
+    // Note:  
+    // -----------------------------------------------------------
+
+        footer: function() {
+            var self = this;
+
+            var footerHeight = self[0].offsetHeight,
+                offsetY = self[0].offsetTop,
+                windowHeight = getWindowHeight();
+
+
+            document.addEventListener("scroll", function() {
+                var scrollY = window.pageYOffset;
+
+                if(scrollY >= offsetY - windowHeight) {
+                    if(!self.hasClass("footer-reveal")) {
+                        self.addClass("footer-reveal");
+                        document.body.style.marginBottom = footerHeight + "px";
+                    }
+                } else {
+                    if(self.hasClass("footer-reveal")) {
+                        self.removeClass("footer-reveal");
+                        document.body.style.marginBottom = 0 + "px";
+                    }
+                }
+
+            });
+
+        }
+
+    });
 
     // 
     // -------------------- Gridbox Plugins --------------------------

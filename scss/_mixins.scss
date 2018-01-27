@@ -95,8 +95,12 @@
 //  * =======================================================================
 //  */
 @mixin columnOffsetBuild($prefix, $colNums) {
+    // no offset
+    .#{$prefix}-offset-none {
+        margin-left: 0px;
+    }
+    
     @for $colNum from 1 to $colNums {
-
         // Left to right offset
         .#{$prefix}-offset-#{$colNum} {
             margin-left: (100%/$colNums) * $colNum;

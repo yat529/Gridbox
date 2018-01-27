@@ -573,6 +573,9 @@ html {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%; }
 
+.col-offset-none {
+  margin-left: 0px; }
+
 .col-offset-1 {
   margin-left: 6.25%; }
 
@@ -731,6 +734,8 @@ html {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%; }
+  .col-mob-offset-none {
+    margin-left: 0px; }
   .col-mob-offset-1 {
     margin-left: 6.25%; }
   .col-mob-reverse-offset-1 {
@@ -859,6 +864,8 @@ html {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%; }
+  .col-mob-l-offset-none {
+    margin-left: 0px; }
   .col-mob-l-offset-1 {
     margin-left: 6.25%; }
   .col-mob-l-reverse-offset-1 {
@@ -987,6 +994,8 @@ html {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%; }
+  .col-tab-offset-none {
+    margin-left: 0px; }
   .col-tab-offset-1 {
     margin-left: 6.25%; }
   .col-tab-reverse-offset-1 {
@@ -1115,6 +1124,8 @@ html {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%; }
+  .col-lap-offset-none {
+    margin-left: 0px; }
   .col-lap-offset-1 {
     margin-left: 6.25%; }
   .col-lap-reverse-offset-1 {
@@ -1243,6 +1254,8 @@ html {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%; }
+  .col-desk-offset-none {
+    margin-left: 0px; }
   .col-desk-offset-1 {
     margin-left: 6.25%; }
   .col-desk-reverse-offset-1 {
@@ -2787,7 +2800,7 @@ a {
     .modal-actions .btn:last-child {
       margin-right: 0; }
 
-.footer, .footer-fixed, .footer-revealed {
+.footer, .footer-reveal {
   width: 100%;
   bottom: 0;
   left: 0;
@@ -2796,11 +2809,8 @@ a {
 
 .footer {
   position: relative; }
-  .footer-fixed {
-    position: fixed;
-    z-index: -1; }
-  .footer-revealed {
-    position: absolute;
+  .footer-reveal {
+    position: fixed !important;
     z-index: -1; }
 
 .copyright {
