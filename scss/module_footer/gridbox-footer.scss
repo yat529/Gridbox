@@ -10,19 +10,16 @@
 .footer {
     position: relative;
     @extend %footer;
-    
-    // &-fixed {
-    //     position: fixed;
-    //     @extend %footer;
-    //     z-index: -1;
-    // }
 
     &-reveal {
         position: fixed !important;
         @extend %footer;
         z-index: -1;
+
+        &.hide {
+            visibility: hidden;
+        }
     }
- 
 }
 
 .copyright {

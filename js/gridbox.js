@@ -1107,30 +1107,36 @@
     // Note:  
     // -----------------------------------------------------------
 
-        footer: function() {
+        footer: function(reveal = true) {
             var self = this;
 
             var footerHeight = self[0].offsetHeight,
-                offsetY = self[0].offsetTop,
                 windowHeight = getWindowHeight();
 
+            var offsetY = self[0].offsetTop;
+                
+            if(reveal) {
+                self.addClass("footer-reveal");
+                self.addClass("hide");
 
-            document.addEventListener("scroll", function() {
-                var scrollY = window.pageYOffset;
-
-                if(scrollY >= offsetY - windowHeight) {
-                    if(!self.hasClass("footer-reveal")) {
-                        self.addClass("footer-reveal");
-                        document.body.style.marginBottom = footerHeight + "px";
+                document.addEventListener("scroll", function() {
+                    var scrollY = window.pageYOffset;
+    
+                    if(scrollY >= offsetY - windowHeight - 100) {
+                        if(self.hasClass("hide")) {
+                            self.removeClass("hide");
+                            document.body.style.marginBottom = footerHeight + "px";
+                        }
+                    } else {
+                        if(!self.hasClass("hide")) {
+                            self.addClass("hide");
+                            document.body.style.marginBottom = 0 + "px";
+                        }
                     }
-                } else {
-                    if(self.hasClass("footer-reveal")) {
-                        self.removeClass("footer-reveal");
-                        document.body.style.marginBottom = 0 + "px";
-                    }
-                }
+                });
+            }
 
-            });
+            
 
         }
 

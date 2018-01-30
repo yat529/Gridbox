@@ -2812,6 +2812,8 @@ a {
   .footer-reveal {
     position: fixed !important;
     z-index: -1; }
+    .footer-reveal.hide {
+      visibility: hidden; }
 
 .copyright {
   position: relative;
