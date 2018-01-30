@@ -1122,7 +1122,7 @@
                 document.addEventListener("scroll", function() {
                     var scrollY = window.pageYOffset;
     
-                    if(scrollY >= offsetY - windowHeight - 100) {
+                    if(scrollY >= offsetY - windowHeight) {
                         if(self.hasClass("hide")) {
                             self.removeClass("hide");
                             document.body.style.marginBottom = footerHeight + "px";

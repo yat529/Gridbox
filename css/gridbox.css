@@ -2192,6 +2192,9 @@ a {
 .btn-xl {
   padding: 1.5rem 2.3rem !important; }
 
+.btn-long {
+  padding: 0.5rem 1.75rem !important; }
+
 .iconized .form-field {
   padding: 0.5rem 1rem;
   background: #f5f5f5;
@@ -2833,6 +2836,19 @@ a {
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.2); }
 
+.wg-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 30px; }
+
+.wg-title {
+  margin-bottom: 15px; }
+
 .wg-social .icons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2846,15 +2862,18 @@ a {
     display: inline-block;
     position: relative;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 50px;
-    flex: 0 0 50px;
-    padding: 10px;
+    -ms-flex: 0 0 35px;
+    flex: 0 0 35px;
+    padding: 10px 0;
+    margin-right: 15px;
     text-decoration: none;
     text-align: center;
     font-size: 20px;
     line-height: 25px;
     z-index: 1;
     color: rgba(0, 0, 0, 0.6); }
+    .wg-social .icons .icon:last-child {
+      margin-right: 0; }
     .wg-social .icons .icon::before {
       content: "";
       display: block;
@@ -2866,6 +2885,7 @@ a {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       z-index: -1;
       background: transparent;
@@ -2875,7 +2895,14 @@ a {
     .wg-social .icons .icon:hover {
       color: #000; }
       .wg-social .icons .icon:hover::before {
-        background: #fff; }
+        background: #fff;
+        border: 1px solid transparent; }
+
+.wg-textbox {
+  margin-bottom: 30px; }
+  .wg-textbox i, .wg-textbox .iconized .input-icon.check .success, .iconized .input-icon.check .wg-textbox .success, .wg-textbox .iconized .input-icon.check .fail, .iconized .input-icon.check .wg-textbox .fail, .wg-textbox .iconized .check-icon .unchecked, .iconized .check-icon .wg-textbox .unchecked, .wg-textbox .iconized .check-icon .checked, .iconized .check-icon .wg-textbox .checked {
+    display: inline-block;
+    padding: 5px 15px 5px 0; }
 
 .parallax {
   position: relative;
