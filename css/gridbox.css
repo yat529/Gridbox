@@ -2843,7 +2843,9 @@ a {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
+  flex-flow: row wrap; }
+
+.wg {
   padding: 30px; }
 
 .wg-title {

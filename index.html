@@ -212,32 +212,35 @@
     <!-- footer -->
     <footer class="footer bg-offblack" id="footer">
         <div class="wg-area">
-            <div class="col-8 col-tab-4">
+            <div class="col-8 col-tab-3 wg">
                 <div class="wg-textbox">
-                    <h3 class="wg-title">Your Address</h3>
+                    <h3 class="wg-title">Address</h3>
                     <p>#1 Main St, New York</p>
                     <p>NY, 10001</p>
                 </div>
                 <div class="wg-textbox">
-                    <h3 class="wg-title">Your Contact Information</h3>
+                    <h3 class="wg-title">Contact Information</h3>
                     <p><i class="fa fa-phone" aria-hidden="true"></i>(555)555-5555</p>
                     <p><i class="fa fa-envelope" aria-hidden="true"></i>asd@asd.com</p>
                     <p><i class="fa fa-weixin" aria-hidden="true"></i>weixinid</p>
                 </div>
                 <div class="wg-social">
-                    <h3 class="wg-title">Your Social Media</h3>
+                    <h3 class="wg-title">Social Media</h3>
                     <div class="icons">
                         <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                         <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                         <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        
                     </div>
                 </div>
             </div>
-            <div class="col-8 col-tab-4">
+            <div class="col-8 col-tab-5 wg">
+                <div class="wg-map">
+                    <h3 class="wg-title">Map</h3>
+                    <div id="footer-map"></div>
+                </div>
             </div>
-            <div class="col-16 col-tab-8">
+            <div class="col-16 col-tab-8 wg">
                 <div class="wg-form">
                     <h3 class="wg-title">Contact Us</h3>
                     <p>Please let us know how we can assit. Your contact information will be safe with us.</p>
@@ -257,7 +260,10 @@
                             <span class="input-icon"><i class="fa fa-font" aria-hidden="true"></i></span>
                         </div>
     
-                        <a href="" class="btn btn-primary btn-long">Email Us</a>
+                        <!-- button -->
+                        <div class="form-group">
+                            <a href="" class="btn btn-primary btn-long">Email Us</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -269,12 +275,25 @@
 
     <script src="js/gridbox.js"></script>
     <script>
+        im(document).onload(function(){
+            im("#navbar").navbar();
+            im(".carousel").carousel();
+            im("#parallax").parallax();
+        });
+    </script>
 
-    im("#navbar").navbar();
-    im(".carousel").carousel();
-    im("#parallax").parallax();
-    im("#footer").footer();
+    <script>
+        var footerHeight = 350,
+            APIKey = "YourAPIKey",
+            currScript = document.currentScript; // need to cache it otherwise, this returns null in event handler cb
 
+        im(document).onload(function(){
+            im("#footer-map")
+                .css({ "height": footerHeight + "px" })
+                .googleMap(APIKey, currScript);
+
+            im("#footer").footer(true);
+        }); 
     </script>
 </body>
 </html>

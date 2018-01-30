@@ -169,6 +169,11 @@
 
     init.extend({
 
+        // DOM onLoad
+        onload: function(cb) {
+            document.addEventListener("DOMContentLoaded", cb);
+        },
+
         // Query DOM
         find: function(selector) {
             var match = sReg.exec(selector);
@@ -1135,11 +1140,7 @@
                     }
                 });
             }
-
-            
-
         }
-
     });
 
     // 
@@ -1205,6 +1206,74 @@
             }
         }
 
+    });
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                      Google Map API
+        // -----------------------------------------------------------
+        // Description: a google map api wrapper
+        // -----------------------------------------------------------
+        // Parameter:   APIKey
+        // Description: Google Map API Key
+        // Parameter:   positionObj
+        // Description: Example format {lat: 40.674, lng: -73.945}
+        // Parameter:   styleArr
+        // Description: Google Map Style Array
+        // -----------------------------------------------------------
+        // Note:  Style Array needs to conform google api format
+        // -----------------------------------------------------------
+
+        googleMap: function(APIKey, currScript, positionObj, styleArr) {
+
+            var self = this,
+                src = "https://maps.googleapis.com/maps/api/js?key=" + APIKey,
+                position = positionObj || {lat: 40.674, lng: -73.945},
+                mapStyle = styleArr || [],
+                currScript = currScript || document.currentScript;
+
+            try {
+                loadScript(src, initFunc, position, mapStyle, currScript);
+            } catch(e) {
+                console.log(e);
+            }
+
+            // helper function
+            function loadScript (src, cb, positionObj, styleArr, currScript) {
+                var scriptTag = document.createElement("script");
+
+                scriptTag.type = "text\/javascript";
+                scriptTag.defer = true;
+                scriptTag.src = src;
+
+                currScript.parentNode.insertBefore(scriptTag, document.currentScript);
+                
+                scriptTag.onload = function() {
+                    cb(positionObj, styleArr);
+                }
+
+                scriptTag.onerror = function(error) {
+                    throw new URIError("The script " + error.target.src + " is not accessible.");
+                }    
+            }
+
+            function initFunc(positionObj, styleArr) {
+                var map = new google.maps.Map(self[0], {
+                    zoom: 10,
+                    center: positionObj,
+                    styles: styleArr
+                });
+                var marker = new google.maps.Marker({
+                    position: positionObj,
+                    map: map
+                });
+            }
+        }
     });
 
 })(window);
