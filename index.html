@@ -130,26 +130,11 @@
 
 
     <!-- grid section -->
-    <section class="container padding-top-45 padding-bottom-45 bg-white">
+    <section class="container-fluid padding-top-45 padding-bottom-45 bg-white">
         <h2 class="section-title center-text padding-top-30 padding-bottom">Grid Section</h2>
         <h5 class="section-subtitle center-text margin-bottom-45">Lorem ihsum dolor sit amet consectetur adipisicing elit. Optio esse aliquid praesentium molestias.</h5>
         <!-- top part -->
         <div class="grids grids-top">
-            <div class="grid-left col-4">
-                <h3 class="grid-title">Gird Title</h3>
-                <div class="grid-content">Grid Content - Abstract description</div>
-            </div>
-            <div class="grid-inbetween col-4">
-                <h3 class="grid-title">Gird Title</h3>
-                <div class="grid-content">Grid Content - Abstract description</div>
-            </div>
-            <div class="grid-right col-4">
-                <h3 class="grid-title">Gird Title</h3>
-                <div class="grid-content">Grid Content - Abstract description</div>
-            </div>
-        </div>
-        <!-- middle part -->
-        <div class="grids grids-middle">
             <div class="grid-left col-4">
                 <h3 class="grid-title">Gird Title</h3>
                 <div class="grid-content">Grid Content - Abstract description</div>
@@ -179,7 +164,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- card section -->
     <section class="container-fluid padding-top-45 padding-bottom-45 bg-white">
@@ -261,6 +245,61 @@
         </div>
     </section>
 
+    <!-- dynamic background grid section -->
+    <section class="container-fluid padding-top padding-bottom-45 bg-lightgray">
+        <h2 class="section-title center-text padding-top-30 padding-bottom">Dynamic Background Image Grids</h2>
+        <h5 class="section-subtitle center-text margin-bottom-45">Lorem ihsum dolor sit amet consectetur adipisicing elit. Optio esse aliquid praesentium molestias.</h5>
+        <!-- gird row -->
+        <div class="grids horizontal-align-middle padding-bottom-45">
+            <div class="image-grid-dynamic grid-left col-12 col-tab-4" id="grid1">
+                <div class="action slidein">
+                    <h3 class="grid-title">Gird Title</h3>
+                    <div class="grid-content">Grid Content - Abstract description</div>
+                </div>
+                <img class="bg" src="/img/sample-image-1.jpg" alt="bg-1">
+            </div>
+            <div class="image-grid-dynamic grid-inbetween col-12 col-tab-4" id="grid2">
+                <div class="action slidein">
+                    <h3 class="grid-title">Gird Title</h3>
+                    <div class="grid-content">Grid Content - Abstract description</div>
+                </div>
+                <img class="bg" src="/img/sample-image-2.jpg" alt="bg-3">
+            </div>
+            <div class="image-grid-dynamic grid-right col-12 col-tab-4" id="grid3">
+                <div class="action slidein">
+                    <h3 class="grid-title">Gird Title</h3>
+                    <div class="grid-content">Grid Content - Abstract description</div>
+                </div>
+                <img class="bg" src="/img/sample-image-3.jpg" alt="bg-3">
+            </div>
+        </div>
+    </section>
+
+    <!-- single row grid section -->
+    <section class="container-fuild">
+        <div class="showcase row bg-white verticle-align-center">
+            <div class="col">
+                <h2 class="section-title center-text padding-top padding-bottom">Single Row Grids</h2>
+                <h5 class="section-subtitle center-text margin-bottom-45">Lorem ihsum dolor sit amet consectetur adipisicing elit. Optio esse aliquid praesentium molestias.</h5>
+                <!-- top part -->
+                <div class="grids grids-single-row">
+                    <div class="grid-left col-4">
+                        <h3 class="grid-title">Gird Title</h3>
+                        <div class="grid-content">Grid Content - Abstract description</div>
+                    </div>
+                    <div class="grid-inbetween col-4">
+                        <h3 class="grid-title">Gird Title</h3>
+                        <div class="grid-content">Grid Content - Abstract description</div>
+                    </div>
+                    <div class="grid-right col-4">
+                        <h3 class="grid-title">Gird Title</h3>
+                        <div class="grid-content">Grid Content - Abstract description</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- footer -->
     <footer class="footer bg-offblack" id="footer">
@@ -332,6 +371,7 @@
             im("#navbar").navbar();
             im(".carousel").carousel();
             im("#parallax").parallax();
+            im(".image-grid").imageGrid();
         });
     </script>
 

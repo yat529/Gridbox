@@ -1226,6 +1226,33 @@
         }
     });
 
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                    Image Gird section
+        // -----------------------------------------------------------
+        // Description: dynamic add background picture to image gird
+        // -----------------------------------------------------------
+        // Parameter:   none
+        // Description: none
+        // -----------------------------------------------------------
+        // Note:  this need to be an html collection object
+        // -----------------------------------------------------------
+
+        imageGrid: function() {
+            this.each(function(){
+                var url = this.data("url");
+                this.css({
+                    "background-image": 'url("' + url + '")'
+                });
+            });
+        }
+    });
+
 })(window);
 
 

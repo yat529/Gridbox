@@ -3,7 +3,7 @@
 %grids {
     display: flex;
     position: relative;
-    flex-flow: nowrap row;
+    flex-flow: wrap row;
     justify-content: center;
     width: 100%;
 }
@@ -46,7 +46,8 @@ $borderColor: $gray;
         }
     }
 
-    &-bottom {
+    &-bottom,
+    &-single-row {
         .grid {
             &-left {
                 border-right: 1px solid $borderColor;
@@ -76,4 +77,116 @@ $borderColor: $gray;
 }
 .grid-content {
     color: $offBlack;
+    text-align: center;
+}
+
+
+
+// /* =======================================================================
+//  *                            Image Grids
+//  * -----------------------------------------------------------------------
+//  * Description:    add a .grid class, data-url attribute for the 
+//  *                 background url, and id attribute for js to target
+//  *                 
+//  * -----------------------------------------------------------------------
+//  * Ussage:         use the .grid class to style the gird dimension
+//  * ========================================================================
+//  */
+
+.image-grid {
+    position: relative;
+    height: 300px;
+    border: none !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    .grid-title,
+    .grid-content {
+        opacity: 0;
+        color: $white;
+        z-index: 1;
+    }
+
+    // mask
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: $black;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: -1;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0.1;
+        }
+
+        .grid-title,
+        .grid-content {
+            opacity: 1;
+        }
+    }
+}
+
+.image-grid-dynamic {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    z-index: 1;
+
+    // mask
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: $black;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: -1;
+    }
+
+    .bg {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s;
+        z-index: -2;
+    }
+
+    .slidein {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        &::before {
+            opacity: 0.1;
+        }
+
+        .bg {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .slidein {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
 }
