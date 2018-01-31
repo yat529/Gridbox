@@ -134,9 +134,14 @@
 
     init.extend({
 
+        // DOM ready
+        ready: function(cb) {
+            document.addEventListener("DOMContentLoaded", cb);
+        },
+
         // DOM onLoad
         onload: function(cb) {
-            document.addEventListener("DOMContentLoaded", cb);
+            window.onload = cb();
         },
 
         // Query DOM

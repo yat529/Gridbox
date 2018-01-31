@@ -1,0 +1,195 @@
+
+// @import "_mixins.scss";
+// @import "_variables.scss";
+
+// /* =======================================================================
+//  *                          Container Element 
+//  * -----------------------------------------------------------------------
+//  * Function:    define the container dimension of the element, 
+//  *              assign bottom margin
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to the wrapping element, ex: <div>, <section>
+//  * ========================================================================
+//  */
+
+ // Container Class - Not Full Screent
+.container {
+    width: $containerWidth;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    // background: $containerBGColor;
+}
+
+ // Container Class - Full Screent
+.container-fluid {
+    @extend .container;
+    width: 100%;
+}
+
+// assign media query rules to container class
+@include containerMQWidth($breakPoints);
+
+// /* =======================================================================
+//  *                   Grid Row - Flexbox Parent Element 
+//  * -----------------------------------------------------------------------
+//  * Description:    set the flex display, control the children grids
+//  * -----------------------------------------------------------------------
+//  * Ussage:      applied to the wrapping element, ex: <div>, <section>
+//  * ========================================================================
+//  */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* height: 100%;
+    background: #fafafa; */
+}
+
+.row-reverse {
+    @extend .row;
+    flex-direction: row-reverse;
+}
+
+.stack {
+    @extend .row;
+    flex-direction: column;
+}
+
+.stack-reverse {
+    @extend .row;
+    flex-direction: column-reverse;
+}
+
+// /* =======================================================================
+//  *                   Grids - Flexbox Child Element 
+//  * -----------------------------------------------------------------------
+//  * Description:    use .col for horizontal layout, 
+//  *                      parent class: .row or .row-reverse
+//  *                 use .layer for verticle layout, 
+//  *                      parent class: .stack or .stach-reverse
+//  * -----------------------------------------------------------------------
+//  * Usage:          use .col for horizontal layout, 
+//  *                      parent class: .row or .row-reverse
+//  *                 use .layer for verticle layout, 
+//  *                      parent class: .stack or .stach-reverse
+//  * ========================================================================
+//  */
+
+// layer element, used when .stack or .stack-reverse parent class is used
+.layer {
+    flex: 0 0 100%;
+}
+
+// Grids CSS Rules
+//build grid css rule - flexible width
+@include gridRuleBuild($breakPoints, $deviceList);
+
+//build grid css rule - fixed width
+@include gridRuleBuild($breakPoints, $deviceList, $colNums);
+
+// /* =======================================================================
+//  *                          Grids Alignment
+//  * -----------------------------------------------------------------------
+//  * Description:    grids alignment classes
+//  * -----------------------------------------------------------------------
+//  * Usage:          used on parent classes .row or .row-reverse
+//  * ========================================================================
+//  */
+
+// Horizontal Alignment
+.horizontal-align-center {
+    justify-content: space-evenly;
+}
+
+.horizontal-align-center-equal-space-between {
+    justify-content: space-between;
+}
+
+.horizontal-align-center-equal-space-around {
+    justify-content: space-around;
+}
+
+.horizontal-align-left {
+    justify-content: flex-start;
+}
+
+.horizontal-align-right {
+    justify-content: flex-end;
+}
+
+.horizontal-align-middle {
+    justify-content: center;
+}
+
+// Verticle Alignment
+// align-items: stretch(default) & align-items: top & align-contents:stretch(default) has the same effect
+.verticle-align-center {
+    align-items: center;
+    align-content: space-evenly;
+}
+
+.verticle-align-center-equal-space-around {
+    align-items: center;
+    align-content: space-around;
+}
+
+.verticle-align-center-equal-space-between {
+    align-items: center;
+    align-content: space-between;
+}
+
+.verticle-align-top {
+    align-content: flex-start;
+}
+
+.verticle-align-top-equal-space-after {
+    align-items: flex-start;
+}
+
+.verticle-align-bottom {
+    align-content: flex-end;
+}
+
+.verticle-align-bottom-equal-space-before {
+    align-items: flex-end;
+}
+
+.verticle-align-text-base {
+    align-items: baseline;
+}
+
+// col text align
+.center-text {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+// /* =======================================================================
+//  *                      Individual Grid Alignment
+//  * -----------------------------------------------------------------------
+//  * Description:    single grid alignment classes
+//  * -----------------------------------------------------------------------
+//  * Usage:          used on child classes .col or .col-1. etc
+//  * ========================================================================
+//  */
+
+// Self Align only work in single line
+.verticle-self-align-top {
+    align-self: flex-start;
+}
+
+.verticle-self-align-bottom {
+    align-self: flex-end;
+}
+
+
+
+

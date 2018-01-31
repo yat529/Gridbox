@@ -12,7 +12,7 @@
     <div class="container-fluid">
 
         <!-- navigation menu -->
-        <div class="nav" id="navbar">
+        <section class="nav" id="navbar">
             <!-- Brand -->
             <div class="brand fixed top-left">
                 <img src="img/gridbox_logo.png" alt="">
@@ -61,10 +61,10 @@
                 </nav>
             </div>
 
-        </div> <!-- /.nav -->
+        </section> <!-- /.nav -->
 
         <!-- showcase carousel -->
-        <div class="carousel bg-white">
+        <section class="carousel bg-white">
 
             <!-- Optional Slider Toggle -->
             <div class="toggle">
@@ -126,11 +126,63 @@
 
         </div> <!-- .carousel -->
 
-    </div> <!-- .container-fluid -->
+    </section> <!-- .container-fluid -->
+
+
+    <!-- grid section -->
+    <section class="container padding-top-45 padding-bottom-45 bg-white">
+        <h2 class="section-title center-text padding-around-45 margin-bottom-30">Grid Section</h2>
+        <!-- top part -->
+        <div class="grids grids-top">
+            <div class="grid-left col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-inbetween col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-right col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+        </div>
+        <!-- middle part -->
+        <div class="grids grids-middle">
+            <div class="grid-left col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-inbetween col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-right col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+        </div>
+        <!-- bottom part -->
+        <div class="grids grids-bottom">
+            <div class="grid-left col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-inbetween col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+            <div class="grid-right col-4">
+                <h3 class="grid-title">Gird Title</h3>
+                <div class="grid-content">Grid Content - Abstract description</div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- card section -->
-    <div class="container-fluid padding-top-45 padding-bottom-45 bg-white">
+    <section class="container-fluid padding-top-45 padding-bottom-45 bg-white">
+        <h2 class="section-title center-text padding-around-45 margin-bottom-30">Card Section</h2>
         <div class="row">
             <div class="col-offset-2 col-12 col-offset-2 col-lap-4 col-lap-offset-1 col-tab-5 col-tab-offset-2 card bg-lightgray">
                 <img src="/img/sample-image-1.jpg" alt="" class="card-image">
@@ -159,10 +211,10 @@
                 <a href="#" class="btn btn-secondary">Click</a>
             </div>
         </div>
-    </div> <!-- .container-fluid -->
+    </section> <!-- .container-fluid -->
 
     <!-- showcase -->
-    <div class="container-fluid">
+    <section class="container-fluid">
         <div class="showcase bg-white">
             <!-- optional hero background image & image mask -->
             <!-- <div class="hero-image">
@@ -206,7 +258,7 @@
                 <a href="#" class="btn btn-secondary">Discover</a>
             </div>
         </div>
-    </div>
+    </section>
 
 
     <!-- footer -->
@@ -275,7 +327,7 @@
 
     <script src="js/gridbox.js"></script>
     <script>
-        im(document).onload(function(){
+        im(document).ready(function(){
             im("#navbar").navbar();
             im(".carousel").carousel();
             im("#parallax").parallax();
@@ -287,7 +339,7 @@
             APIKey = "YourAPIKey",
             currScript = document.currentScript; // need to cache it otherwise, this returns null in event handler cb
 
-        im(document).onload(function(){
+        im(document).ready(function(){
             im("#footer-map")
                 .css({ "height": footerHeight + "px" })
                 .googleMap(APIKey, currScript);
