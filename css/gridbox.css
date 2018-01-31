@@ -302,6 +302,9 @@ html {
   .padding-right-45 {
     padding-right: 45px; }
 
+.thin {
+  font-weight: 300; }
+
 .bold {
   font-weight: bold; }
 
@@ -321,6 +324,15 @@ html {
   color: #000; }
 
 .offblack {
+  color: #535353; }
+
+.section-title {
+  font-size: 2.7rem;
+  font-weight: 400; }
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
   color: #535353; }
 
 .bg-lightgray {

@@ -1077,7 +1077,7 @@
                 document.addEventListener("scroll", function() {
                     var scrollY = window.pageYOffset;
     
-                    if(scrollY >= offsetY - windowHeight) {
+                    if(scrollY >= offsetY - windowHeight - 10) { // minus 10 to fix firefox scroll issue
                         if(self.hasClass("hide")) {
                             self.removeClass("hide");
                             document.body.style.marginBottom = footerHeight + "px";
