@@ -77,7 +77,8 @@
 
 // layer element, used when .stack or .stack-reverse parent class is used
 .layer {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
+    width: 100%;
 }
 
 // Grids CSS Rules
@@ -86,6 +87,8 @@
 
 //build grid css rule - fixed width
 @include gridRuleBuild($breakPoints, $deviceList, $colNums);
+
+
 
 // /* =======================================================================
 //  *                          Grids Alignment
@@ -96,17 +99,18 @@
 //  * ========================================================================
 //  */
 
-// Horizontal Alignment
+.row-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.colum-center {
+    align-content: center;
+}
+
+// Horizontal Alignment - basic browser support
 .horizontal-align-center {
-    justify-content: space-evenly;
-}
-
-.horizontal-align-center-equal-space-between {
-    justify-content: space-between;
-}
-
-.horizontal-align-center-equal-space-around {
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .horizontal-align-left {
@@ -117,59 +121,47 @@
     justify-content: flex-end;
 }
 
-.horizontal-align-middle {
-    justify-content: center;
+.horizontal-align-center-equal-space-between {
+    justify-content: space-between;
 }
+
+.horizontal-align-center-equal-space-around {
+    justify-content: space-around;
+}
+
+// not supported by IE
+.horizontal-align-center-space-evenly {
+    justify-content: space-evenly;
+}
+
 
 // Verticle Alignment
 // align-items: stretch(default) & align-items: top & align-contents:stretch(default) has the same effect
-.verticle-align-center {
-    align-items: center;
-    align-content: space-evenly;
-}
-
-.verticle-align-center-equal-space-around {
-    align-items: center;
-    align-content: space-around;
-}
-
-.verticle-align-center-equal-space-between {
-    align-items: center;
-    align-content: space-between;
-}
-
 .verticle-align-top {
     align-content: flex-start;
-}
-
-.verticle-align-top-equal-space-after {
-    align-items: flex-start;
 }
 
 .verticle-align-bottom {
     align-content: flex-end;
 }
 
-.verticle-align-bottom-equal-space-before {
-    align-items: flex-end;
+.verticle-align-center {
+    align-content: center;
 }
 
-.verticle-align-text-base {
-    align-items: baseline;
+.verticle-align-center-equal-space-between {
+    justify-content: space-between;
 }
 
-// col text align
-.center-text {
-    text-align: center;
+.verticle-align-center-equal-space-around {
+    justify-content: space-around;
 }
 
-.align-left {
-    text-align: left;
+// not supported by IE
+.verticle-align-center-space-evenly {
+    justify-content: space-evenly;
 }
 
-.align-right {
-    text-align: right;
-}
 
 // /* =======================================================================
 //  *                      Individual Grid Alignment
@@ -189,6 +181,37 @@
     align-self: flex-end;
 }
 
+// /* =======================================================================
+//  *                      Grid Alignment Hacks
+//  * -----------------------------------------------------------------------
+//  * Description:    Add margin between colums
+//  * -----------------------------------------------------------------------
+//  * Usage:          used on child classes .col or .col-1. etc,
+//  *                 used when the col is less than 16, and space between
+//  *                 cols is needed
+//  * ========================================================================
+//  */
+.col-margin {
+    margin-right: 15px;
 
+    &:last-child {
+        margin-right: 0;
+    }
 
+    &-30 {
+        margin-right: 30px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-45 {
+        margin-right: 45px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
 

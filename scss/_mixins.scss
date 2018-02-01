@@ -67,7 +67,8 @@
         // loop through colun number
         @for $colNum from 1 to ($colNums + 1) {
             .#{$prefix}-#{$colNum} {
-                flex: 0 0 (100%/$colNums) * $colNum;
+                flex: 0 0 auto;
+                width: (100%/$colNums) * $colNum;
             }
         }
     } 
