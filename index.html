@@ -64,18 +64,13 @@
         </section> <!-- /.nav -->
 
         <!-- showcase carousel -->
-        <section class="carousel bg-white">
-
-            <!-- Optional Slider Toggle -->
+        <div class="carousel margin-bottom-45" id="carousel1">
+            <!-- carousel controls -->
             <div class="toggle">
                 <div class="left"><span></span></div>
                 <div class="right"><span></span></div>
             </div>
-
-            <div class="indicator">
-                <span></span>
-            </div>
-
+            <div class="indicator bottom-center-30"></div>
             <!-- 1st slide -->
             <div class="showcase-carousel default show bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -91,7 +86,6 @@
                     <a href="#" class="btn btn-primary">Discover</a>
                 </div>
             </div>
-
             <!-- 2st slide -->
             <div class="showcase-carousel bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -107,7 +101,6 @@
                     <a href="#" class="btn btn-primary">Discover 2nd</a>
                 </div>
             </div>
-
             <!-- 3rd slide -->
             <div class="showcase-carousel bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -123,8 +116,7 @@
                     <a href="#" class="btn btn-primary">Discover 3rd</a>
                 </div>
             </div>
-
-        </div> <!-- .carousel -->
+        </div>
 
     </section> <!-- .container-fluid -->
 
@@ -369,7 +361,7 @@
     <script>
         im(document).ready(function(){
             im("#navbar").navbar();
-            im(".carousel").carousel();
+            im("#carousel1").carousel();
             im("#parallax").parallax();
             im(".image-grid").imageGrid();
         });
@@ -380,13 +372,13 @@
             APIKey = "YourAPIKey",
             currScript = document.currentScript; // need to cache it otherwise, this returns null in event handler cb
 
-        im(document).ready(function(){
-            im("#footer-map")
-                .css({ "height": footerHeight + "px" })
-                .googleMap(APIKey, currScript);
+        // im(document).ready(function(){
+        //     im("#footer-map")
+        //         .css({ "height": footerHeight + "px" })
+        //         .googleMap(APIKey, currScript);
 
-            im("#footer").footer(true);
-        }); 
+        //     im("#footer").footer(true);
+        // }); 
     </script>
 </body>
 </html>

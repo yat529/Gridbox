@@ -692,30 +692,29 @@
         
             var self = this;
 
-            // Toggle & Indicator Cache
-            var arrowLeft = im(".toggle").first().get(".left").first() || null;
-            var arrowRight = im(".toggle").first().get(".right").first() || null;
-            var indicator = im(".indicator").first();
-
-            // Slides Cache
-            var slides = im(".showcase-carousel") || null;
-    
-            // Slides Counter
-            var slidesLength = slides.getLength();
-            var counter = 0;
+            // Sample option object with arrowToggle and indicator settings
+            // {
+            //     arrowToggle: true,
+            //     indicator: {
+            //         text: ["text1", "text2", "text3"]
+            //     }
+            // }
 
             // options
-            optionObj = optionObj || {arrowToggle: true, indicator: true};
+            var optionObj = optionObj || {arrowToggle: true, indicator: true};
 
-            // check if slides exists
-            if(!slides) return new Error("Slides Missing. Must use default HTML Template Format");
-
-            // Check for option object
-            if(typeof optionObj !== "object") return new Error("Option must be an Object");
-
+            // Slides Cache
+            var slides = self.find(".showcase-carousel") || null;
+    
+            // Slides Counter
+            var slidesLength = slides.getLength(),
+                counter = 0;
 
             // if arrow toggle is choose
             if(optionObj.arrowToggle) {
+
+                var arrowLeft = self.find(".toggle").first().find(".left").first() || null,
+                    arrowRight = self.find(".toggle").first().find(".right").first() || null;
 
                 // check if arrow element exists
                 if(!arrowLeft || !arrowRight) {
@@ -772,16 +771,27 @@
                         im(indicator.children()[0][counter]).addClass("active");
                     }
                 });
-
             }
 
             // if indicator is choose
             if(optionObj.indicator) {
+
+                var html,
+                    indicator = self.find(".indicator").first();
+
                 // setup indicator span
-                var html = '<span class="active"></span>';
-                for(var i = 0; i < slidesLength - 1; i++) {
-                    html += '<span></span>';
+                if(optionObj.indicator.text) {
+                    html = '<span class="active with-text">' + optionObj.indicator.text[0] + '</span>';
+                    for(var i = 1; i < slidesLength; i++) {
+                        html += '<span class="with-text">' + optionObj.indicator.text[i] + '</span>';
+                    }
+                } else {
+                    html = '<span class="active"></span>';
+                    for(var i = 1; i < slidesLength; i++) {
+                        html += '<span></span>';
+                    }
                 }
+                
                 indicator.html(html);
 
                 // assign click event

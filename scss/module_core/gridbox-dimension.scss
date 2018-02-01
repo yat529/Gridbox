@@ -28,9 +28,22 @@
 }
 
 
-.full-width {
+.full-width,
+.w-10 {
     width: 100%;
 }
+
+@mixin boxWidth($max) {
+    @for $width from 1 to $max {
+        .w-#{$width} {
+            width: $width * 10%;
+        }
+    }
+}
+
+@include boxWidth(10);
+
+
 
 // /* =======================================================================
 //  *                           Fixed-width Rectangle

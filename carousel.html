@@ -11,7 +11,7 @@
 <body>
     <div class="container-fluid">
 
-        <div class="nav" id="navbar">
+        <section class="nav" id="navbar">
             <!-- Brand -->
             <div class="brand fixed top-left">
                 <img src="img/gridbox_logo.png" alt="">
@@ -60,22 +60,17 @@
                 </nav>
             </div>
 
-        </div> <!-- /.nav -->
+        </section> <!-- /.nav -->
 
-        <div class="carousel">
-
-            <!-- Optional Slider Toggle -->
+        <!-- Default Carousel -->
+        <h3 class="section-title margin-top-45 margin-bottom-45 center-text">Carousel with arrow and indicator</h3>
+        <section class="carousel margin-bottom-45" id="carousel1">
+            <!-- carousel controls -->
             <div class="toggle">
                 <div class="left"><span></span></div>
                 <div class="right"><span></span></div>
             </div>
-
-            <div class="indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
+            <div class="indicator bottom-center-30"></div>
             <!-- 1st slide -->
             <div class="showcase-carousel default show bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -91,7 +86,6 @@
                     <a href="#" class="btn btn-primary">Discover</a>
                 </div>
             </div>
-
             <!-- 2st slide -->
             <div class="showcase-carousel bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -107,7 +101,6 @@
                     <a href="#" class="btn btn-primary">Discover 2nd</a>
                 </div>
             </div>
-
             <!-- 3rd slide -->
             <div class="showcase-carousel bg-lightgray">
                 <!-- optional hero background image & image mask -->
@@ -123,8 +116,85 @@
                     <a href="#" class="btn btn-primary">Discover 3rd</a>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- indicator with text -->
+        <h3 class="section-title margin-bottom-45 center-text">Texted Indicator</h3>
+        <section class="carousel margin-bottom-45" id="carousel2">
+            <div class="indicator bottom-center-30"></div>
+            <!-- 1st slide -->
+            <div class="showcase-carousel default show bg-lightgray">
+                <div class="text-content left">
+                    <h1 class="margin-bottom">Hello World!</h1>
+                    <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover</a>
+                </div>
+            </div>
+            <!-- 2st slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <div class="text-content right">
+                    <h1 class="margin-bottom">2nd Slide</h1>
+                    <p class="small margin-bottom-30">2nd - Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover 2nd</a>
+                </div>
+            </div>
+            <!-- 3rd slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <div class="text-content left">
+                    <h1 class="margin-bottom">3rd Slide</h1>
+                    <p class="small margin-bottom-30">3rd - Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover 3rd</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- different content layout -->
+        <h3 class="section-title margin-bottom-45 center-text">Carousel Layout Options</h3>
+        <section class="carousel margin-bottom-45" id="carousel3">
+            <div class="indicator bottom-center-30"></div>
+            <!-- 1st slide -->
+            <div class="showcase-carousel default show bg-lightgray">
+                <div class="center-text padding-around absolute w-7 middle-center">
+                    <h1 class="section-title margin-bottom">Showcase One Title</h1>
+                    <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem facilis sed eos?</p>
+                </div>
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+            </div>
+
+            <!-- 2st slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <div class="center-text padding-around absolute w-7 middle-center">
+                    <h1 class="section-title margin-bottom">Showcase Two Title</h1>
+                    <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem dolor sit amet consectetur facilis sed eos?</p>
+                </div>
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+            </div>
+
+            <!-- 3rd slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <div class="center-text padding-around absolute w-7 middle-center">
+                    <h1 class="section-title margin-bottom">Showcase Three Title</h1>
+                    <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos dolor sit amet consectetur repudiandae non dolor sit amet consecteturdolorem facilis sed eos?</p>
+                </div>
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+            </div>
+
+        </section>
 
 
     </div> <!-- .container-fluid -->
@@ -134,7 +204,22 @@
 
     
     im("#navbar").navbar();
-    im(".carousel").carousel();
+    im("#carousel1").carousel(null);
+    
+    // carousel with options
+    im("#carousel2").carousel({
+        arrowToggle: false,
+        indicator: {
+            text: ["Slide 1", "Slide 2", "Slide 3"]
+        }
+    });
+
+    im("#carousel3").carousel({
+        arrowToggle: false,
+        indicator: {
+            text: ["Showcase One", "Showcase Two", "Showcase Three"]
+        }
+    });
 
     </script>
 </body>
