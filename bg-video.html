@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/gridbox.css">
+    <title>Showcase - Background Video</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <section class="nav" id="navbar">
+            <!-- Brand -->
+            <div class="brand fixed top-left">
+                <img src="img/gridbox_logo.png" alt="">
+                <div class="brandname" id="brandname"><span>Gridbox</span></div>
+            </div>
+            <!-- Menu Toggle -->
+            <div class="menu-toggle fixed top-right" id="menu-toggle"><span></span></div>
+
+            <div class="overlay" id="menu-overlay">
+                <nav>
+                    <!-- Menu Item -->
+                    <ul class="main slideright">
+                        <li class="menuitem"><a href="#">Link</a></li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem dropdown">
+                            <a href="#" class="sub-toggle">Dropdown</a>
+                            <ul class="sub slideup">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="menuitem">
+                            <a href="#">Link</a>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="social">
+                        <span>Follow us</span>
+                        <a class="icon" id="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a class="icon" id="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a class="icon" id="google-plus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a class="icon" id="instagram" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a class="icon" id="weixin" href="#"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                        <a class="icon" id="weibo" href="#"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+                    </div>
+                    
+                </nav>
+            </div>
+        </section> <!-- /.nav -->
+    </div>
+
+    <!-- Basic Video background -->
+    <div class="container-fluid">
+        <!-- showcase video section -->
+        <section class="showcase-video bg-lightgray">
+            <!-- set your video info in the video tag inside the .hero-video div -->
+            <div class="hero-video">
+                <!-- Autoplay is disabled by default -->
+                <video loop muted controls preload="metadata" poster="/video/poster/Footage-1-poster.jpg">
+                    <source src="/video/Footage-1.mp4" type="video/mp4">
+                    Your browser does not support the HTML5 video tag.
+                </video>
+            </div>
+            <div class="text-content left white">
+                <h1 class="margin-bottom">Video Showcase</h1>
+                <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+                <!-- optional Call to Action Btn -->
+                <a href="#" class="btn btn-primary">Discover</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Embeded Youtube Video background -->
+    <div class="container-fluid">
+        <h3 class="section-title center-text padding-around-45">Embeded Youtube Video</h3>
+        <!-- showcase video section -->
+        <section class="showcase-video bg-lightgray">
+            <!-- embeded youtube iframe tag inside the .hero-video div -->
+            <div class="hero-video">
+                <iframe src="https://www.youtube.com/embed/TZgHR_OHwIY?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </section>
+    </div>
+
+    <!-- Embeded Vimeo Video background -->
+    <div class="container-fluid">
+        <h3 class="section-title center-text padding-around-45">Embeded Vimeo Video</h3>
+        <!-- showcase video section -->
+        <section class="showcase-video bg-lightgray">
+            <!-- embeded vimeo iframe tag inside the .hero-video div -->
+            <div class="hero-video">
+                <iframe src="https://player.vimeo.com/video/147342651?autoplay=1&loop=1&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/gridbox.js"></script>
+    <script>
+        im(document).ready(function(){
+            im("#navbar").navbar();
+        });
+    </script>
+</body>
+</html>
