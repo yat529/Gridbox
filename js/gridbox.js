@@ -698,21 +698,26 @@
             //     indicator: {
             //         text: ["text1", "text2", "text3"]
             //     },
-            //     transition: "fade" // or "slide" ...
+            //     transition: "fade", // or "slide" ...
+            //     timeout: 3000, // or whatever 
             // }
 
             // options
-            var optionObj = optionObj || {arrowToggle: true, indicator: true, transition: "fade"};
+            var optionObj = optionObj || {arrowToggle: true, indicator: true, transition: "fade", timeout: 10000};
 
             // DOM Cache
-            var slides = self.find(".showcase-carousel") || null,
+            var slides = self.find(".showcase-carousel"),
                 slidesWraper = slides.first().parent();
     
             // Slides Counter
             var slidesLength = slides.getLength(),
                 counter = 0;
 
-            var animationClass;
+            // Classes to toggle
+            var animationClass,
+                indicatorClass = "active";
+
+            var timeout, timeoutInterval;
 
             // Set slider wraper width if transition is slide
             if(optionObj.transition === "slide") {
@@ -720,8 +725,15 @@
                 slidesWraper.css({
                     "width": slidesLength * 100 + "vw"
                 });
-            } else if(optionObj.transition === "fade") {
+            } else if(optionObj.transition === "fade" || !optionObj.transition) {
                 animationClass = "show";
+            }
+
+
+            // if slide timeout is set
+            if(optionObj.timeout && typeof optionObj.timeout === "number") {
+                timeout = optionObj.timeout;
+                timeoutInterval = setInterval(nextSlide, timeout);
             }
 
             // if arrow toggle is choose
@@ -735,55 +747,13 @@
                     return new Error("Element Missing. Must use default HTML Template Format");
                 }
 
-                arrowLeft.click(function(){
-                    // reset classes
-                    slides.each(function(){
-                        resetClasses(this, "remove", animationClass);
-                    });
-
-                    counter --;
-
-                    // check counter
-                    if(counter < 0) {
-                        counter = slidesLength - 1;
-                        im(slides[0][counter]).addClass(animationClass);
-                        
-                    } else {   
-                        im(slides[0][counter]).addClass(animationClass);         
-                    }
-
-                    // Update indicator
-                    if(optionObj.indicator) {
-                        indicator.children().each(function(){
-                            resetClasses(this, "remove", "active");
-                        });
-                        im(indicator.children()[0][counter]).addClass("active");
-                    }
+                arrowLeft.click(function() {
+                    previousSlide();
+                    if(optionObj.timeout) resetTimeOut();
                 });
-
-                arrowRight.click(function(){
-                    // reset classes
-                    slides.each(function(){
-                        resetClasses(this, "remove", animationClass);
-                    });
-
-                    counter ++;
-
-                    // check counter
-                    if(counter === slidesLength) {                        
-                        counter = 0;
-                        im(slides[0][counter]).addClass(animationClass); 
-                    } else {
-                        im(slides[0][counter]).addClass(animationClass); 
-                    }
-
-                    // Update indicator
-                    if(optionObj.indicator) {
-                        indicator.children().each(function(){
-                            resetClasses(this, "remove", "active");
-                        });
-                        im(indicator.children()[0][counter]).addClass("active");
-                    }
+                arrowRight.click(function() {
+                    nextSlide();
+                    if(optionObj.timeout) resetTimeOut();
                 });
             }
 
@@ -810,38 +780,70 @@
 
                 // assign click event
                 indicator.children().each(function(i){
-                    this.click(function(){
-                        // reset classes
-                        indicator.children().each(function(){
-                            resetClasses(this, "remove", "active");
-                        });
-                        slides.each(function(){
-                            resetClasses(this, "remove", animationClass);
-                        });
-
-                        if(optionObj.transition === "slide") {
-                            setTimeout(function(){
-                                im(slides[0][i]).parent().css({
-                                    "width": slidesLength * 100 + "vw",
-                                    "transform": "translateX(-" + i * 100 + "vw)"
-                                });
-                            }, 500);
-                            setTimeout(function(){
-                                im(slides[0][i]).addClass(animationClass); 
-                            }, 1200);
-                        } else if(optionObj.transition === "fade") {
-                            im(slides[0][i]).addClass("show");
-                        }
-
-                        // add classes
-                        this.addClass("active");
-                        // update counter
-                        counter = i;
+                    this.click( function() {
+                        selectSlide.call(this, i);
+                        if(optionObj.timeout) resetTimeOut();
                     });
                 });
             }
 
-            // helper function
+            // ------- helper functions --------
+            // ---------------------------------
+            function previousSlide() {
+                counter --;
+                // Update slide
+                if(counter < 0) {
+                    counter = slidesLength - 1;
+                    updateSlide(counter);
+                } else {      
+                    updateSlide(counter);      
+                }
+            }
+
+            function nextSlide(){
+                counter ++;
+                // Update slide
+                if(counter === slidesLength) {                        
+                    counter = 0; 
+                    updateSlide(counter);
+                } else { 
+                    updateSlide(counter);
+                }
+            }
+
+            function selectSlide(i){
+                counter = i;
+                updateSlide(counter);   
+            }
+
+            function updateSlide(counter) {
+                // reset classes
+                if(optionObj.indicator) {
+                    indicator.children().each(function(){
+                        resetClasses(this, "remove", indicatorClass);
+                    });
+                    im(indicator.children()[0][counter]).addClass(indicatorClass);
+                }
+                slides.each(function(){
+                    resetClasses(this, "remove", animationClass);
+                });
+
+                // apply transition and change slide
+                if(optionObj.transition === "slide") {
+                    setTimeout(function(){
+                        im(slides[0][counter]).parent().css({
+                            "width": slidesLength * 100 + "vw",
+                            "transform": "translateX(-" + counter * 100 + "vw)"
+                        });
+                    }, 500);
+                    setTimeout(function(){
+                        im(slides[0][counter]).addClass(animationClass); 
+                    }, 1200);
+                } else if(optionObj.transition === "fade" || !optionObj.transition) {
+                    im(slides[0][counter]).addClass(animationClass);
+                } 
+            }
+
             function resetClasses(elem, action, cls) {
                 if(action === "add") {
                     elem.addClass(cls);
@@ -849,6 +851,11 @@
                     if(elem.hasClass(cls)) 
                         elem.removeClass(cls);
                 }
+            }
+
+            function resetTimeOut() {
+                clearInterval(timeoutInterval);
+                timeoutInterval = setInterval(nextSlide, timeout);
             }
         }
     });
