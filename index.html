@@ -218,18 +218,21 @@
             </div>
             
         </div>
-        <div class="showcase bg-white">
-            <!-- optional hero background image & image mask -->
-            <!-- <div class="hero-image">
-                <div class="mask"></div>
-                <img src="..." alt="...hero-img-title...">
-            </div> -->
-            <div class="text-content left">
-                <h1 class="margin-bottom">Showcase</h1>
+        <!-- showcase video section -->
+        <div class="showcase bg-lightgray">
+            <!-- set your video info in the video tag inside the .hero-video div -->
+            <div class="hero-video">
+                <!-- Autoplay is disabled by default -->
+                <video loop muted controls preload="metadata" poster="/video/poster/Footage-1-poster.jpg">
+                    <source src="/video/Footage-1.mp4" type="video/mp4">
+                    Your browser does not support the HTML5 video tag.
+                </video>
+            </div>
+            <div class="text-content left white">
+                <h1 class="margin-bottom">Video Showcase</h1>
                 <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
-    
                 <!-- optional Call to Action Btn -->
-                <a href="#" class="btn btn-secondary">Discover</a>
+                <a href="#" class="btn btn-primary">Discover</a>
             </div>
         </div>
     </section>

@@ -697,18 +697,32 @@
             //     arrowToggle: true,
             //     indicator: {
             //         text: ["text1", "text2", "text3"]
-            //     }
+            //     },
+            //     transition: "fade" // or "slide"
             // }
 
             // options
-            var optionObj = optionObj || {arrowToggle: true, indicator: true};
+            var optionObj = optionObj || {arrowToggle: true, indicator: true, transition: "fade"};
 
-            // Slides Cache
-            var slides = self.find(".showcase-carousel") || null;
+            // DOM Cache
+            var slides = self.find(".showcase-carousel") || null,
+                slidesWraper = slides.first().parent();
     
             // Slides Counter
             var slidesLength = slides.getLength(),
                 counter = 0;
+
+            var animationClass;
+
+            // Set slider wraper width if transition is slide
+            if(optionObj.transition === "slide") {
+                animationClass = "enlarge";
+                slidesWraper.css({
+                    "width": slidesLength * 100 + "vw"
+                });
+            } else if(optionObj.transition === "fade") {
+                animationClass = "show";
+            }
 
             // if arrow toggle is choose
             if(optionObj.arrowToggle) {
@@ -724,7 +738,8 @@
                 arrowLeft.click(function(){
                     // reset classes
                     slides.each(function(){
-                        resetClasses(this, "remove", "show");
+                        // resetClasses(this, "remove", "show");
+                        resetClasses(this, "remove", animationClass);
                     });
 
                     counter --;
@@ -732,10 +747,12 @@
                     // check counter
                     if(counter < 0) {
                         counter = slidesLength - 1;
-                        im(slides[0][counter]).addClass("show");
+                        // im(slides[0][counter]).addClass("show");
+                        im(slides[0][counter]).addClass(animationClass);
                         
                     } else {
-                        im(slides[0][counter]).addClass("show");            
+                        // im(slides[0][counter]).addClass("show");   
+                        im(slides[0][counter]).addClass(animationClass);         
                     }
 
                     // Update indicator
@@ -750,7 +767,8 @@
                 arrowRight.click(function(){
                     // reset classes
                     slides.each(function(){
-                        resetClasses(this, "remove", "show");
+                        // resetClasses(this, "remove", "show");
+                        resetClasses(this, "remove", animationClass);
                     });
 
                     counter ++;
@@ -758,9 +776,11 @@
                     // check counter
                     if(counter === slidesLength) {                        
                         counter = 0;
-                        im(slides[0][counter]).addClass("show");
+                        // im(slides[0][counter]).addClass("show");
+                        im(slides[0][counter]).addClass(animationClass); 
                     } else {
-                        im(slides[0][counter]).addClass("show");  
+                        // im(slides[0][counter]).addClass("show");  
+                        im(slides[0][counter]).addClass(animationClass); 
                     }
 
                     // Update indicator
@@ -802,13 +822,28 @@
                             resetClasses(this, "remove", "active");
                         });
                         slides.each(function(){
-                            resetClasses(this, "remove", "show");
+                            // resetClasses(this, "remove", "show");
+                            // resetClasses(this, "remove", "enlarge");
+                            resetClasses(this, "remove", animationClass);
                         });
+
+                        if(optionObj.transition === "slide") {
+                            setTimeout(function(){
+                                im(slides[0][i]).parent().css({
+                                    "width": slidesLength * 100 + "vw",
+                                    "transform": "translateX(-" + i * 100 + "vw)"
+                                });
+                            }, 500);
+                            setTimeout(function(){
+                                // im(slides[0][i]).addClass("enlarge");
+                                im(slides[0][i]).addClass(animationClass); 
+                            }, 1200);
+                        } else if(optionObj.transition === "fade") {
+                            im(slides[0][i]).addClass("show");
+                        }
 
                         // add classes
                         this.addClass("active");
-                        im(slides[0][i]).addClass("show");
-                        
                         // update counter
                         counter = i;
                     });

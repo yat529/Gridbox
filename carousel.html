@@ -197,6 +197,51 @@
         </section>
 
 
+        <!-- different Slide Animation -->
+        <h3 class="section-title margin-bottom-45 center-text">Carousel with Transition Effects</h3>
+        <section class="carousel margin-bottom-45" id="carousel4">
+            <div class="indicator bottom-center-30"></div>
+            <div class="carousel-customName bg-lightgray">
+                <!-- 1st slide -->
+                <div class="showcase-carousel default show enlarge bg-white">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase One Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+                <!-- 2st slide -->
+                <div class="showcase-carousel show bg-peach">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase Two Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem dolor sit amet consectetur facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+                <!-- 3rd slide -->
+                <div class="showcase-carousel show bg-pear">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase Three Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos dolor sit amet consectetur repudiandae non dolor sit amet consecteturdolorem facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+            </div> <!-- carousel-customName -->
+        </section>
+
+
     </div> <!-- .container-fluid -->
 
     <script src="js/gridbox.js"></script>
@@ -211,14 +256,24 @@
         arrowToggle: false,
         indicator: {
             text: ["Slide 1", "Slide 2", "Slide 3"]
-        }
+        },
+        transition: "fade",
     });
 
     im("#carousel3").carousel({
         arrowToggle: false,
         indicator: {
             text: ["Showcase One", "Showcase Two", "Showcase Three"]
-        }
+        },
+        transition: "fade",
+    });
+
+    im("#carousel4").carousel({
+        arrowToggle: false,
+        indicator: {
+            text: ["Showcase One", "Showcase Two", "Showcase Three"]
+        },
+        transition: "slide",
     });
 
     </script>

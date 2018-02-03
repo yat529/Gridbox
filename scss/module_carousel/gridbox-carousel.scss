@@ -65,7 +65,7 @@
     }
 
     .indicator {
-        display: inline-block;
+        display: block;
         position: absolute;
         z-index: 10;
 
@@ -142,7 +142,26 @@
     }
 }
 
+// --------- slide effect ----------
 
+.carousel-customName {
+    position: relative;
+    // width: 300vw;
+    overflow-x: scroll;
+    transition: transform 0.7s ease-in-out; // slide transition period is 750ms
+
+    .showcase-carousel {
+        position: relative;
+        width: 100vw;
+        float: left;
+        transform: scale(0.9);
+        transition: transform 0.5s ease-in-out; // scale transform period is 500ms
+
+        &.enlarge {
+            transform: scale(1);
+        }
+    }
+}
 
 
 

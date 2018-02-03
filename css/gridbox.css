@@ -2353,7 +2353,7 @@ a.sub-toggle::before, a.sub-toggle::after {
         -ms-transform: translate(-19px, -50%) rotate(45deg);
         transform: translate(-19px, -50%) rotate(45deg); }
   .carousel .indicator {
-    display: inline-block;
+    display: block;
     position: absolute;
     z-index: 10; }
     .carousel .indicator span {
@@ -2404,6 +2404,31 @@ a.sub-toggle::before, a.sub-toggle::after {
     position: relative; }
   .showcase-carousel.show {
     opacity: 1; }
+
+.carousel-customName {
+  position: relative;
+  overflow-x: scroll;
+  -webkit-transition: -webkit-transform 0.7s ease-in-out;
+  transition: -webkit-transform 0.7s ease-in-out;
+  -o-transition: transform 0.7s ease-in-out;
+  transition: transform 0.7s ease-in-out;
+  transition: transform 0.7s ease-in-out, -webkit-transform 0.7s ease-in-out; }
+  .carousel-customName .showcase-carousel {
+    position: relative;
+    width: 100vw;
+    float: left;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+    -o-transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out; }
+    .carousel-customName .showcase-carousel.enlarge {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1); }
 
 .card {
   position: relative;
