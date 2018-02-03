@@ -2,7 +2,7 @@
 .carousel {
     position: relative;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     z-index: 1;
 
     .toggle {
@@ -146,8 +146,7 @@
 
 .carousel-slide {
     position: relative;
-    // width: 300vw;
-    overflow-x: scroll;
+    overflow-x: auto;
     transition: transform 0.7s ease-in-out; // slide transition period is 750ms
 
     .showcase-carousel {

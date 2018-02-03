@@ -2301,7 +2301,7 @@ a.sub-toggle::before, a.sub-toggle::after {
 .carousel {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   z-index: 1; }
   .carousel .toggle {
     position: absolute;
@@ -2407,7 +2407,7 @@ a.sub-toggle::before, a.sub-toggle::after {
 
 .carousel-slide {
   position: relative;
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-transition: -webkit-transform 0.7s ease-in-out;
   transition: -webkit-transform 0.7s ease-in-out;
   -o-transition: transform 0.7s ease-in-out;
