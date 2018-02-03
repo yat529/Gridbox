@@ -2405,7 +2405,7 @@ a.sub-toggle::before, a.sub-toggle::after {
   .showcase-carousel.show {
     opacity: 1; }
 
-.carousel-customName {
+.carousel-slide {
   position: relative;
   overflow-x: scroll;
   -webkit-transition: -webkit-transform 0.7s ease-in-out;
@@ -2413,7 +2413,7 @@ a.sub-toggle::before, a.sub-toggle::after {
   -o-transition: transform 0.7s ease-in-out;
   transition: transform 0.7s ease-in-out;
   transition: transform 0.7s ease-in-out, -webkit-transform 0.7s ease-in-out; }
-  .carousel-customName .showcase-carousel {
+  .carousel-slide .showcase-carousel {
     position: relative;
     width: 100vw;
     float: left;
@@ -2425,7 +2425,7 @@ a.sub-toggle::before, a.sub-toggle::after {
     -o-transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out; }
-    .carousel-customName .showcase-carousel.enlarge {
+    .carousel-slide .showcase-carousel.enlarge {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1); }

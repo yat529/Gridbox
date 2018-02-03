@@ -698,7 +698,7 @@
             //     indicator: {
             //         text: ["text1", "text2", "text3"]
             //     },
-            //     transition: "fade" // or "slide"
+            //     transition: "fade" // or "slide" ...
             // }
 
             // options
@@ -738,7 +738,6 @@
                 arrowLeft.click(function(){
                     // reset classes
                     slides.each(function(){
-                        // resetClasses(this, "remove", "show");
                         resetClasses(this, "remove", animationClass);
                     });
 
@@ -747,11 +746,9 @@
                     // check counter
                     if(counter < 0) {
                         counter = slidesLength - 1;
-                        // im(slides[0][counter]).addClass("show");
                         im(slides[0][counter]).addClass(animationClass);
                         
-                    } else {
-                        // im(slides[0][counter]).addClass("show");   
+                    } else {   
                         im(slides[0][counter]).addClass(animationClass);         
                     }
 
@@ -767,7 +764,6 @@
                 arrowRight.click(function(){
                     // reset classes
                     slides.each(function(){
-                        // resetClasses(this, "remove", "show");
                         resetClasses(this, "remove", animationClass);
                     });
 
@@ -776,10 +772,8 @@
                     // check counter
                     if(counter === slidesLength) {                        
                         counter = 0;
-                        // im(slides[0][counter]).addClass("show");
                         im(slides[0][counter]).addClass(animationClass); 
                     } else {
-                        // im(slides[0][counter]).addClass("show");  
                         im(slides[0][counter]).addClass(animationClass); 
                     }
 
@@ -822,8 +816,6 @@
                             resetClasses(this, "remove", "active");
                         });
                         slides.each(function(){
-                            // resetClasses(this, "remove", "show");
-                            // resetClasses(this, "remove", "enlarge");
                             resetClasses(this, "remove", animationClass);
                         });
 
@@ -835,7 +827,6 @@
                                 });
                             }, 500);
                             setTimeout(function(){
-                                // im(slides[0][i]).addClass("enlarge");
                                 im(slides[0][i]).addClass(animationClass); 
                             }, 1200);
                         } else if(optionObj.transition === "fade") {
