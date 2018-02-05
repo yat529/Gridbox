@@ -725,7 +725,11 @@
             var animationClass,
                 indicatorClass = "active";
 
+            // variable for timeout feature
             var timeout, timeoutInterval;
+
+            // variables for progress bar
+            var progressBar, progress, speed, x, dx;
 
             // Set slider wraper width if transition is slide
             if(optionObj.transition === "slide") {
@@ -737,20 +741,25 @@
                 animationClass = "show";
             }
 
-            // if status bar is set
-            if(optionObj.statusBar) {
-                var statsBar = im(document.createElement("div"));
-                statsBar.addClass("status-bar");
-                self.addChild(statsBar);
-            }
-
-            // need to find the relation of time past and total timeout
-            // ..... code ....
-
             // if slide timeout is set
             if(optionObj.timeout && typeof optionObj.timeout === "number") {
                 timeout = optionObj.timeout;
                 timeoutInterval = setInterval(nextSlide, timeout);
+
+                // if status bar is set
+                if(optionObj.statusBar) {
+                    progressBar = im(document.createElement("div"));
+                    progressBar.addClass("status-bar");
+                    self.addChild(progressBar);
+
+                    // update variables
+                    speed = 10,
+                    x = 0,
+                    dx = (100 / (timeout - 1200)) * speed; // 1200 is the transition delay for enlarge and slide effect
+
+                    // run progress bar
+                    progress = runProgressBar(progressBar, speed, x, dx);
+                }
             }
 
             // if arrow toggle is choose
@@ -766,11 +775,9 @@
 
                 arrowLeft.click(function() {
                     previousSlide();
-                    if(optionObj.timeout) resetTimeOut();
                 });
                 arrowRight.click(function() {
                     nextSlide();
-                    if(optionObj.timeout) resetTimeOut();
                 });
             }
 
@@ -799,7 +806,6 @@
                 indicator.children().each(function(i){
                     this.click( function() {
                         selectSlide.call(this, i);
-                        if(optionObj.timeout) resetTimeOut();
                     });
                 });
             }
@@ -844,6 +850,14 @@
                 slides.each(function(){
                     resetClasses(this, "remove", animationClass);
                 });
+                // reset timeout
+                if(optionObj.timeout) resetTimeOut();
+                // reset progress bar
+                if(optionObj.statusBar) {
+                    if(progress) resetProgressBar(progressBar, progress);
+                    // run animation
+                    progress = runProgressBar(progressBar, speed, x, dx);
+                }
 
                 // apply transition and change slide
                 if(optionObj.transition === "slide") {
@@ -870,9 +884,33 @@
                 }
             }
 
-            function resetTimeOut() {
+            function resetTimeOut(transitionDelay) {
                 clearInterval(timeoutInterval);
                 timeoutInterval = setInterval(nextSlide, timeout);
+            }
+
+            function runProgressBar(elem, speed, x, dx) {
+                x += dx;
+                var progress = setInterval(function(){
+                    if(x <= 100) {
+                        elem.css({
+                            "width": x + "%"
+                        });
+                        x += dx;
+                    } else {
+                        clearInterval(progress);
+                    }
+                }, speed);
+
+                return progress;
+            }
+
+            function resetProgressBar(elem, progressInterval) {
+                clearInterval(progressInterval);
+                elem.css({
+                    "width": "0%"
+                });
+                x = 0;
             }
         }
     });
