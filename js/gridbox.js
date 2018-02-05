@@ -162,6 +162,13 @@
             return this;
         },
 
+        // add Child node
+        addChild: function(elem) {
+            var elm = elem.length ? elem[0] : elem;
+            this[0].appendChild(elm);
+            return this;
+        },
+
         // DOM Traversal
         // Return children Array
         children: function(){
@@ -698,6 +705,7 @@
             //     indicator: {
             //         text: ["text1", "text2", "text3"]
             //     },
+            //     statusBar: true,
             //     transition: "fade", // or "slide" ...
             //     timeout: 3000, // or whatever 
             // }
@@ -729,6 +737,15 @@
                 animationClass = "show";
             }
 
+            // if status bar is set
+            if(optionObj.statusBar) {
+                var statsBar = im(document.createElement("div"));
+                statsBar.addClass("status-bar");
+                self.addChild(statsBar);
+            }
+
+            // need to find the relation of time past and total timeout
+            // ..... code ....
 
             // if slide timeout is set
             if(optionObj.timeout && typeof optionObj.timeout === "number") {

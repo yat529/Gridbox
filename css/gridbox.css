@@ -2384,6 +2384,15 @@ a.sub-toggle::before, a.sub-toggle::after {
         .carousel .indicator span.with-text.active {
           border-bottom: 2px solid #1e88e5; }
 
+.status-bar {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2); }
+
 .showcase {
   opacity: 1;
   -webkit-transition: opacity 0.5s ease-in-out;
