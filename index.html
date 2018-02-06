@@ -411,9 +411,11 @@
             im("#carousel2").carousel({
                 arrowToggle: false,
                 indicator: {
-                    text: ["Showcase One", "Showcase Two", "Showcase Three"]
+                    text: ["Showcase One", "Showcase Two", "Showcase Three"],
+                    progressBar: true
                 },
                 transition: "slide",
+                timeout: 10000,
             });
             im("#footer").footer(true);
         });
