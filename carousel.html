@@ -194,8 +194,109 @@
         </section>
 
         <!-- different Slide Animation -->
-        <h3 class="section-title margin-bottom-45 center-text">Carousel with Transition Effects</h3>
+        <h3 class="section-title margin-bottom-45 center-text">Carousel with Transition Effects and Timeout</h3>
         <section class="carousel margin-bottom-45" id="carousel4">
+            <div class="indicator bottom-center-30"></div>
+            <!-- must use this carousel wraper for slide effect -->
+            <div class="carousel-slide bg-lightgray">
+                <!-- 1st slide -->
+                <div class="showcase-carousel default show enlarge bg-white">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase One Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+                <!-- 2st slide -->
+                <div class="showcase-carousel show bg-peach">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase Two Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos repudiandae non dolorem dolor sit amet consectetur facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+                <!-- 3rd slide -->
+                <div class="showcase-carousel show bg-pear">
+                    <div class="center-text padding-around absolute w-7 middle-center">
+                        <h1 class="section-title margin-bottom">Showcase Three Title</h1>
+                        <p class="section-subtitle margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos dolor sit amet consectetur repudiandae non dolor sit amet consecteturdolorem facilis sed eos?</p>
+                    </div>
+                    <!-- optional hero background image & image mask -->
+                    <!-- <div class="hero-image">
+                        <div class="mask"></div>
+                        <img src="..." alt="...hero-img-title...">
+                    </div> -->
+                </div>
+            </div> <!-- carousel-customName -->
+        </section>
+
+        <!-- different Slide Animation -->
+        <h3 class="section-title margin-bottom-45 center-text">Carousel with Progress Bar</h3>
+        <section class="carousel margin-bottom-45" id="carousel5">
+            <!-- carousel controls -->
+            <div class="toggle">
+                <div class="left"><span></span></div>
+                <div class="right"><span></span></div>
+            </div>
+            <div class="indicator bottom-center-30"></div>
+            <!-- 1st slide -->
+            <div class="showcase-carousel default show bg-lightgray">
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+                <div class="text-content left">
+                    <h1 class="margin-bottom">Hello World!</h1>
+                    <p class="small margin-bottom-30">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+        
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover</a>
+                </div>
+            </div>
+            <!-- 2st slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+                <div class="text-content right">
+                    <h1 class="margin-bottom">2nd Slide</h1>
+                    <p class="small margin-bottom-30">2nd - Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+        
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover 2nd</a>
+                </div>
+            </div>
+            <!-- 3rd slide -->
+            <div class="showcase-carousel bg-lightgray">
+                <!-- optional hero background image & image mask -->
+                <!-- <div class="hero-image">
+                    <div class="mask"></div>
+                    <img src="..." alt="...hero-img-title...">
+                </div> -->
+                <div class="text-content left">
+                    <h1 class="margin-bottom">3rd Slide</h1>
+                    <p class="small margin-bottom-30">3rd - Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dignissimos cumque earum expedita modi repellat assumenda corrupti repudiandae non dolorem facilis sed eos?</p>
+        
+                    <!-- optional Call to Action Btn -->
+                    <a href="#" class="btn btn-primary">Discover 3rd</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- different Slide Animation -->
+        <h3 class="section-title margin-bottom-45 center-text">Carousel with Progress Bar on Indicator</h3>
+        <section class="carousel margin-bottom-45" id="carousel6">
             <div class="indicator bottom-center-30"></div>
             <!-- must use this carousel wraper for slide effect -->
             <div class="carousel-slide bg-lightgray">
@@ -265,6 +366,17 @@
     });
 
     im("#carousel4").carousel({
+        arrowToggle: false,
+        indicator: {
+            text: ["Showcase One", "Showcase Two", "Showcase Three"],
+        },
+        transition: "slide",
+        timeout: 10000, // with timeout period
+    });
+
+    im("#carousel5").carousel();
+
+    im("#carousel6").carousel({
         arrowToggle: false,
         indicator: {
             text: ["Showcase One", "Showcase Two", "Showcase Three"],
