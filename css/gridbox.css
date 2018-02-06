@@ -2358,6 +2358,7 @@ a.sub-toggle::before, a.sub-toggle::after {
     z-index: 10; }
     .carousel .indicator span {
       display: inline-block;
+      position: relative;
       width: 25px;
       height: 5px;
       margin-right: 5px;
@@ -2392,6 +2393,14 @@ a.sub-toggle::before, a.sub-toggle::after {
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.2); }
+
+.indicator-status-bar {
+  display: block;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background: rgba(0, 0, 0, 0.8); }
 
 .showcase {
   opacity: 1;

@@ -703,15 +703,22 @@
             // {
             //     arrowToggle: true,
             //     indicator: {
-            //         text: ["text1", "text2", "text3"]
+            //         text: ["text1", "text2", "text3"],
+            //         progressBar: true,
             //     },
-            //     statusBar: true,
+            //     progressBar: true,
             //     transition: "fade", // or "slide" ...
             //     timeout: 3000, // or whatever 
             // }
 
             // options
-            var optionObj = optionObj || {arrowToggle: true, indicator: true, transition: "fade", timeout: 10000};
+            var optionObj = optionObj || {
+                arrowToggle: true, 
+                indicator: true, 
+                progressBar: true, 
+                transition: "fade", 
+                timeout: 10000
+            };
 
             // DOM Cache
             var slides = self.find(".showcase-carousel"),
@@ -739,27 +746,6 @@
                 });
             } else if(optionObj.transition === "fade" || !optionObj.transition) {
                 animationClass = "show";
-            }
-
-            // if slide timeout is set
-            if(optionObj.timeout && typeof optionObj.timeout === "number") {
-                timeout = optionObj.timeout;
-                timeoutInterval = setInterval(nextSlide, timeout);
-
-                // if status bar is set
-                if(optionObj.statusBar) {
-                    progressBar = im(document.createElement("div"));
-                    progressBar.addClass("status-bar");
-                    self.addChild(progressBar);
-
-                    // update variables
-                    speed = 10,
-                    x = 0,
-                    dx = (100 / (timeout - 1200)) * speed; // 1200 is the transition delay for enlarge and slide effect
-
-                    // run progress bar
-                    progress = runProgressBar(progressBar, speed, x, dx);
-                }
             }
 
             // if arrow toggle is choose
@@ -810,6 +796,43 @@
                 });
             }
 
+            // if slide timeout is set
+            if(optionObj.timeout && typeof optionObj.timeout === "number") {
+                timeout = optionObj.timeout;
+                timeoutInterval = setInterval(nextSlide, timeout);
+
+                // update variables
+                speed = 10,
+                x = 0,
+                dx = (100 / (timeout - 1200)) * speed; // 1200 is the transition delay for enlarge and slide effect
+
+                // if status bar is set
+                if(optionObj.progressBar && !optionObj.indicator.progressBar) {
+                    progressBar = im(document.createElement("div"));
+                    progressBar.addClass("status-bar");
+                    self.addChild(progressBar);
+
+                    // run progress bar
+                    // progress = runProgressBar(progressBar, speed, x, dx);
+                } else if(optionObj.indicator.progressBar) {
+                    progressBar = [];
+                    indicator.children().each(function(i){
+                        var indicatorProgressBar = im(document.createElement("div"));
+                        indicatorProgressBar.addClass("indicator-status-bar");
+                        this.addChild(indicatorProgressBar);
+
+                        progressBar.push(indicatorProgressBar);
+
+                        // run progress bar
+                        // progress = runProgressBar(progressBar[0], speed, x, dx);
+                    });
+                }
+            }
+
+            // init
+            selectSlide(counter);
+
+
             // ------- helper functions --------
             // ---------------------------------
             function previousSlide() {
@@ -842,10 +865,18 @@
             function updateSlide(counter) {
                 // reset classes
                 if(optionObj.indicator) {
-                    indicator.children().each(function(){
-                        resetClasses(this, "remove", indicatorClass);
-                    });
-                    im(indicator.children()[0][counter]).addClass(indicatorClass);
+                    if(optionObj.indicator.progressBar) {
+                        indicator.children().each(function(){
+                            resetClasses(this, "remove", indicatorClass);
+                        });
+                        if(progress) resetProgressBar(progressBar, progress);
+                        progress = runProgressBar(progressBar[counter], speed, x, dx);
+                    } else {
+                        indicator.children().each(function(){
+                            resetClasses(this, "remove", indicatorClass);
+                        });
+                        im(indicator.children()[0][counter]).addClass(indicatorClass);
+                    }
                 }
                 slides.each(function(){
                     resetClasses(this, "remove", animationClass);
@@ -853,7 +884,7 @@
                 // reset timeout
                 if(optionObj.timeout) resetTimeOut();
                 // reset progress bar
-                if(optionObj.statusBar) {
+                if(optionObj.progressBar && !optionObj.indicator.progressBar) {
                     if(progress) resetProgressBar(progressBar, progress);
                     // run animation
                     progress = runProgressBar(progressBar, speed, x, dx);
@@ -907,9 +938,19 @@
 
             function resetProgressBar(elem, progressInterval) {
                 clearInterval(progressInterval);
-                elem.css({
-                    "width": "0%"
-                });
+                // if elem in array
+                if(Array.isArray(elem)) {
+                    for(var i = 0; i < elem.length; i++) {
+                        elem[i].css({
+                            "width": "0%"
+                        });
+                    }
+                } else {
+                    // if elem is object
+                    elem.css({
+                        "width": "0%"
+                    });
+                }
                 x = 0;
             }
         }
