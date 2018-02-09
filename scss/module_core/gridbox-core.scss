@@ -6,6 +6,9 @@
 @import 'gridbox-image';
 @import 'gridbox-stack';
 
+.overflow-hidden {
+    overflow: hidden;
+}
 
 .box-shadow {
     box-shadow: 0px 2px 10px -5px rgba(0, 0, 0, 0.3);
@@ -13,6 +16,10 @@
 
 .box-shadow-stronger {
     box-shadow: 0px 2px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+.box-shadow-lighter {
+    box-shadow: 0px 2px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .offset-x {

@@ -26,6 +26,18 @@
     font-style: italic;
 }
 
+// font weight builder
+@mixin fontWeight($nums) {
+    @for $num from 1 to $nums + 1 {
+        .fontWeight-#{$num} {
+            font-weight: $num * 100;
+        }
+    }
+}
+
+// font weight ranges from 100 to 900
+@include fontWeight(9);
+
 
 // /* =======================================================================
 //  *                              Font size
@@ -41,6 +53,17 @@
 .small {
     font-size: 0.85rem !important;
 }
+
+// font size builder
+@mixin fontSize($nums) {
+    @for $num from 1 to $nums + 1 {
+        .fontSize-#{$num} {
+            font-size: $num + rem;
+        }
+    }
+}
+
+@include fontSize(10);
 
 
 // /* =======================================================================
@@ -97,4 +120,11 @@
         weight: 400;
     }
     color: $offBlack;
+}
+
+
+// text align
+.align-text {
+    &-left { text-align: left; }
+    &-right { text-align: right; }
 }
