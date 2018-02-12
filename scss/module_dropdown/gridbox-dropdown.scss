@@ -57,7 +57,6 @@
     }
 }
 
-
 // Dropdown indicator styling
 // Four styles: carret, carret-circle, arrow, arrow-circle
 // apply to the element has .with-carret class
@@ -97,6 +96,7 @@
                 height: 5px;
                 border-top: 2px solid $white;
                 border-right: 2px solid $white;
+                transform: translate(-100%, -50%) rotate(45deg);
             }
         }
 
@@ -126,6 +126,79 @@
         &.arrow-circle.active {
             &::after {
                 transform: translate(-78%, -65%) rotate(135deg);
+            }
+        }
+    }
+}
+
+// Dropdown list positions
+// Dropup
+.dropup {
+    .dropdown-list {
+        bottom: 100%;
+    }
+
+    .with-carret {
+        &.carret-circle.active {
+            &::after {
+                transform: translate(-58%, -30%) rotate(-45deg) !important;
+            }
+        }
+
+        &.arrow-circle.active {
+            &::after {
+                transform: translate(-78%, -35%) rotate(-45deg) !important;
+            }
+        }
+    }
+}
+
+// Dropright
+.dropright {
+    .dropdown-list {
+        top: 0;
+        left: 100%;
+    }
+
+    .with-carret {
+        &.arrow-circle.active,
+        &.carret-circle.active {
+            &::after {
+                transform: translate(-40%, -50%) rotate(45deg) !important;
+            }
+        }
+    }
+}
+
+// Dropleft
+.dropleft {
+    .dropdown-list {
+        top: 0;
+        right: 100%;
+    }
+
+    .with-carret {
+        // default state
+        &.arrow-circle {
+            &::after {
+                transform: translate(-60%, -50%) rotate(-135deg) !important;
+            }
+        }
+        &.carret-circle {
+            &::after {
+                transform: translate(-30%, -50%) rotate(-135deg) !important;
+            }
+        }
+
+        // active state
+        &.arrow-circle.active {
+            &::after {
+                transform: translate(-120%, -50%) rotate(-135deg) !important;
+            }
+        }
+        &.carret-circle.active {
+            &::after {
+                transform: translate(-80%, -50%) rotate(-135deg) !important;
             }
         }
     }

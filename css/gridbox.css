@@ -3268,7 +3268,10 @@ a {
     width: 5px;
     height: 5px;
     border-top: 2px solid #fff;
-    border-right: 2px solid #fff; }
+    border-right: 2px solid #fff;
+    -webkit-transform: translate(-100%, -50%) rotate(45deg);
+    -ms-transform: translate(-100%, -50%) rotate(45deg);
+    transform: translate(-100%, -50%) rotate(45deg); }
   .dropdown .with-carret.carret::after, .dropdown .with-carret.carret-circle::after {
     border: 3px solid transparent;
     border-top: 3px solid #fff;
@@ -3281,6 +3284,52 @@ a {
     -webkit-transform: translate(-78%, -65%) rotate(135deg);
     -ms-transform: translate(-78%, -65%) rotate(135deg);
     transform: translate(-78%, -65%) rotate(135deg); }
+
+.dropup .dropdown-list {
+  bottom: 100%; }
+
+.dropup .with-carret.carret-circle.active::after {
+  -webkit-transform: translate(-58%, -30%) rotate(-45deg) !important;
+  -ms-transform: translate(-58%, -30%) rotate(-45deg) !important;
+  transform: translate(-58%, -30%) rotate(-45deg) !important; }
+
+.dropup .with-carret.arrow-circle.active::after {
+  -webkit-transform: translate(-78%, -35%) rotate(-45deg) !important;
+  -ms-transform: translate(-78%, -35%) rotate(-45deg) !important;
+  transform: translate(-78%, -35%) rotate(-45deg) !important; }
+
+.dropright .dropdown-list {
+  top: 0;
+  left: 100%; }
+
+.dropright .with-carret.arrow-circle.active::after, .dropright .with-carret.carret-circle.active::after {
+  -webkit-transform: translate(-40%, -50%) rotate(45deg) !important;
+  -ms-transform: translate(-40%, -50%) rotate(45deg) !important;
+  transform: translate(-40%, -50%) rotate(45deg) !important; }
+
+.dropleft .dropdown-list {
+  top: 0;
+  right: 100%; }
+
+.dropleft .with-carret.arrow-circle::after {
+  -webkit-transform: translate(-60%, -50%) rotate(-135deg) !important;
+  -ms-transform: translate(-60%, -50%) rotate(-135deg) !important;
+  transform: translate(-60%, -50%) rotate(-135deg) !important; }
+
+.dropleft .with-carret.carret-circle::after {
+  -webkit-transform: translate(-30%, -50%) rotate(-135deg) !important;
+  -ms-transform: translate(-30%, -50%) rotate(-135deg) !important;
+  transform: translate(-30%, -50%) rotate(-135deg) !important; }
+
+.dropleft .with-carret.arrow-circle.active::after {
+  -webkit-transform: translate(-120%, -50%) rotate(-135deg) !important;
+  -ms-transform: translate(-120%, -50%) rotate(-135deg) !important;
+  transform: translate(-120%, -50%) rotate(-135deg) !important; }
+
+.dropleft .with-carret.carret-circle.active::after {
+  -webkit-transform: translate(-80%, -50%) rotate(-135deg) !important;
+  -ms-transform: translate(-80%, -50%) rotate(-135deg) !important;
+  transform: translate(-80%, -50%) rotate(-135deg) !important; }
 
 .login-form-container {
   position: fixed;
