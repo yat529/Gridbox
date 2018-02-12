@@ -1,30 +1,4 @@
 
-.dropdown {
-
-    .btn {
-        position: relative;
-        padding-right: 2rem;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            right: 0.75rem;
-            width: 5px;
-            height: 5px;
-            border-top: 2px solid $white;
-            border-right: 2px solid $white;
-            transform: translateY(-50%) rotate(45deg);
-            transition: all 0.3s;
-        }
-
-        &.active {
-            &::after {
-                transform: translateY(-50%) rotate(135deg);
-            }
-        }
-    }
-}
 
 .dropdown-list {
     position: absolute;
@@ -39,13 +13,87 @@
     }
     
     li {
-        padding: 15px 25px;
+        padding: 1rem 1.5rem;
         border-bottom: 1px solid darken($gray, 5%);
         text-align: center;
         cursor: pointer;
 
         &:hover {
             background: $white;
+        }
+    }
+}
+
+
+// Dropdown Indicator style
+
+.dropdown {
+
+    %indicator {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translate(-80%, -50%) rotate(45deg);
+        transition: all 0.3s;
+    }
+
+    %indicator-bg {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        border: 1px solid $white;
+        // background: $white;
+        transform: translateY(-50%);
+    }
+
+    .btn {
+        position: relative;
+        padding: 1rem 1.5rem;
+        padding-right: 2rem;
+
+        &.arrow,
+        &.arrow-circle {
+            &::after {
+                @extend %indicator;
+                width: 5px;
+                height: 5px;
+                border-top: 2px solid $white;
+                border-right: 2px solid $white;
+            }
+        }
+
+        &.carret,
+        &.carret-circle {
+            &::after {
+                @extend %indicator;
+                border: 3px solid transparent;
+                border-top: 3px solid $white;
+                border-right: 3px solid $white;
+            }
+        }
+
+        &.arrow-circle,
+        &.carret-circle {
+            &::before {
+                @extend %indicator-bg;
+            }
+        }
+
+        &.carret-circle.active {
+            &::after {
+                transform: translate(-58%, -75%) rotate(135deg);
+            }
+        }
+
+        &.arrow-circle.active {
+            &::after {
+                transform: translate(-78%, -65%) rotate(135deg);
+            }
         }
     }
 }

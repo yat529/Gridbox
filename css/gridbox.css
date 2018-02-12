@@ -3198,29 +3198,6 @@ a {
     opacity: 0;
     color: #1e88e5; }
 
-.dropdown .btn {
-  position: relative;
-  padding-right: 2rem; }
-  .dropdown .btn::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0.75rem;
-    width: 5px;
-    height: 5px;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    -webkit-transform: translateY(-50%) rotate(45deg);
-    -ms-transform: translateY(-50%) rotate(45deg);
-    transform: translateY(-50%) rotate(45deg);
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s; }
-  .dropdown .btn.active::after {
-    -webkit-transform: translateY(-50%) rotate(135deg);
-    -ms-transform: translateY(-50%) rotate(135deg);
-    transform: translateY(-50%) rotate(135deg); }
-
 .dropdown-list {
   position: absolute;
   margin: 0;
@@ -3232,12 +3209,59 @@ a {
   .dropdown-list.hide {
     display: none; }
   .dropdown-list li {
-    padding: 15px 25px;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid #e8e8e8;
     text-align: center;
     cursor: pointer; }
     .dropdown-list li:hover {
       background: #fff; }
+
+.dropdown .btn.arrow::after, .dropdown .btn.arrow-circle::after, .dropdown .btn.carret::after, .dropdown .btn.carret-circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  -webkit-transform: translate(-80%, -50%) rotate(45deg);
+  -ms-transform: translate(-80%, -50%) rotate(45deg);
+  transform: translate(-80%, -50%) rotate(45deg);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.dropdown .btn.arrow-circle::before, .dropdown .btn.carret-circle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.dropdown .btn {
+  position: relative;
+  padding: 1rem 1.5rem;
+  padding-right: 2rem; }
+  .dropdown .btn.arrow::after, .dropdown .btn.arrow-circle::after {
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff; }
+  .dropdown .btn.carret::after, .dropdown .btn.carret-circle::after {
+    border: 3px solid transparent;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff; }
+  .dropdown .btn.carret-circle.active::after {
+    -webkit-transform: translate(-58%, -75%) rotate(135deg);
+    -ms-transform: translate(-58%, -75%) rotate(135deg);
+    transform: translate(-58%, -75%) rotate(135deg); }
+  .dropdown .btn.arrow-circle.active::after {
+    -webkit-transform: translate(-78%, -65%) rotate(135deg);
+    -ms-transform: translate(-78%, -65%) rotate(135deg);
+    transform: translate(-78%, -65%) rotate(135deg); }
 
 .login-form-container {
   position: fixed;
