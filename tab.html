@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/gridbox.css">
+    <title>Tabs</title>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <section class="showcase bg-lightgray">
+            <h3 class="section-title center-text margin-top-45">Tabs</h3>
+            <div class="absolute middle-center bg-white padding-around-45">
+                
+                <div class="tab" id="tab1">
+                    <div class="tab-wrap">
+                        <ul class="tabs">
+                            <li class="active" data-target="#tab1-content">Tab 1</li>
+                            <li data-target="#tab2-content">Tab 2</li>
+                            <li data-target="#tab3-content">Tab 3</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box bg-lightgray">
+                        <p class="tab-content show" id="tab1-content">Tab 1 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo autem corrupti dicta quo, repellat rerum voluptatum vel id facilis perspiciatis error sint, atque illum expedita harum. At tempora similique pariatur?</p>
+                        <p class="tab-content" id="tab2-content">Tab 2 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo autem corrupti dicta quo, repellat rerum voluptatum vel id facilis perspiciatis error sint, atque illum expedita harum. At tempora similique pariatur?</p>
+                        <p class="tab-content" id="tab3-content">Tab 3 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo autem corrupti dicta quo, repellat rerum voluptatum vel id facilis perspiciatis error sint, atque illum expedita harum. At tempora similique pariatur?</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script src="/js/gridbox.js"></script>
+    <script>
+    
+        im("#tab1").tab();
+
+    </script>
+</body>
+</html>

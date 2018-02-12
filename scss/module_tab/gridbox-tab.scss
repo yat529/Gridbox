@@ -1,0 +1,47 @@
+.tab-wrap {
+    padding-left: 30px; // left spacing for first tab
+}
+
+.tabs {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: hidden;
+
+    li {
+        position: relative; // required for z-index to be effective
+        float: left;
+        padding: 0.5rem 1.5rem;
+        margin-right: 0px;
+        background: $information;
+        transform: translateY(5px);
+        transition: all 0.3s;
+        color: $white;
+        cursor: pointer;
+        z-index: 1;
+
+        &:hover {
+            background: $informationDarker;
+        }
+
+        &.active {
+            background: $informationDarker;
+            transform: translateY(0px);
+            box-shadow: 1px 1px 8px -3px rgba(0, 0, 0, 0.3);
+            z-index: 3; // needed to show the box shadow
+        }
+    }
+}
+
+.content-box {
+    padding: 30px;
+    box-shadow: 0 2px 10px -8px rgba(0, 0, 0, 0.2);
+}
+
+.tab-content {
+    display: none;
+    &.show {
+        display: block;
+    }
+}

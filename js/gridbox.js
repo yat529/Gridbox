@@ -1246,7 +1246,7 @@
         // Parameter:   none
         // Description: none
         // -----------------------------------------------------------
-        // Note:  must use Modal HTML Template
+        // Note:  must use Dropdown HTML Template
         // -----------------------------------------------------------
 
     // 
@@ -1265,6 +1265,59 @@
         }
 
     });
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                      Tabs
+        // -----------------------------------------------------------
+        // Description: toggle the tabbed content
+        // -----------------------------------------------------------
+        // Parameter:   none
+        // Description: none
+        // -----------------------------------------------------------
+        // Note:  must use Tab HTML Template
+        // -----------------------------------------------------------
+
+        tab: function() {
+            var self = this,
+                tabs = self.find(".tabs").first().children(),
+                contents = self.find(".tab-content");
+
+            tabs.each(function(){
+                this.click(function(){
+                    // reset classes
+                    tabs.each(function(){
+                        if(this.hasClass("active")) {
+                            this.removeClass("active");
+                        }
+                    });
+                    contents.each(function(){
+                        if(this.hasClass("show")) {
+                            this.removeClass("show");
+                        }
+                    });
+
+                    // make tab active
+                    this.addClass("active");
+
+                    // show cotent
+                    var target = this.data("target");
+                    contents.find(target).toggleClass("show");
+                });
+            });
+        }
+    });
+
+
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
 
     init.extend({
     // -----------------------------------------------------------
