@@ -3222,12 +3222,15 @@ a {
     transform: translateY(-50%) rotate(135deg); }
 
 .dropdown-list {
-  position: relative;
+  position: absolute;
   margin: 0;
   padding: 0;
+  width: 100%;
   list-style-type: none;
   -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.2); }
+  .dropdown-list.hide {
+    display: none; }
   .dropdown-list li {
     padding: 15px 25px;
     border-bottom: 1px solid #e8e8e8;

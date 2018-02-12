@@ -11,24 +11,26 @@
 <body>
 
     <div class="container-fluid">
-        <section class="showcase-narrow bg-lightgray">
+        <section class="showcase bg-lightgray">
 
-            <div class="absolute middle-center">
+            <div class="dropdown absolute middle-center" id="dropdown1">
+                <button class="btn btn-primary" type="button">Dropdown</button>
 
-                <div class="dropdown">
-                    <button class="btn btn-primary" type="button">Dropdown</button>
-
-                    <ul class="dropdown-list">
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
-                </div>
-
+                <ul class="dropdown-list hide">
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
             </div>
 
         </section>
     </div>
 
+    <script src="/js/gridbox.js"></script>
+    <script>
+    
+        im("#dropdown1").dropdown();
+
+    </script>
 </body>
 </html>

@@ -1232,9 +1232,39 @@
         }
     });
 
+
     // 
     // -------------------- Gridbox Plugins --------------------------
     //
+
+    init.extend({
+        // -----------------------------------------------------------
+        //                      Dropdown Btn
+        // -----------------------------------------------------------
+        // Description: toggle the dropdown list
+        // -----------------------------------------------------------
+        // Parameter:   none
+        // Description: none
+        // -----------------------------------------------------------
+        // Note:  must use Modal HTML Template
+        // -----------------------------------------------------------
+
+    // 
+    // -------------------- Gridbox Plugins --------------------------
+    //
+
+        dropdown: function() {
+            var self = this,
+                btn = self.find(".btn").first(),
+                dropdownList = btn.nextSibling();
+
+            btn.click(function(){
+                this.toggleClass("active");
+                dropdownList.toggleClass("hide");
+            }, false);
+        }
+
+    });
 
     init.extend({
     // -----------------------------------------------------------
