@@ -1,7 +1,30 @@
 
-// .dropdown {
+.dropdown {
 
-// }
+    .btn {
+        position: relative;
+        padding-right: 2rem;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            width: 5px;
+            height: 5px;
+            border-top: 2px solid $white;
+            border-right: 2px solid $white;
+            transform: translateY(-50%) rotate(45deg);
+            transition: all 0.3s;
+        }
+
+        &.active {
+            &::after {
+                transform: translateY(-50%) rotate(135deg);
+            }
+        }
+    }
+}
 
 .dropdown-list {
     position: relative;
@@ -13,6 +36,7 @@
     li {
         padding: 15px 25px;
         border-bottom: 1px solid darken($gray, 5%);
+        text-align: center;
         cursor: pointer;
 
         &:hover {
