@@ -1255,8 +1255,8 @@
 
         dropdown: function() {
             var self = this,
-                btn = self.find(".btn").first(),
-                dropdownList = btn.nextSibling();
+                btn = self.find(".dropdown-toggle").first(),
+                dropdownList = self.find(".dropdown-list").first();
 
             btn.click(function(){
                 this.toggleClass("active");

@@ -1,5 +1,4 @@
-
-
+// dropdown list stylings
 .dropdown-list {
     position: absolute;
     margin: 0;
@@ -25,12 +24,46 @@
 }
 
 
-// Dropdown Indicator style
-
+// Dropdown global style
 .dropdown {
+    display: inline-block;
+    position: relative;
+    vertical-align: top; // fix inline align issue
 
+    .btn {
+        padding: 1rem 1.5rem;
+    }
+}
+
+
+// Dropdown with seperate button specific styling
+.dropdown-seperate {
+    // note; use the float positioning to remove the inline element carriage return whitespaces
+    .btn-wrap {
+        position: relative;
+        overflow: hidden;
+        .btn {
+            float: left;
+        }
+    }
+    // make the buttons inline
+    a,
+    button {
+        display: inline-block;
+    }
+    // tweak the button style
+    .with-carret {
+        padding: 1rem !important;
+    }
+}
+
+
+// Dropdown indicator styling
+// Four styles: carret, carret-circle, arrow, arrow-circle
+// apply to the element has .with-carret class
+.dropdown {
     %indicator {
-        content: "";
+        content: " ";
         position: absolute;
         top: 50%;
         right: 0.75rem;
@@ -51,10 +84,10 @@
         transform: translateY(-50%);
     }
 
-    .btn {
+    // .with-carret indicator the element that carries the indicator element
+    .with-carret {
         position: relative;
-        padding: 1rem 1.5rem;
-        padding-right: 2rem;
+        padding-right: 2.5rem; // leave 1rem for carret
 
         &.arrow,
         &.arrow-circle {

@@ -12,15 +12,33 @@
 
     <div class="container-fluid">
         <section class="showcase bg-lightgray">
+      
+            <div class="absolute middle-center">
+                
+                <!-- default dropdown style -->
+                <div class="dropdown" id="dropdown1">
+                    <button class="btn btn-primary dropdown-toggle with-carret carret-circle" type="button">Dropdown</button>
+    
+                    <ul class="dropdown-list hide">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </div>
 
-            <div class="dropdown absolute middle-center" id="dropdown1">
-                <button class="btn btn-primary arrow-circle" type="button">Dropdown</button>
-
-                <ul class="dropdown-list hide">
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                </ul>
+                <!-- seperate dropdown style -->
+                <div class="dropdown dropdown-seperate" id="dropdown2">
+                    <div class="btn-wrap">
+                        <a class="btn btn-primary" role="button" href="#">Dropdown w/ Seperate Button</a>
+                        <button class="btn btn-primary dropdown-toggle with-carret carret-circle">&nbsp;</button>
+                    </div>
+    
+                    <ul class="dropdown-list hide">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </div>
             </div>
 
         </section>
@@ -30,6 +48,7 @@
     <script>
     
         im("#dropdown1").dropdown();
+        im("#dropdown2").dropdown();
 
     </script>
 </body>

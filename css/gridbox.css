@@ -3216,8 +3216,28 @@ a {
     .dropdown-list li:hover {
       background: #fff; }
 
-.dropdown .btn.arrow::after, .dropdown .btn.arrow-circle::after, .dropdown .btn.carret::after, .dropdown .btn.carret-circle::after {
-  content: "";
+.dropdown {
+  display: inline-block;
+  position: relative;
+  vertical-align: top; }
+  .dropdown .btn {
+    padding: 1rem 1.5rem; }
+
+.dropdown-seperate .btn-wrap {
+  position: relative;
+  overflow: hidden; }
+  .dropdown-seperate .btn-wrap .btn {
+    float: left; }
+
+.dropdown-seperate a,
+.dropdown-seperate button {
+  display: inline-block; }
+
+.dropdown-seperate .with-carret {
+  padding: 1rem !important; }
+
+.dropdown .with-carret.arrow::after, .dropdown .with-carret.arrow-circle::after, .dropdown .with-carret.carret::after, .dropdown .with-carret.carret-circle::after {
+  content: " ";
   position: absolute;
   top: 50%;
   right: 0.75rem;
@@ -3228,7 +3248,7 @@ a {
   -o-transition: all 0.3s;
   transition: all 0.3s; }
 
-.dropdown .btn.arrow-circle::before, .dropdown .btn.carret-circle::before {
+.dropdown .with-carret.arrow-circle::before, .dropdown .with-carret.carret-circle::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -3241,24 +3261,23 @@ a {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
-.dropdown .btn {
+.dropdown .with-carret {
   position: relative;
-  padding: 1rem 1.5rem;
-  padding-right: 2rem; }
-  .dropdown .btn.arrow::after, .dropdown .btn.arrow-circle::after {
+  padding-right: 2.5rem; }
+  .dropdown .with-carret.arrow::after, .dropdown .with-carret.arrow-circle::after {
     width: 5px;
     height: 5px;
     border-top: 2px solid #fff;
     border-right: 2px solid #fff; }
-  .dropdown .btn.carret::after, .dropdown .btn.carret-circle::after {
+  .dropdown .with-carret.carret::after, .dropdown .with-carret.carret-circle::after {
     border: 3px solid transparent;
     border-top: 3px solid #fff;
     border-right: 3px solid #fff; }
-  .dropdown .btn.carret-circle.active::after {
+  .dropdown .with-carret.carret-circle.active::after {
     -webkit-transform: translate(-58%, -75%) rotate(135deg);
     -ms-transform: translate(-58%, -75%) rotate(135deg);
     transform: translate(-58%, -75%) rotate(135deg); }
-  .dropdown .btn.arrow-circle.active::after {
+  .dropdown .with-carret.arrow-circle.active::after {
     -webkit-transform: translate(-78%, -65%) rotate(135deg);
     -ms-transform: translate(-78%, -65%) rotate(135deg);
     transform: translate(-78%, -65%) rotate(135deg); }
