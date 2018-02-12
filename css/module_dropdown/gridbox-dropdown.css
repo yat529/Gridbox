@@ -1,0 +1,7 @@
+.dropdown-list {
+  position: relative;
+  margin: 0;
+  padding: 0; }
+  .dropdown-list li {
+    list-style-type: none;
+    color: red; }
